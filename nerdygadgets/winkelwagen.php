@@ -2,6 +2,20 @@
 $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
 mysqli_set_charset($Connection, 'latin1');
 include __DIR__ . "/header.php";
+
+//functions winkelmand
+function add($id){
+    $getal = $_SESSION['cart'][$id];
+    $getal++;
+    $_SESSION['cart'][$id] = $getal;
+}
+function remove($id){
+    $getal = $_SESSION['cart'][$id];
+    if($getal > 0) {
+        $getal--;
+        $_SESSION['cart'][$id] = $getal;
+    }
+}
 ?>
 <div class="wrapperWinkelmand">
     <h1>Winkelwagentje</h1>
@@ -40,6 +54,7 @@ include __DIR__ . "/header.php";
                 $productName = $Result['StockItemName'];
                 $totalPrice += $price;
                 echo("<div> (id=$productID) $productName - &euro;$price Aantal:$count <button>+</button><button>-</button></div><br>");
+                echo("<div> (id=$productID) $productName Aantal:$count<button onclick='add($productID)'>+</button><button onclick='remove($productID)'>-</button></div><br>");
             }
             echo("<br>Totaal prijs: &euro;$totalPrice");
             ?>
