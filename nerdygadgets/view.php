@@ -3,12 +3,6 @@ $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
 mysqli_set_charset($Connection, 'latin1');
 include __DIR__ . "/header.php";
 
-if(!empty($_POST['itemID'])) {
-    echo("Toegevoegd");
-} else {
-    echo("Test");
-}
-
 $Query = " 
            SELECT SI.StockItemID, 
             (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice, 
@@ -34,6 +28,23 @@ if ($ReturnableResult && mysqli_num_rows($ReturnableResult) == 1) {
 } else {
     $Result = null;
 }
+
+if(!empty($_POST['itemID'])) {
+    if(!isset($addedItem)) {
+        if(in_array($_GET['id'], $_SESSION['cart'])) {
+           $addedItem = TRUE;
+        } else {
+            // Execute when item gets added
+            array_push($_SESSION['cart'], $_POST['itemID']);
+        }
+    }
+    $addedItem = TRUE;
+} elseif(in_array($_GET['id'], $_SESSION['cart'])) {
+    $addedItem = TRUE;
+} else {
+    $addedItem = FALSE;
+}
+
 //Get Images
 $Query = "
                 SELECT ImagePath
@@ -135,7 +146,7 @@ if ($R) {
                         <h6> Inclusief BTW </h6>
                         <form action="view.php?id=<?php echo($_GET['id']);?>" method="post">
                             <input type="hidden" name="itemID" value="<?php echo($_GET['id']);?>">
-                            <button type="submit" style="border: none;padding:5px; background-color:rgb(35, 35, 125); font-size:22px; float:right; color:white;"><i class="fas fa-shopping-basket" style="color:white;"></i>Toevoegen</button>
+                            <button type="submit" style="border: none;padding:5px; background-color:rgb(35, 35, 125); font-size:22px; float:right; color:white;"><i class="fas fa-shopping-basket" style="color:white;"></i><?php if(!$addedItem) {echo("Toevoegen");} else {echo("Toegevoegd");}?></button>
                         </form>
                     </div>
                 </div>

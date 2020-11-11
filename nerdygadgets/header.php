@@ -1,6 +1,9 @@
 <?php
 session_start();
 include "connect.php";
+if(!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = array();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" style="background-color: rgb(35, 35, 47);">
