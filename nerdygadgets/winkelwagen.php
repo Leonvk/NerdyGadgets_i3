@@ -36,7 +36,7 @@ include __DIR__ . "/header.php";
                     $Result = null;
                 }
                 $productName = $Result['StockItemName'];
-                echo("<div> (id=$productID) $productName Aantal:$count</div><br>");
+                echo("<div> (id=$productID) $productName Aantal:$count<button>+</button><button>-</button></div><br>");
             }
             ?>
             
