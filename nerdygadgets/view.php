@@ -7,7 +7,7 @@ $Query = "
            SELECT SI.StockItemID, 
             (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice, 
             StockItemName,
-            CONCAT('Voorraad: ',QuantityOnHand)AS QuantityOnHand,
+            QuantityOnHand AS QuantityOnHand,
             SearchDetails, 
             (CASE WHEN (RecommendedRetailPrice*(1+(TaxRate/100))) > 50 THEN 0 ELSE 6.95 END) AS SendCosts, MarketingComments, CustomFields, SI.Video,
             (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = SI.StockItemID LIMIT 1) as BackupImagePath   
@@ -114,7 +114,14 @@ if ($R) {
             <h2 class="StockItemNameViewSize StockItemName">
                 <?php print $Result['StockItemName']; ?>
             </h2>
-            <div class="QuantityText"><?php if ($Result['QuantityOnHand'] <= 1000) {print $Result['QuantityOnHand'];} else {print("Ruime vooraad beschikbaar");} ?></div>
+            <div class="QuantityText"><?php 
+            if ($Result['QuantityOnHand'] <= 1000) {
+                print('Voorraad: '. $Result['QuantityOnHand']);
+            } 
+            else {
+                print("Ruime vooraad beschikbaar");
+            } 
+                ?></div>
             <div id="StockItemHeaderLeft">
                 <div class="CenterPriceLeft">
                     <div class="CenterPriceLeftChild">
