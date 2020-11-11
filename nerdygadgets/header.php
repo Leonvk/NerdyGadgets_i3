@@ -79,6 +79,9 @@ include "connect.php";
             <li>
                 <a href="browse.php" class="HrefDecoration"><i class="fas fa-search" style="color:#676EFF;"></i> Zoeken</a>
             </li>
+            <li>
+                <a href="winkelwagen.php" class="HrefDecoration"><i class="fas fa-shopping-basket" style="color:#676EFF;"></i>Winkelwagen</a>
+            </li>
         </ul>
     </div>
     <div class="row" id="Content">
