@@ -16,7 +16,7 @@ include __DIR__ . "/header.php";
             <p>couponcode</p>
             <input type="number" value="1" name="coupons" class="couponNumber" readonly>
         </div>
-            <input type="checkbox" name="reclameMail" class="reclameMail"><label for="reclameMail">Ik zou graag reclame via de e-mail willen ontvangen</label>
+            <input type="checkbox" name="reclameMail" class="reclameMail"><label for="reclameMail">Ik zou graag acties via de e-mail willen ontvangen</label>
             <input type="submit" name="submit" value="Betaal pagina">
     </form>
 </div>
