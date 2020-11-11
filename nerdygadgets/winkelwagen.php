@@ -53,20 +53,21 @@ function remove($id){
                 $price = number_format($Result['SellPrice'], 2);
                 $productName = $Result['StockItemName'];
                 $totalPrice += $price;
-                echo("<div> (id=$productID) $productName - &euro;$price Aantal:$count <button>+</button><button>-</button></div><br>");
-                echo("<div> (id=$productID) $productName Aantal:$count<button onclick='add($productID)'>+</button><button onclick='remove($productID)'>-</button></div><br>");
+                echo("<div> (id=$productID) $productName - &euro;$price Aantal:$count <button onclick='add($productID)'>+</button><button onclick='remove($productID)'>-</button></div><br>");
             }
+            if(isset($_POST["coupons"])) {
+                $totalPrice = (100-$_POST["coupons"])/100*$totalPrice;
+            }
+            $totalPrice = number_format($totalPrice,2);
             echo("<br>Totaal prijs: &euro;$totalPrice");
             ?>
-            
-            <!--tot hier-->
         </div>
         <div class="couponOverzicht">
-            <p>couponcode</p>
-            <input type="number" value="1" name="coupons" class="couponNumber" readonly>
+            <p>Couponcode (% korting op het moment)</p>
+            <input type="number" value="" name="coupons" class="couponNumber">
         </div>
-            <input type="checkbox" name="actieMail" class="actieMail"><label for="reclameMail">Ik zou graag acties via de e-mail willen ontvangen</label>
-            <input type="submit" name="submit" value="Betaal pagina">
+        <input type="submit" name="submit" value="Betaal pagina">
+        <input type="checkbox" name="actieMail" class="actieMail"><label for="reclameMail">Ik zou graag acties via de e-mail willen ontvangen</label>
     </form>
 </div>
 
@@ -74,8 +75,6 @@ function remove($id){
     <?php 
     if(isset($_POST['delete'])) {
         unset($_SESSION['cart']);
-    } else {
-        print_r($_SESSION['cart']);
     }
     ?>
     <br>
