@@ -24,9 +24,9 @@ include __DIR__ . "/header.php";
 <div>
     <?php 
     if(isset($_POST['delete'])) {
-        unset($_SESSION['cart']);
+        unset($_SESSION['cartID']);
     } else {
-        print_r($_SESSION['cart']);
+        print_r($_SESSION['cartID']);
     }
     ?>
     <br>

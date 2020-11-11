@@ -31,15 +31,15 @@ if ($ReturnableResult && mysqli_num_rows($ReturnableResult) == 1) {
 
 if(!empty($_POST['itemID'])) {
     if(!isset($addedItem)) {
-        if(in_array($_GET['id'], $_SESSION['cart'])) {
+        if(in_array($_GET['id'], $_SESSION['cartID'])) {
            $addedItem = TRUE;
         } else {
             // Execute when item gets added
-            array_push($_SESSION['cart'], $_POST['itemID']);
+            array_push($_SESSION['cartID'], $_POST['itemID']);
         }
     }
     $addedItem = TRUE;
-} elseif(in_array($_GET['id'], $_SESSION['cart'])) {
+} elseif(in_array($_GET['id'], $_SESSION['cartID'])) {
     $addedItem = TRUE;
 } else {
     $addedItem = FALSE;
