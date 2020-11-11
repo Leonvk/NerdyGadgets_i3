@@ -473,3 +473,35 @@ ul#ul-class-price li {
     border: 1px rgb(98, 158, 255) solid;
     color: #fff;
 }
+.wrapperWinkelmand {
+    padding: 0% 5% 5% 5%;
+}
+.mandItemsOverzicht{
+    float: left;
+    padding: 1% 2%;
+    width: 60%;
+    border: black 2px solid;
+    height: 250px;
+    margin-bottom: 5px;
+}
+.mandItem{
+    width: 20%;
+    margin-left: 50%;
+}
+.couponOverzicht{
+    width: 40%;
+    float: left;
+    padding: 1% 2%;
+    height: 250px;
+    margin-bottom: 5px;
+}
+.couponNumber{
+    width: 13%;
+}
+.mandBottom{
+    float: none;
+}
+.reclameMail{
+    width: 5%;
+    height: 40px;
+}
