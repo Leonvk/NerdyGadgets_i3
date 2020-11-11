@@ -509,3 +509,9 @@ ul#ul-class-price li {
 .actieMail{
 
 }
+.totaalBedrag{
+    padding: 1%;
+    width: 60%;
+    border: black 2px solid;
+}
+

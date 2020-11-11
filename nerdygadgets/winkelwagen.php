@@ -59,13 +59,16 @@ function remove($id){
                 $totalPrice = (100-$_POST["coupons"])/100*$totalPrice;
             }
             $totalPrice = number_format($totalPrice,2);
-            echo("<br>Totaal prijs: &euro;$totalPrice");
             ?>
         </div>
         <div class="couponOverzicht">
             <p>Couponcode (% korting op het moment)</p>
             <input type="number" value="" name="coupons" class="couponNumber">
         </div>
+        <div class="totaalBedrag">
+            <?php echo("<br>Totaal prijs: &euro;$totalPrice"); ?>
+        </div>
+        <input type="submit" name="submit" value="Betaal pagina">
         <input type="checkbox" name="actieMail" class="actieMail"><label for="reclameMail">Ik zou graag acties via de e-mail willen ontvangen</label>
         <input type="submit" name="submit" value="Betaal pagina">
     </form>
