@@ -9,7 +9,8 @@ include __DIR__ . "/header.php";
     <form action="winkelwagen.php" method="post">
         <div class="mandItemsOverzicht">
             <!--komt in een foreach loop-->
-            <?php 
+            <?php
+            $totalPrice = 0;
             foreach($_SESSION['cart'] as $productID => $count) {
                 $Query = " 
                 SELECT SI.StockItemID, 
@@ -35,9 +36,12 @@ include __DIR__ . "/header.php";
                 } else {
                     $Result = null;
                 }
+                $price = number_format($Result['SellPrice'], 2);
                 $productName = $Result['StockItemName'];
-                echo("<div> (id=$productID) $productName Aantal:$count<button>+</button><button>-</button></div><br>");
+                $totalPrice += $price;
+                echo("<div> (id=$productID) $productName - &euro;$price Aantal:$count <button>+</button><button>-</button></div><br>");
             }
+            echo("<br>Totaal prijs: &euro;$totalPrice");
             ?>
             
             <!--tot hier-->
@@ -46,7 +50,7 @@ include __DIR__ . "/header.php";
             <p>couponcode</p>
             <input type="number" value="1" name="coupons" class="couponNumber" readonly>
         </div>
-            <input type="checkbox" name="reclameMail" class="reclameMail"><label for="reclameMail">Ik zou graag acties via de e-mail willen ontvangen</label>
+            <input type="checkbox" name="actieMail" class="actieMail"><label for="reclameMail">Ik zou graag acties via de e-mail willen ontvangen</label>
             <input type="submit" name="submit" value="Betaal pagina">
     </form>
 </div>
