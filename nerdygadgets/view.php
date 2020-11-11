@@ -3,6 +3,12 @@ $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
 mysqli_set_charset($Connection, 'latin1');
 include __DIR__ . "/header.php";
 
+if(!empty($_POST['itemID'])) {
+    echo("Toegevoegd");
+} else {
+    echo("Test");
+}
+
 $Query = " 
            SELECT SI.StockItemID, 
             (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice, 
@@ -127,10 +133,15 @@ if ($R) {
                     <div class="CenterPriceLeftChild">
                         <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $Result['SellPrice']); ?></b></p>
                         <h6> Inclusief BTW </h6>
+                        <form action="view.php?id=<?php echo($_GET['id']);?>" method="post">
+                            <input type="hidden" name="itemID" value="<?php echo($_GET['id']);?>">
+                            <button type="submit" style="border: none;padding:5px; background-color:rgb(35, 35, 125); font-size:22px; float:right; color:white;"><i class="fas fa-shopping-basket" style="color:white;"></i>Toevoegen</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+        
 
         <div id="StockItemDescription">
             <h3>Artikel beschrijving</h3>
