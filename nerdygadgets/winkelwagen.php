@@ -1,4 +1,6 @@
 <?php
+$Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
+mysqli_set_charset($Connection, 'latin1');
 include __DIR__ . "/header.php";
 ?>
 <div class="wrapperWinkelmand">
@@ -7,9 +9,37 @@ include __DIR__ . "/header.php";
     <form action="winkelwagen.php" method="post">
         <div class="mandItemsOverzicht">
             <!--komt in een foreach loop-->
-            <div><label for="1">item 1</label><input name="1" type="number" min="0" class="mandItem"></div><br>
-            <div><label for="2">item 2</label><input name="2" type="number" min="0" class="mandItem"></div><br>
-            <div><label for="3">item 3</label><input name="3" type="number" min="0" class="mandItem"></div>
+            <?php 
+            foreach($_SESSION['cart'] as $productID => $count) {
+                $Query = " 
+                SELECT SI.StockItemID, 
+                (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice, 
+                StockItemName,
+                QuantityOnHand AS QuantityOnHand,
+                SearchDetails, 
+                (CASE WHEN (RecommendedRetailPrice*(1+(TaxRate/100))) > 50 THEN 0 ELSE 6.95 END) AS SendCosts, MarketingComments, CustomFields, SI.Video,
+                (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = SI.StockItemID LIMIT 1) as BackupImagePath   
+                FROM stockitems SI 
+                JOIN stockitemholdings SIH USING(stockitemid)
+                JOIN stockitemstockgroups ON SI.StockItemID = stockitemstockgroups.StockItemID
+                JOIN stockgroups USING(StockGroupID)
+                WHERE SI.stockitemid = ?
+                GROUP BY StockItemID";
+                $ShowStockLevel = 1000;
+                $Statement = mysqli_prepare($Connection, $Query);
+                mysqli_stmt_bind_param($Statement, "i", $productID);
+                mysqli_stmt_execute($Statement);
+                $ReturnableResult = mysqli_stmt_get_result($Statement);
+                if ($ReturnableResult && mysqli_num_rows($ReturnableResult) == 1) {
+                    $Result = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC)[0];
+                } else {
+                    $Result = null;
+                }
+                $productName = $Result['StockItemName'];
+                echo("<div> (id=$productID) $productName Aantal:$count<button>+</button><button>-</button></div><br>");
+            }
+            ?>
+            
             <!--tot hier-->
         </div>
         <div class="couponOverzicht">
@@ -24,9 +54,9 @@ include __DIR__ . "/header.php";
 <div>
     <?php 
     if(isset($_POST['delete'])) {
-        unset($_SESSION['cartID']);
+        unset($_SESSION['cart']);
     } else {
-        print_r($_SESSION['cartID']);
+        print_r($_SESSION['cart']);
     }
     ?>
     <br>

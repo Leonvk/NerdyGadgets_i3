@@ -147,3 +147,4 @@ $RECYCLE.BIN/
 # End of https://www.gitignore.io/api/macos,windows,phpstorm
 .idea/dataSources.xml
 .idea/sqldialects.xml
+*.xml
