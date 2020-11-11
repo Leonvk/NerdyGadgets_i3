@@ -66,8 +66,8 @@ function remove($id){
             <p>Couponcode (% korting op het moment)</p>
             <input type="number" value="" name="coupons" class="couponNumber">
         </div>
-        <input type="submit" name="submit" value="Betaal pagina">
         <input type="checkbox" name="actieMail" class="actieMail"><label for="reclameMail">Ik zou graag acties via de e-mail willen ontvangen</label>
+        <input type="submit" name="submit" value="Betaal pagina">
     </form>
 </div>
 
