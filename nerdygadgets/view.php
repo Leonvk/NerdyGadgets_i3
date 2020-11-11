@@ -114,7 +114,7 @@ if ($R) {
             <h2 class="StockItemNameViewSize StockItemName">
                 <?php print $Result['StockItemName']; ?>
             </h2>
-            <div class="QuantityText"><?php print $Result['QuantityOnHand']; ?></div>
+            <div class="QuantityText"><?php if ($Result < 1000) print $Result['QuantityOnHand']; elseif ($Result > 1000) print("Ruime vooraad beschikbaar"); ?></div>
             <div id="StockItemHeaderLeft">
                 <div class="CenterPriceLeft">
                     <div class="CenterPriceLeftChild">
