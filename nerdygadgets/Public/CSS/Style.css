@@ -506,3 +506,8 @@ ul#ul-class-price li {
     width: 5%;
     height: 40px;
 }
+.totaalBedrag{
+    padding: 1%;
+    width: 60%;
+    border: black 2px solid;
+}
