@@ -7,13 +7,13 @@ include __DIR__ . "/header.php";
 function add($id){
     $getal = $_SESSION['cart'][$id];
     $getal++;
-    $_SESSION['cart'][$id] = $getal;
+    $_SESSION['cart'][$id][] = $getal;
 }
 function remove($id){
     $getal = $_SESSION['cart'][$id];
     if($getal > 0) {
         $getal--;
-        $_SESSION['cart'][$id] = $getal;
+        $_SESSION['cart'][$id][] = $getal;
     }
 }
 ?>
