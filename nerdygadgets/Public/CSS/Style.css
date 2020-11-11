@@ -483,6 +483,7 @@ ul#ul-class-price li {
     border: black 2px solid;
     height: 250px;
     margin-bottom: 5px;
+    overflow-y: scroll;
 }
 .mandItem{
     width: 20%;
