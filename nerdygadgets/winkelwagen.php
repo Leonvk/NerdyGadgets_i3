@@ -63,13 +63,14 @@ function remove($id){
         </div>
         <div class="couponOverzicht">
             <p>Couponcode (% korting op het moment)</p>
-            <input type="number" value="0" name="coupons" class="couponNumber">
+            <input type="number" value="0" max="100" min="0" name="coupons" class="couponNumber">
         </div>
         <div class="totaalBedrag">
             <?php echo("<br>Totaal prijs: &euro;$totalPrice"); ?>
         </div>
-        <input type="submit" name="submit" value="Betaal pagina">
+        <div class="reclameMail">
         <input type="checkbox" name="actieMail" class="actieMail"><label for="reclameMail">Ik zou graag acties via de e-mail willen ontvangen</label>
+        </div>
         <input type="submit" name="submit" value="Betaal pagina">
     </form>
 </div>
