@@ -476,6 +476,9 @@ ul#ul-class-price li {
 .wrapperWinkelmand {
     padding: 0% 5% 5% 5%;
 }
+.wrapperWinkelmand2 {
+    padding: 0% 5% 0% 5%;
+}
 .mandItemsOverzicht{
     float: left;
     padding: 1% 2%;
@@ -502,13 +505,17 @@ ul#ul-class-price li {
 .mandBottom{
     float: none;
 }
-.reclameMail{
-    width: 5%;
-    height: 40px;
+.actieMail {
+    width: auto;
+    height: auto;
+    margin-right: 5px;
 }
 .totaalBedrag{
     padding: 1%;
     width: 60%;
     border: black 2px solid;
+}
+.winkelbutton {
+    width: auto;
 }
 
