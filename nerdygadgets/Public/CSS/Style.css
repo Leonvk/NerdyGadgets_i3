@@ -506,8 +506,10 @@ ul#ul-class-price li {
     width: 5%;
     height: 40px;
 }
-.actieMail{
-
+.actieMail {
+    width: auto;
+    height: auto;
+    margin-right: 5px;
 }
 .totaalBedrag{
     padding: 1%;
