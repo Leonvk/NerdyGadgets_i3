@@ -26,6 +26,10 @@ if(array_key_exists('substract', $_POST)) {
     remove($_POST['id']);
     $_POST['id']= "";
 }
+ 
+if(array_key_exists('delete', $_POST)) {
+    $_SESSION['cart'] = array();
+}
 
 
 ?>
@@ -88,11 +92,6 @@ if(array_key_exists('substract', $_POST)) {
 </div>
 
 <div class="wrapperWinkelmand2">
-    <?php 
-    if(isset($_POST['delete'])) {
-        unset($_SESSION['cart']);
-    }
-    ?>
     <br>
     <form method="post">
         <input class="winkelbutton" type="submit" name="delete" value="Winkelwagen leegmaken">
