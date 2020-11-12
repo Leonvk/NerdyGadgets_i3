@@ -1,27 +1,29 @@
 html {
-    background-color: rgba(215, 215, 225, 1) !important;
+    background-color:#f2f2f2 !important;
 }
 
 body {
     overflow-x:hidden;
     color: #303040!important;
-    background-color: rgba(225, 225, 225, 1) !important;
+    background-color: rgba(240, 240, 240, 1) !important;
 }
 @font-face {
     font-family: MmrText;
     src: url(/Public/fonts/mmrtext.ttf);
 }
 select {
+    border-radius: 25px;
     margin: 50px;
     width: 100%;
     padding: 5px 35px 5px 5px;
     font-size: 16px;
-    border: 1px solid #CCC;
+    border: 2px solid #fefefe;
     height:50px;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     background: url(../Img/mouse-hover-icon-22.jpg) 96% / 30px no-repeat #EEE;
+    background-color:#ffffff
 }
 
 a {
@@ -35,8 +37,8 @@ a:hover {
 a span {
     display: none;
     position: absolute;
-    color: #676EFF;
-    background: #676EFF;
+    color: #2794dd;
+    background: #5cb5f1;
     padding: 5px;
 }
 a:hover span {
@@ -51,6 +53,8 @@ a:hover span {
     font-weight: bold;
 }
 input {
+    border-radius: 25px;
+    border: 2px solid #fefefe;
     font-family: pt-sans, sans-serif;
     height: 50px;
     font-size: 20px;
@@ -77,11 +81,11 @@ ul#ul-class-navigation li {
 #Header {
     position: fixed;
     top:0;
-    background-color: rgb(35, 35, 125); 
+    background-color:#3161c2;
     width: 100%;
     height: 100px;
     z-index: 1;
-    border-bottom: 1px solid rgb(36, 41, 143);
+    border-bottom: 1px solid #3059ad;
 }
 #Content {
     margin-top: 200px;
@@ -90,10 +94,10 @@ ul#ul-class-navigation li {
     border-radius: 25px;
     position: fixed;
     width: 17%;
-    background-color: rgba(225, 225, 225, 0.8);
+    background-color: #e0e0e0;
     float: left;
-    top:100px;
-    border: 2px solid rgb(230,230,230);
+    top:130px;
+    border: 0px solid #cfcfcf;
     margin-left: 30px;
     margin-top: 10px;
     padding: 20px;
@@ -110,12 +114,25 @@ ul#ul-class-navigation li {
     margin-top: 15px;
     position: relative;
     padding: 1px;
-    border-bottom: 1px solid #fff;
+
+}
+#ProductFrameBackground {
+    width:80%;
+    height:20px;;
+    margin-top: 15px;
+    position: static;
+    padding: 1px;
+    background-color: #000000;
+    border-bottom: 1px solid #000;
+    z-index: -100;
+
 }
 .ImgFrame {
+    border-radius: 40px;
     width: 230px;
     height: 230px;
-    background-color: rgb(36, 41, 143);
+    background-color: rgb(225,225,225);
+    border: 1px solid rgb(220,220,220);
     float: left;
     margin-left: 10px;
     margin-top: 10px;
@@ -163,6 +180,7 @@ ul#ul-class-navigation li {
     position: relative
 }
 #ImageFrame {
+    border-radius: 25px;
     width: 300px;
     height: 300px;
     background-color: rgb(36, 41, 143);
@@ -226,7 +244,7 @@ ul#ul-class-navigation li {
     margin-right: 5px;
 }
 .Background {
-    background-color: rgba(215, 215, 225, 1);
+    background-color: rgba(240, 240, 240, 1);
     width: 100%;
     height: 100%;
     position: absolute;
@@ -264,6 +282,7 @@ ul#ul-class-price li {
 }
 .HrefDecoration {
     color: #ffffff;
+    margin-left: 20px;
 }
 .HrefDecoration:hover, .HrefDecoration:active {
     text-decoration: none;
@@ -279,7 +298,7 @@ ul#ul-class-price li {
     margin-left: 5%;
 }
 .HomePagePrice {
-    color: #676EFF;
+    color: #3161c2;
     font-family: vortice-concept, sans-serif;
     font-size: 50px;
     text-transform: uppercase;
@@ -379,7 +398,7 @@ ul#ul-class-price li {
 }
 .StockItemPriceText {
     font-family: vortice-concept, sans-serif;
-    color: #676EFF;
+    color: #313161;
     font-size: 22px;
     text-transform: uppercase;
     font-weight: bold;
@@ -390,7 +409,7 @@ ul#ul-class-price li {
 }
 .StockItemID {
     font-family: vortice-concept, sans-serif;
-    color: #676EFF;
+    color: #5cb5f1;
     font-size: 10px;
     text-transform: uppercase;
     font-weight: bold;
@@ -446,7 +465,7 @@ ul#ul-class-price li {
     width: 1400px;
 }
 .FilterTopMargin {
-    margin-top: 20px;
+    margin-top: 30px;
 }
 #ProductFrame h6 {
     color: #858585;
@@ -521,6 +540,15 @@ ul#ul-class-price li {
 }
 .mandItemsOverzicht form {
     display: inline-block;
+}
+#winkelmandknop {
+    border: none;
+    padding:12px;
+    border-radius: 100px;
+    background-color:#31c261;
+    font-size:22px;
+    float: right;
+    color:#ffffff;
 }
 
 

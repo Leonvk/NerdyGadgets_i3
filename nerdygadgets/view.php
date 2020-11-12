@@ -146,7 +146,7 @@ if ($R) {
                         <h6> Inclusief BTW </h6>
                         <form action="view.php?id=<?php echo($_GET['id']);?>" method="post">
                             <input type="hidden" name="itemID" value="<?php echo($_GET['id']);?>">
-                            <button type="submit" style="border: none;padding:5px; background-color:rgb(35, 35, 125); font-size:22px; float:right; color:white;"><i class="fas fa-shopping-basket" style="color:white;"></i><?php if(!$addedItem) {echo("Toevoegen");} else {echo("Toegevoegd");}?></button>
+                            <button type="submit" id = "winkelmandknop"><i class="fas fa-shopping-basket" style="color:white;"></i><?php if(!$addedItem) {echo(" Toevoegen");} else {echo("Toegevoegd");}?></button>
                         </form>
                     </div>
                 </div>

@@ -80,13 +80,13 @@ if(!isset($_SESSION['cart'])) {
         </div>
         <ul id="ul-class-navigation">
             <li>
-                <a href="browse.php" class="HrefDecoration"><i class="fas fa-search" style="color:#676EFF;"></i> Zoeken</a>
+                <a href="browse.php" class="HrefDecoration"><i class="fas fa-search" style="color:#ffffff;"></i>  Zoeken</a>
             </li>
             <li> 
-                <a href="inloggen.php" class="HrefDecoration"><i class="fa fa-sign-in" style="color:#676EFF;"></i>Inloggen</a>
+                <a href="inloggen.php" class="HrefDecoration"><i class="fa fa-sign-in" style="color:#ffffff;"></i>  Inloggen</a>
             </li>
             <li>
-                <a href="winkelwagen.php" class="HrefDecoration"><i class="fas fa-shopping-basket" style="color:#676EFF;"></i>Winkelwagen</a>
+                <a href="winkelwagen.php" class="HrefDecoration"><i class="fas fa-shopping-basket" style="color:#ffffff;"></i>  Winkelwagen</a>
             </li>
         </ul>
     </div>
