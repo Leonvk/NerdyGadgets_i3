@@ -26,7 +26,10 @@ if(array_key_exists('substract', $_POST)) {
     remove($_POST['id']);
     $_POST['id']= "";
 }
-
+ 
+if(array_key_exists('delete', $_POST)) {
+    $_SESSION['cart'] = array();
+}
 
 ?>
 <div class="wrapperWinkelmand">
@@ -64,7 +67,7 @@ if(array_key_exists('substract', $_POST)) {
                 }
                 $price = number_format($Result['SellPrice'], 2);
                 $productName = $Result['StockItemName'];
-                $totalPrice += $price;
+                $totalPrice += $price  * $count;
                 echo("<div> (id=$productID) $productName - &euro;$price Aantal:$count <form method=\"post\" action=\"winkelwagen.php\"><input type=\"hidden\" name=\"id\" value=\"$productID\"><input type=\"submit\" name=\"add\" value=\"+\" style=\"height: 40px; font-size: 20px; width:20px; padding: 0px;\"><input type=\"submit\" name=\"substract\" value=\"-\" style=\"height: 40px; font-size: 20px; width:20px; padding: 0px;\"></form><br></div>");
             }
             if(isset($_POST["coupons"])) {
@@ -75,7 +78,9 @@ if(array_key_exists('substract', $_POST)) {
         </div>
         <div class="couponOverzicht">
             <p>Couponcode (% korting op het moment)</p>
-            <input type="number" value="0" max="100" min="0" name="coupons" class="couponNumber">
+            <form method="post">
+                <input type="number" value="0" max="100" min="0" name="coupons" class="couponNumber">
+            </form>
         </div>
         <div class="totaalBedrag">
             <?php echo("<br>Totaal prijs: &euro;$totalPrice"); ?>
@@ -88,11 +93,6 @@ if(array_key_exists('substract', $_POST)) {
 </div>
 
 <div class="wrapperWinkelmand2">
-    <?php 
-    if(isset($_POST['delete'])) {
-        unset($_SESSION['cart']);
-    }
-    ?>
     <br>
     <form method="post">
         <input class="winkelbutton" type="submit" name="delete" value="Winkelwagen leegmaken">
