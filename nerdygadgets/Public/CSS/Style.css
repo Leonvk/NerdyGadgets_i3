@@ -400,7 +400,7 @@ ul#ul-class-price li {
 }
 .StockItemPriceText {
     font-family: vortice-concept, sans-serif;
-    color: #313161;
+    color: #3161c2;
     font-size: 22px;
     text-transform: uppercase;
     font-weight: bold;
@@ -411,7 +411,7 @@ ul#ul-class-price li {
 }
 .StockItemID {
     font-family: vortice-concept, sans-serif;
-    color: #5cb5f1;
+    color: #3161c2;
     font-size: 10px;
     text-transform: uppercase;
     font-weight: bold;
