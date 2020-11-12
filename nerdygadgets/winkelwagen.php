@@ -68,7 +68,7 @@ if(array_key_exists('delete', $_POST)) {
                 }
                 $price = number_format($Result['SellPrice'], 2);
                 $productName = $Result['StockItemName'];
-                $totalPrice += $price;
+                $totalPrice += $price  * $count;
                 echo("<div> (id=$productID) $productName - &euro;$price Aantal:$count <form method=\"post\" action=\"winkelwagen.php\"><input type=\"hidden\" name=\"id\" value=\"$productID\"><input type=\"submit\" name=\"add\" value=\"+\" style=\"height: 40px; font-size: 20px; width:20px; padding: 0px;\"><input type=\"submit\" name=\"substract\" value=\"-\" style=\"height: 40px; font-size: 20px; width:20px; padding: 0px;\"></form><br></div>");
             }
             if(isset($_POST["coupons"])) {
