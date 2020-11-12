@@ -218,6 +218,7 @@ if (isset($amount)) {
             <a class="ListItem" href='view.php?id=<?php print $row['StockItemID']; ?>'>   
             <div id="ProductFrame">
                     <!--<div id="ProductFrameBackground"></div>-->
+                    <div id="ProductFrameBackground"></div>
                     
                     <?php
                     if (isset($row['ImagePath'])) { ?>
