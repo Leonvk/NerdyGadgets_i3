@@ -518,4 +518,7 @@ ul#ul-class-price li {
 .winkelbutton {
     width: auto;
 }
+.mandItemsOverzicht form {
+    display: inline-block;
+}
 
