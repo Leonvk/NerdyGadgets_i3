@@ -7,15 +7,25 @@ include __DIR__ . "/header.php";
 function add($id){
     $getal = $_SESSION['cart'][$id];
     $getal++;
-    $_SESSION['cart'][$id][] = $getal;
+    $_SESSION['cart'][$id] = $getal;
 }
 function remove($id){
     $getal = $_SESSION['cart'][$id];
     if($getal > 0) {
         $getal--;
-        $_SESSION['cart'][$id][] = $getal;
+        $_SESSION['cart'][$id] = $getal;
     }
 }
+
+if(array_key_exists('add', $_POST)) {
+    echo($_POST['id']);
+}
+
+if(array_key_exists('substract', $_POST)) {
+    echo($_POST['id']);
+}
+
+
 ?>
 <div class="wrapperWinkelmand">
     <h1>Winkelwagentje</h1>
@@ -53,7 +63,7 @@ function remove($id){
                 $price = number_format($Result['SellPrice'], 2);
                 $productName = $Result['StockItemName'];
                 $totalPrice += $price;
-                echo("<div> (id=$productID) $productName - &euro;$price Aantal:$count <button onclick='add($productID)'>+</button><button onclick='remove($productID)'>-</button></div><br>");
+                echo("<div> (id=$productID) $productName - &euro;$price Aantal:$count <form method=\"post\"><input type=\"hidden\" name=\"id\" value=\"$productID\"><input type=\"submit\" name=\"add\" value=\"+\" style=\"height: 40px; font-size: 20px; width:20px; padding: 0px;\"><input type=\"submit\" name=\"substract\" value=\"-\" style=\"height: 40px; font-size: 20px; width:20px; padding: 0px;\"></div><br>");
             }
             if(isset($_POST["coupons"])) {
                 $totalPrice = (100-$_POST["coupons"])/100*$totalPrice;
