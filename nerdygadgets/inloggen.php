@@ -60,7 +60,7 @@ include __DIR__ . "/header.php";
             <input type = "password" class = "form-control"
                name = "password" placeholder = "Wachtwoord = Test" required>
             <button class = "btn btn-lg btn-primary btn-block" type = "submit" name = "login">Login</button>
-             Nog geen account? Registreer een account door hierop te klikken!
+ <a href="AccountMaken.php" class="HrefDecoration"><i class="fas fa-accountMaken" style="color:#676EFF;"></i> Account aanmaken </a>
          </form>
       </div>
    </body>
