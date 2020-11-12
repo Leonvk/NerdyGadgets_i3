@@ -78,7 +78,9 @@ if(array_key_exists('delete', $_POST)) {
         </div>
         <div class="couponOverzicht">
             <p>Couponcode (% korting op het moment)</p>
-            <input type="number" value="0" max="100" min="0" name="coupons" class="couponNumber">
+            <form method="post">
+                <input type="number" value="0" max="100" min="0" name="coupons" class="couponNumber">
+            </form>
         </div>
         <div class="totaalBedrag">
             <?php echo("<br>Totaal prijs: &euro;$totalPrice"); ?>
