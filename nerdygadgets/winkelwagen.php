@@ -68,8 +68,9 @@ function remove($id){
         <div class="totaalBedrag">
             <?php echo("<br>Totaal prijs: &euro;$totalPrice"); ?>
         </div>
-        <input type="submit" name="submit" value="Betaal pagina">
+        <div class="reclameMail">
         <input type="checkbox" name="actieMail" class="actieMail"><label for="reclameMail">Ik zou graag acties via de e-mail willen ontvangen</label>
+        </div>
         <input type="submit" name="submit" value="Betaal pagina">
     </form>
 </div>
