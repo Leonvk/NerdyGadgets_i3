@@ -83,11 +83,11 @@ if(array_key_exists('substract', $_POST)) {
         <div class="reclameMail">
         <input type="checkbox" name="actieMail" class="actieMail"><label for="reclameMail">Ik zou graag acties via de e-mail willen ontvangen</label>
         </div>
-        <input type="submit" name="submit" value="Betaal pagina">
+        <input class="winkelbutton" type="submit" name="submit" value="Betaal pagina">
     </form>
 </div>
 
-<div>
+<div class="wrapperWinkelmand2">
     <?php 
     if(isset($_POST['delete'])) {
         unset($_SESSION['cart']);
@@ -95,7 +95,7 @@ if(array_key_exists('substract', $_POST)) {
     ?>
     <br>
     <form method="post">
-        <input type="submit" name="delete" value="Winkelwagen leegmaken">
+        <input class="winkelbutton" type="submit" name="delete" value="Winkelwagen leegmaken">
     </form>
 </div>
 
