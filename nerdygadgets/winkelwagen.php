@@ -31,7 +31,6 @@ if(array_key_exists('delete', $_POST)) {
     $_SESSION['cart'] = array();
 }
 
-
 ?>
 <div class="wrapperWinkelmand">
     <h1>Winkelwagentje</h1>
