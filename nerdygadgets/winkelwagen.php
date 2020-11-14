@@ -40,6 +40,7 @@ if(array_key_exists('delete', $_POST)) {
             <!--komt in een foreach loop-->
             <?php
             $totalPrice = 0;
+            if (count($_SESSION['cart'])==0) {print("je winkelwagen is momenteel nog leeg");}
             foreach($_SESSION['cart'] as $productID => $count) {
                 $Query = " 
                 SELECT SI.StockItemID, 
@@ -69,7 +70,7 @@ if(array_key_exists('delete', $_POST)) {
                 $productName = $Result['StockItemName'];
                 $totalPrice += $price  * $count;
                 if($count != 0) {
-                    echo("<div> (id=$productID) $productName - &euro;$price Aantal:$count <form method=\"post\" action=\"winkelwagen.php\"><input type=\"hidden\" name=\"id\" value=\"$productID\"><input type=\"submit\" name=\"add\" value=\"+\" style=\"height: 40px; font-size: 20px; width:20px; padding: 0px;\"><input type=\"submit\" name=\"substract\" value=\"-\" style=\"height: 40px; font-size: 20px; width:20px; padding: 0px;\"></form><br></div>");
+                    echo("<div id =\"CartItem\"> (id=$productID)  $productName <br> &euro;$price Aantal: $count <form method=\"post\" action=\"winkelwagen.php\"><input type=\"hidden\" name=\"id\" value=\"$productID\"><input type=\"submit\" name=\"add\" value=\"+\" id =\"IncrementButton\">  <input type=\"submit\" name=\"substract\" value=\"-\" id =\"IncrementButton\"></form><br></div>");
                 } else {
                     unset($_SESSION['cart'][$productID]);
                 }
