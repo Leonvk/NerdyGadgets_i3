@@ -70,7 +70,12 @@ if(array_key_exists('delete', $_POST)) {
                 $productName = $Result['StockItemName'];
                 $totalPrice += $price  * $count;
                 if($count != 0) {
-                    echo("<div id =\"CartItem\"> (id=$productID)  $productName <br> &euro;$price Aantal: $count <form method=\"post\" action=\"winkelwagen.php\"><input type=\"hidden\" name=\"id\" value=\"$productID\"><input type=\"submit\" name=\"add\" value=\"+\" id =\"IncrementButton\">  <input type=\"submit\" name=\"substract\" value=\"-\" id =\"IncrementButton\"></form><br></div>");
+                    echo("<div id =\"CartItem\"> (id=$productID)  $productName <br> &euro;$price  
+                    <form method=\"post\" action=\"winkelwagen.php\"><input type=\"hidden\" name=\"id\" value=\"$productID\">
+                    <input type=\"submit\" name=\"add\" value=\"+\" id =\"IncrementButton\" style=\"border-radius: 25px 0px 0px 25px\">
+                    <input type=\"number\" name=\"add\" value=\"$count\" id =\"IncrementButtonCount\">
+                    <input type=\"submit\" name=\"substract\" value=\"-\" id =\"IncrementButton\"style=\"border-radius: 0px 25px 25px 0px\">
+                    </form><br></div>");
                 } else {
                     unset($_SESSION['cart'][$productID]);
                 }

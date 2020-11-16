@@ -578,6 +578,16 @@ ul#ul-class-price li {
     padding: 0px;
     border: 0px;
 }
+#IncrementButtonCount{
+    height: 30px;
+    font-size: 15px;
+    width: 80px;
+    padding: 10px;
+    border: 0px;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    border-radius: 0px;
+}
 #CartItem{
     padding: 8px;
     border-bottom:2px #fdfdfd solid;
