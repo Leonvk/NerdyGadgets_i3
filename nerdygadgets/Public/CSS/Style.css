@@ -528,9 +528,10 @@ ul#ul-class-price li {
     border-radius: 25px;
     float: left;
     padding: 1% 2%;
-    margin-left: 2%;
+    margin-left: 55%;
     margin-bottom: 5px;
     background: #e2e2e2;
+    position: fixed;
 }
 .couponNumber{
     width: 60%;

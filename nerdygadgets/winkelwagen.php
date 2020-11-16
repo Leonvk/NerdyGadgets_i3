@@ -70,11 +70,11 @@ if(array_key_exists('delete', $_POST)) {
                 $productName = $Result['StockItemName'];
                 $totalPrice += $price  * $count;
                 if($count != 0) {
-                    echo("<div id =\"CartItem\"> (id=$productID)  $productName <br> &euro;$price  
+                    echo("<div id =\"CartItem\"> nr:$productID  $productName <br> &euro;$price  
                     <form method=\"post\" action=\"winkelwagen.php\"><input type=\"hidden\" name=\"id\" value=\"$productID\">
                     <input type=\"submit\" name=\"add\" value=\"+\" id =\"IncrementButton\" style=\"border-radius: 25px 0px 0px 25px\">
-                    <input type=\"number\" name=\"add\" value=\"$count\" id =\"IncrementButtonCount\">
-                    <input type=\"submit\" name=\"substract\" value=\"-\" id =\"IncrementButton\"style=\"border-radius: 0px 25px 25px 0px\">
+                    <input type=\"number\" value=\"$count\" id =\"IncrementButtonCount\">
+                    <input type=\"submit\" name=\"substract\" value=\"-\" id =\"IncrementButton\" style=\"border-radius: 0px 25px 25px 0px\">
                     </form><br></div>");
                 } else {
                     unset($_SESSION['cart'][$productID]);
@@ -90,7 +90,7 @@ if(array_key_exists('delete', $_POST)) {
             <p>Couponcode (% korting op het moment)</p>
             <form method="post">
                 <input type="number" value="0" max="99" min="0" name="coupons" class="couponNumber"><br><br>
-                <input type="checkbox" name="actieMail" class="actieMail"><label for="reclameMail">Ik zou graag acties via de e-mail willen ontvangen</label>
+                <input type="checkbox" name="actieMail" class="actieMail"><label for="reclameMail">Ik zou graag acties via de e-mail willen ontvangen</label><br>
                 <input class="winkelbutton" type="submit" name="submit" value="Verder naar bestellen">
                 
             </form>
@@ -103,8 +103,6 @@ if(array_key_exists('delete', $_POST)) {
             <!--<input type="checkbox" name="actieMail" class="actieMail"><label for="reclameMail">Ik zou graag acties via de e-mail willen ontvangen</label>
         -->
         </div>
-        <br>
-        <input class="winkelbutton" type="submit" name="submit" value="Verder naar bestellen">
     </form>
 </div>
 
