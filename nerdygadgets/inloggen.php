@@ -45,7 +45,7 @@ include __DIR__ . "/header.php";
                   $_SESSION['timeout'] = time();
                   $_SESSION['username'] = 'Test';
 
-                  echo 'U heeft een geldende naam en wachtwoord ingevuld!';
+                  echo 'U heeft een geldige naam en wachtwoord ingevuld!';
                }else {
                   echo 'Onjuiste naam of wachtwoord.';
                }

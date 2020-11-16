@@ -40,7 +40,7 @@ if(array_key_exists('delete', $_POST)) {
             <!--komt in een foreach loop-->
             <?php
             $totalPrice = 0;
-            if (count($_SESSION['cart'])==0) {print("je winkelwagen is momenteel nog leeg");}
+            if (count($_SESSION['cart'])==0) {print("Er staan geen artikelen in het Winkelwagentje");}
             foreach($_SESSION['cart'] as $productID => $count) {
                 $Query = " 
                 SELECT SI.StockItemID, 
@@ -84,7 +84,7 @@ if(array_key_exists('delete', $_POST)) {
         <div class="couponOverzicht">
             <p>Couponcode (% korting op het moment)</p>
             <form method="post">
-                <input type="number" value="0" max="100" min="0" name="coupons" class="couponNumber">
+                <input type="number" value="0" max="99" min="0" name="coupons" class="couponNumber">
             </form>
         </div>
         <div class="totaalBedrag">
@@ -93,16 +93,16 @@ if(array_key_exists('delete', $_POST)) {
         <div class="reclameMail">
         <input type="checkbox" name="actieMail" class="actieMail"><label for="reclameMail">Ik zou graag acties via de e-mail willen ontvangen</label>
         </div>
-        <input class="winkelbutton" type="submit" name="submit" value="Betaal pagina">
+        <input class="winkelbutton" type="submit" name="submit" value="> Verder naar bestellen">
     </form>
 </div>
 
-<div class="wrapperWinkelmand2">
+<!--<div class="wrapperWinkelmand2">
     <br>
     <form method="post">
         <input class="winkelbutton" type="submit" name="delete" value="Winkelwagen leegmaken">
     </form>
-</div>
+</div>-->
 
 <?php
 include __DIR__ . "/footer.php";
