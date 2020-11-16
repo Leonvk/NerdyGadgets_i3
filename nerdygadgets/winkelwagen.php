@@ -93,7 +93,7 @@ if(array_key_exists('delete', $_POST)) {
         <div class="reclameMail">
         <input type="checkbox" name="actieMail" class="actieMail"><label for="reclameMail">Ik zou graag acties via de e-mail willen ontvangen</label>
         </div>
-        <input class="winkelbutton" type="submit" name="submit" value="Betaal pagina">
+        <input class="winkelbutton" type="submit" name="submit" value="> Verder naar bestellen">
     </form>
 </div>
 
