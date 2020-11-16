@@ -84,7 +84,7 @@ if(array_key_exists('delete', $_POST)) {
         <div class="couponOverzicht">
             <p>Couponcode (% korting op het moment)</p>
             <form method="post">
-                <input type="number" value="0" max="100" min="0" name="coupons" class="couponNumber">
+                <input type="number" value="0" max="99" min="0" name="coupons" class="couponNumber">
             </form>
         </div>
         <div class="totaalBedrag">
