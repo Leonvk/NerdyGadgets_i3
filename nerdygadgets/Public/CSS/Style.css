@@ -524,11 +524,13 @@ ul#ul-class-price li {
     margin-left: 50%;
 }
 .couponOverzicht{
-    width: 40%;
+    width: 38%;
+    border-radius: 25px;
     float: left;
     padding: 1% 2%;
-    height: 0px;
+    margin-left: 2%;
     margin-bottom: 5px;
+    background: #e2e2e2;
 }
 .couponNumber{
     width: 13%;
@@ -543,13 +545,14 @@ ul#ul-class-price li {
 }
 .totaalBedrag{
     border-radius: 26px;
-    background-color: #505060;
+    background: #505060;
     padding: 1%;
     width: 60%;
     border: black 0px solid;
     color: #ffffff;
 }
 .winkelbutton {
+    float: left;
     width: auto;
     background: #3161c2;
     color: #ffffff;
