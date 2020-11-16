@@ -508,9 +508,9 @@ ul#ul-class-price li {
     
 }
 .mandItemsOverzicht{
-    border-radius: 25px;
+    border-radius: 25px 25px 0px 0px;
     float: left;
-    padding: 1% 2%;
+    padding: 1% 2% 0%;
     width: 60%;
     border: black 0px solid;
     background: #e2e2e2;
