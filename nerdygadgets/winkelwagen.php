@@ -40,7 +40,7 @@ if(array_key_exists('delete', $_POST)) {
             <!--komt in een foreach loop-->
             <?php
             $totalPrice = 0;
-            if (count($_SESSION['cart'])==0) {print("je winkelwagen is momenteel nog leeg");}
+            if (count($_SESSION['cart'])==0) {print("Er staan geen artikelen in het Winkelwagentje");}
             foreach($_SESSION['cart'] as $productID => $count) {
                 $Query = " 
                 SELECT SI.StockItemID, 
