@@ -516,8 +516,8 @@ ul#ul-class-price li {
     background: #e2e2e2;
     height: 100%;
     margin-bottom: 5px;
-    overflow-y: auto;
-    max-height: 500px;
+    /*overflow-y: auto;*/
+    /*max-height: 500px;*/
 }
 .mandItem{
     width: 20%;
