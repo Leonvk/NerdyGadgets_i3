@@ -39,6 +39,7 @@ if(array_key_exists('delete', $_POST)) {
                 QuantityOnHand AS QuantityOnHand,
                 SearchDetails, 
                 (CASE WHEN (RecommendedRetailPrice*(1+(TaxRate/100))) > 50 THEN 0 ELSE 6.95 END) AS SendCosts, MarketingComments, CustomFields, SI.Video,
+                (SELECT ImagePath FROM stockitemimages WHERE StockItemID = SI.StockItemID LIMIT 1) as ImagePath,
                 (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = SI.StockItemID LIMIT 1) as BackupImagePath   
                 FROM stockitems SI 
                 JOIN stockitemholdings SIH USING(stockitemid)
@@ -63,7 +64,7 @@ if(array_key_exists('delete', $_POST)) {
                     //load image:
                     if (isset($Result['ImagePath'])) { ?>
                         <div class="ImgFrameCart" id="ImgFramCart"
-                            style="background-image: url('<?php print "Public/StockItemIMG/" . $Result['ImagePath']; ?>'); background-size: 30px; background-repeat: no-repeat; background-position: center;"></div>
+                            style="background-image: url('<?php print "Public/StockItemIMG/" . $Result['ImagePath']; ?>'); background-size: 100%; background-repeat: no-repeat; background-position: center;"></div>
                     <?php } else if (isset($Result['BackupImagePath'])) { ?>
                         <div class="ImgFrameCart" id="ImgFramCart"
                             style="background-image: url('<?php print "Public/StockGroupIMG/" . $Result['BackupImagePath'] ?>'); background-size: 200%; background-repeat: no-repeat; background-position: center;"></div>
