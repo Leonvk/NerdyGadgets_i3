@@ -2,29 +2,19 @@
 $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
 mysqli_set_charset($Connection, 'latin1');
 include __DIR__ . "/header.php";
-
-//functions winkelmand
-function add($id){
-    $getal = $_SESSION['cart'][$id];
-    $getal++;
-    $_SESSION['cart'][$id] = $getal;
-}
-function remove($id){
-    $getal = $_SESSION['cart'][$id];
-    if($getal > 0) {
-        $getal--;
-        $_SESSION['cart'][$id] = $getal;
+$moreID = NULL;
+if(array_key_exists('count', $_POST)) {
+    $moreID = NULL;
+    if($_POST['count'] != "more") {
+        $_SESSION['cart'][$_POST['id']] = $_POST['count'];
+    } else {
+        $moreID = $_POST['id'];
     }
 }
 
-if(array_key_exists('add', $_POST)) {
-    add($_POST['id']);
-    $_POST['id'] = "";
-}
-
-if(array_key_exists('substract', $_POST)) {
-    remove($_POST['id']);
-    $_POST['id']= "";
+if(array_key_exists('number', $_POST)) {
+    $_SESSION['cart'][$_POST['id']] = $_POST['number'];
+    $moreID = NULL;
 }
  
 if(array_key_exists('delete', $_POST)) {
@@ -43,15 +33,14 @@ if(array_key_exists('delete', $_POST)) {
             if (count($_SESSION['cart'])==0) {print("Er staan geen artikelen in het Winkelwagentje");}
             foreach($_SESSION['cart'] as $productID => $count) {
                 $Query = " 
-                SELECT SI.StockItemID,
+                SELECT SI.StockItemID, 
                 (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice, 
                 StockItemName,
                 QuantityOnHand AS QuantityOnHand,
                 SearchDetails, 
                 (CASE WHEN (RecommendedRetailPrice*(1+(TaxRate/100))) > 50 THEN 0 ELSE 6.95 END) AS SendCosts, MarketingComments, CustomFields, SI.Video,
-                (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = SI.StockItemID LIMIT 1) as BackupImagePath
-
-                FROM stockitems SI
+                (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = SI.StockItemID LIMIT 1) as BackupImagePath   
+                FROM stockitems SI 
                 JOIN stockitemholdings SIH USING(stockitemid)
                 JOIN stockitemstockgroups ON SI.StockItemID = stockitemstockgroups.StockItemID
                 JOIN stockgroups USING(StockGroupID)
@@ -67,25 +56,30 @@ if(array_key_exists('delete', $_POST)) {
                 } else {
                     $Result = null;
                 }
-                //load image:
-                if (isset($Result['ImagePath'])) { ?>
-                    <div class="ImgFrameCart" id="ImgFramCart"
-                         style="background-image: url('<?php print "Public/StockItemIMG/" . $Result['ImagePath']; ?>'); background-size: 30px; background-repeat: no-repeat; background-position: center;"></div>
-                <?php } else if (isset($Result['BackupImagePath'])) { ?>
-                    <div class="ImgFrameCart" id="ImgFramCart"
-                         style="background-image: url('<?php print "Public/StockGroupIMG/" . $Result['BackupImagePath'] ?>'); background-size: 200%; background-repeat: no-repeat; background-position: center;"></div>
-                <?php }
-                
                 $price = number_format($Result['SellPrice'], 2);
                 $productName = $Result['StockItemName'];
                 $totalPrice += $price  * $count;
                 if($count != 0) {
-                    echo("<div id =\"CartItem\"> nr:$productID  $productName <br> &euro;$price  
+                    echo("<div id =\"CartItem\"> nr:$productID  $productName <br> &euro;$price");
+                    if($moreID != $productID) {echo("Aantal:
                     <form method=\"post\" action=\"winkelwagen.php\"><input type=\"hidden\" name=\"id\" value=\"$productID\">
-                    <input type=\"submit\" name=\"add\" value=\"+\" id =\"IncrementButton\" style=\"border-radius: 25px 0px 0px 25px\">
-                    <input type=\"number\" value=\"$count\" id =\"IncrementButtonCount\">
-                    <input type=\"submit\" name=\"substract\" value=\"-\" id =\"IncrementButton\" style=\"border-radius: 0px 25px 25px 0px\">
-                    </form><br></div>");
+                    <select name=\"count\" style=\"width: 100px;\" onchange=\"this.form.submit()\">
+                        <option value=\"1\">1</option>
+                        <option value=\"2\">2</option>
+                        <option value=\"3\">3</option>
+                        <option value=\"4\">4</option>
+                        <option value=\"5\">5</option>
+                        <option value=\"6\">6</option>
+                        <option value=\"7\">7</option>
+                        <option value=\"8\">8</option>
+                        <option value=\"9\">9</option>
+                        <option value=\"10\">10</option>
+                        <option value=\"more\">meer...</option>
+                        <option value=\"$count\" selected hidden>$count</option>
+                    </select>
+                    </form><br></div>");} else {
+                        echo("<form method=\"post\"><input type=\"hidden\" name=\"id\" value=\"$productID\">Aantal: <input type=\"number\" name=\"number\" style=\"width: 100px;\"></form>");
+                    }
                 } else {
                     unset($_SESSION['cart'][$productID]);
                 }
