@@ -116,12 +116,12 @@ if(array_key_exists('delete', $_POST)) {
     </form>
 </div>
 
-<!--<div class="wrapperWinkelmand2">
+<div class="wrapperWinkelmand2">
     <br>
     <form method="post">
         <input class="winkelbutton" type="submit" name="delete" value="Winkelwagen leegmaken">
     </form>
-</div>-->
+</div>
 
 <?php
 include __DIR__ . "/footer.php";

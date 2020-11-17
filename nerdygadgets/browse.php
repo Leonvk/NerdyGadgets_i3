@@ -158,6 +158,19 @@ $amount = $Result[0];
 if (isset($amount)) {
     $AmountOfPages = ceil($amount["count(*)"] / $ProductsOnPage);
 }
+
+function add($id){
+    if(isset($_SESSION['cart'][$id])) {
+        $_SESSION['cart'][$id] += 1;
+    } else {
+        $_SESSION['cart'][$id] = 1;
+    }
+}
+
+if(array_key_exists('itemID', $_POST)) {
+    add($_POST['itemID']);
+}
+
 ?>
 <div id="FilterFrame"><h2 class="FilterText"><i class="fas fa-filter"></i> Filteren </h2>
     <form>
@@ -234,19 +247,16 @@ if (isset($amount)) {
                         <div class="CenterPriceLeftChild">
                             <h1 class="StockItemPriceText"><?php print sprintf("€ %0.2f", $row["SellPrice"]); ?></h1>
                             <h6>Inclusief BTW </h6>
-                            <!--
-                            <form action="browse.php?id=<?php echo($_GET['id']);?>" method="post">
-                                <input type="hidden" name="itemID" value="<?php echo($_GET['id']);?>">
-                                <button type="submit" id = "winkelmandknop"><i class="fas fa-shopping-basket" style="color:white;"></i><?php if(!$addedItem) {echo(" Toevoegen");} else {echo("Toegevoegd");}?></button>
+                            <form action="" method="post">
+                                <input type="hidden" name="itemID" value="<?php echo($row['StockItemID']);?>">
+                                <button type="submit" id="winkelmandknop"><i class="fas fa-shopping-basket" style="color:white;"></i><?php if(array_key_exists($row['StockItemID'], $_SESSION['cart'])) {echo("Toegevoegd");} else {echo("Toevoegen");} ?></button>
                             </form>
-                            -->
                         </div>
                     </div>
                     <h1 class="StockItemID">Artikelnummer: <?php print $row["StockItemID"]; ?></h1>
                     <p class="StockItemName"><?php print $row["StockItemName"]; ?></p>
                     <p class="StockItemComments"><?php print $row["MarketingComments"]; ?></p>
                     <h4 class="ItemQuantity"><?php print $row["QuantityOnHand"]; ?></h4>
-
                 </div>
             </a>
         <?php } ?>
