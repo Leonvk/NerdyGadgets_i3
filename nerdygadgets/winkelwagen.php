@@ -60,6 +60,15 @@ if(array_key_exists('delete', $_POST)) {
                 $productName = $Result['StockItemName'];
                 $totalPrice += $price  * $count;
                 if($count != 0) {
+                    //load image:
+                    if (isset($Result['ImagePath'])) { ?>
+                        <div class="ImgFrameCart" id="ImgFramCart"
+                            style="background-image: url('<?php print "Public/StockItemIMG/" . $Result['ImagePath']; ?>'); background-size: 30px; background-repeat: no-repeat; background-position: center;"></div>
+                    <?php } else if (isset($Result['BackupImagePath'])) { ?>
+                        <div class="ImgFrameCart" id="ImgFramCart"
+                            style="background-image: url('<?php print "Public/StockGroupIMG/" . $Result['BackupImagePath'] ?>'); background-size: 200%; background-repeat: no-repeat; background-position: center;"></div>
+                    <?php }
+                
                     echo("<div id =\"CartItem\"> nr:$productID  $productName <br> &euro;$price");
                     if($moreID != $productID) {echo("Aantal:
                     <form method=\"post\" action=\"winkelwagen.php\"><input type=\"hidden\" name=\"id\" value=\"$productID\">
