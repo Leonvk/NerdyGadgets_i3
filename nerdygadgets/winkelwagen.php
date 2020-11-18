@@ -117,14 +117,8 @@ if(array_key_exists('delete', $_POST)) {
             $totalPrice = number_format($totalPrice,2);
             ?>
         </div>
-        <div class="couponOverzicht">
-            <p>Couponcode (% korting op het moment)</p>
-            <form method="post">
-                <input type="number" value="0" max="99" min="0" name="coupons" class="couponNumber"><br><br>
-                <input type="checkbox" name="actieMail" class="actieMail"><label for="reclameMail">Ik zou graag acties via de e-mail willen ontvangen</label><br>
-                <input class="winkelbutton" type="submit" name="submit" value="Verder naar bestellen">
-                
-            </form>
+        <div class="Bestellen">
+            <button type="button" class="bestelButton"> <a href="bestellen.php">Bestellen</a></button>
         </div>
         <div class="totaalBedrag">
             <?php echo("<br>Totaal prijs: &euro;$totalPrice"); ?>
