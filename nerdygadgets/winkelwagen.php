@@ -61,16 +61,19 @@ if(array_key_exists('delete', $_POST)) {
                 $productName = $Result['StockItemName'];
                 $totalPrice += $price  * $count;
                 if($count != 0) {
+                    //begin div
+                    echo("<div id =\"CartItem\">");
                     //load image:
                     if (isset($Result['ImagePath'])) { ?>
                         <div class="ImgFrameCart" id="ImgFramCart"
-                            style="background-image: url('<?php print "Public/StockItemIMG/" . $Result['ImagePath']; ?>'); background-size: 100%; background-repeat: no-repeat; background-position: center;"></div>
+                             style="background-image: url('<?php print "Public/StockItemIMG/" . $Result['ImagePath']; ?>'); background-size: 100%; background-repeat: no-repeat; background-position: center;"></div>
                     <?php } else if (isset($Result['BackupImagePath'])) { ?>
                         <div class="ImgFrameCart" id="ImgFramCart"
-                            style="background-image: url('<?php print "Public/StockGroupIMG/" . $Result['BackupImagePath'] ?>'); background-size: 200%; background-repeat: no-repeat; background-position: center;"></div>
+                             style="background-image: url('<?php print "Public/StockGroupIMG/" . $Result['BackupImagePath'] ?>'); background-size: 200%; background-repeat: no-repeat; background-position: center;"></div>
                     <?php }
-                
-                    echo("<div id =\"CartItem\"> nr:$productID  $productName <br> &euro;$price");
+                    //echo ID, productnaam,en prijs
+                    echo("nr:$productID  $productName <br> &euro;$price ");
+                    //echo aantal
                     if($moreID != $productID) {echo("Aantal:
                     <form method=\"post\" action=\"winkelwagen.php\"><input type=\"hidden\" name=\"id\" value=\"$productID\">
                     <select name=\"count\" style=\"width: 100px;\" onchange=\"this.form.submit()\">
@@ -88,7 +91,7 @@ if(array_key_exists('delete', $_POST)) {
                         <option value=\"$count\" selected hidden>$count</option>
                     </select>
                     </form><br></div>");} else {
-                        echo("<form method=\"post\"><input type=\"hidden\" name=\"id\" value=\"$productID\">Aantal: <input type=\"number\" name=\"number\" style=\"width: 100px;\"></form>");
+                        echo("<form method=\"post\"><input type=\"hidden\" name=\"id\" value=\"$productID\">Aantal: <input type=\"number\" name=\"number\" style=\"width: 100px;\"></form></div>");
                     }
                 } else {
                     unset($_SESSION['cart'][$productID]);
