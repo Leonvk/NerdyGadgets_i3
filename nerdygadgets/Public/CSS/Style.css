@@ -145,13 +145,13 @@ ul#ul-class-navigation li {
 }
 .ImgFrameCart {
         border-radius: 10px;
-        width: 70px;
-        height: 70px;
+        width: 110px;
+        height: 110px;
         background-color: #ffffff;
         border: 0px #e2e2e2 solid;
         float: left;
         margin-left: 10px;
-        margin-top: 10px;
+        margin-top: 5px;
         margin-right: 10px;
         /*box-shadow: inset 0px 0px 10px #00000050;*/
 }
@@ -527,6 +527,7 @@ ul#ul-class-price li {
     border: black 0px solid;
     background: #e2e2e2;
     height: 100%;
+    min-height: 100px;
     margin-bottom: 5px;
     /*overflow-y: auto;*/
     /*max-height: 500px;*/
@@ -536,6 +537,16 @@ ul#ul-class-price li {
     margin-left: 50%;
 }
 .couponOverzicht{
+    width: 38%;
+    border-radius: 25px;
+    float: left;
+    padding: 1% 2%;
+    margin-left: 55%;
+    margin-bottom: 5px;
+    background: #e2e2e2;
+    position: fixed;
+}
+#window_background{
     width: 38%;
     border-radius: 25px;
     float: left;
@@ -570,6 +581,32 @@ ul#ul-class-price li {
     background: #3161c2;
     color: #ffffff;
 }
+.bestelbutton {
+    float: left;
+    width: 100%;
+    background: #3161c2;
+    border: 2px #3161c200 solid;
+    font-size: 30px;
+    color: #ffffff;
+    border-radius: 40px;
+    padding: 5px 20px;
+    transition-duration: 0.3s;
+    transition: initial;
+}
+.buttonempty {
+    border: none;
+    color: #00000000;
+    background:#00000000;
+}
+.bestelbutton:hover {
+    background: #ffffff;
+    color: #3161c2;
+    border:2px #3161c2 solid;
+    width: 102%;
+    border-radius: 15px;
+    transition-duration: 0.3s;
+
+  }
 .mandItemsOverzicht form {
     display: inline-block;
     
@@ -609,10 +646,7 @@ ul#ul-class-price li {
 .couponNumber{
     border: 2px solid #505060 !important;
 }
-#DeleteButton {
-    float: right;
-    size: 10px 10px;
-}
+
 .bestellenKolom1,.bestellenKolom2,.bestellenKolom3 {
     height: 50px;
 }
@@ -647,4 +681,28 @@ ul#ul-class-price li {
     bottom: 0px;
     margin-bottom: -1px;
     width: 100%;
+}
+
+#DeleteButton {
+    size: 20px 20px;
+    font-size: 22px;
+    color: #505060;
+    position: relative;
+    left: 10px;
+    bottom:35px;
+    background: none;
+    border: none;
+    transition-duration: 0.25s;
+}
+#DeleteButton:hover {
+    transform: rotate(-6deg);
+    size: 20px 20px;
+    font-size: 32px;
+    color: #c44550;
+    position: relative;
+    left: 10px;
+    bottom:35px;
+    background: none;
+    border: none;
+    transition-duration: 0.5s;
 }

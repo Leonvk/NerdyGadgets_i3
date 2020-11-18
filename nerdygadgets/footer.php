@@ -1,4 +1,4 @@
-+<!-- Footer -->
+<!-- Footer -->
 <footer id="footer">
 
 <!-- Footer Links -->

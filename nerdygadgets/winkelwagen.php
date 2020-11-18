@@ -84,12 +84,23 @@ if(array_key_exists('delete', $_POST)) {
                              style="background-image: url('<?php print "Public/StockGroupIMG/" . $Result['BackupImagePath'] ?>'); background-size: 200%; background-repeat: no-repeat; background-position: center;"></div>
                     <?php }
                     //echo ID, productnaam,en prijs
-                    echo("nr:$productID  $productName    &euro;$price ");
-                    echo("<div><form method=\"post\" id=\"DeleteButton\"><input type=\"hidden\" name=\"id\" value=\"$productID\"><input type=\"submit\" name=\"remove\" value=\"\"><i class=\"fa fa-trash\" style=\"position: relative;left: 10px;bottom:35px;\"></i></form></div>");
+                    echo("<div style=\"font-size: 20px;\"><b>$productName</b></div>");
+                    
+                    //echo("<div><form method=\"post\" id=\"DeleteButton\"><input type=\"hidden\" name=\"id\" value=\"$productID\"><input type=\"submit\" name=\"remove\" value=\"\"><i class=\"fa fa-trash\" style=\"position: relative;left: 10px;bottom:35px;\"></i></form></div>");
+                    // Delete button //
+                    echo("
+                    <div style=\"float: right;\">
+                    <form method=\"post\">
+                    <input type=\"hidden\" name=\"id\" value=\"$productID\">
+                    <button type=\"submit\" name=\"remove\" value=\"\"  id=\"DeleteButton\";>
+                    <i class=\"fa fa-trash\"></i></button>
+                    </form>
+                    </div>");
+                    echo("&euro;$price");
                     //echo aantal
-                    if($moreID != $productID) {echo("Aantal:
+                    if($moreID != $productID) {echo("<br>Aantal:
                     <form method=\"post\" action=\"winkelwagen.php\"><input type=\"hidden\" name=\"id\" value=\"$productID\">
-                    <select name=\"count\" style=\"width: 100px;\" onchange=\"this.form.submit()\">
+                    <select name=\"count\" style=\"width: 80px; vertical-align: -10px; height: 35px;\" onchange=\"this.form.submit()\">
                         <option value=\"1\">1</option>
                         <option value=\"2\">2</option>
                         <option value=\"3\">3</option>
@@ -103,10 +114,13 @@ if(array_key_exists('delete', $_POST)) {
                         <option value=\"more\">meer...</option>
                         <option value=\"$count\" selected hidden>$count</option>
                     </select>
-                    </form><br></div>");} else {
+                    </form>");} else {
                         echo("<form method=\"post\"><input type=\"hidden\" name=\"id\" value=\"$productID\">Aantal: <input type=\"number\" name=\"number\" style=\"width: 100px;\" min=\"1\" autofocus></form></div>");
                     }
+                    echo("<div style=\"text-align:right; font-size:25px;\"><b>&euro;".$price * $count."</b></div></div>");
                     
+
+
                 } else {
                     unset($_SESSION['cart'][$productID]);
                 }
@@ -114,12 +128,29 @@ if(array_key_exists('delete', $_POST)) {
             if(isset($_POST["coupons"])) {
                 $totalPrice = (100-$_POST["coupons"])/100*$totalPrice;
             }
-            $totalPrice = number_format($totalPrice,2);
+
+            //shipping costs calculation
+            $TheActualTotalPrice = 0;
+            if (true){ //<----condition whether or not to include shipping costs
+                $shippingcosts = 200;
+            } else {
+                $shippingcosts = 0;
+            }    
+            $TheActualTotalPrice += $shippingcosts + $totalPrice 
+
             ?>
         </div>
-        <div class="Bestellen">
-            <button type="button" class="bestelButton"> <a href="bestellen.php">Bestellen</a></button>
+        <!--side menu shopping cart-->
+        <div class="Bestellen" id="window_background">
+            <table style="font-size:20px; width: 50%; border-spacing: 50px;">
+                <td>totaal artikelen:</td><td><?php echo("&euro;".number_format($totalPrice,2));?><br></td><tr>
+                <td>verzendkosten:</td><td><?php echo("&euro;".$shippingcosts);?><br></td><tr>
+                <td><b>totaal:</b></td><td><b><?php echo("&euro;".number_format($TheActualTotalPrice,2));?></b><br></td><tr>
+            </table>
+            <button type="button" class="buttonempty"> <a class="bestelbutton" href="bestellen.php">Bestellen</a></button>
         </div>
+
+        <!--bottom of shopping cart-->
         <div class="totaalBedrag">
             <?php echo("<br>Totaal prijs: &euro;$totalPrice"); ?>
             
@@ -132,11 +163,10 @@ if(array_key_exists('delete', $_POST)) {
 </div>
 
 <div class="wrapperWinkelmand2">
-    <br>
     <form method="post">
-        <input class="winkelbutton" type="submit" name="delete" value="Winkelwagen leegmaken" style="background-color: white; color: black; padding: 0px;">
+        <input class="winkelbutton" type="submit" name="delete" value="Winkelwagen leegmaken" style="background-color: none; color: black; padding: 0px;">
     </form>
-</div>
+</div><br><br>
 
 <?php
 include __DIR__ . "/footer.php";
