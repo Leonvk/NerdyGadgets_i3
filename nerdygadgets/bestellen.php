@@ -16,22 +16,35 @@ include __DIR__ . "/header.php";
              <div class = "Naam">
              Naam<br>
              <input type = "text" class = "form-control"
-               name = "Voornaam" placeholder = "Voornaam" required autofocus>
+               name = "shipment_address_first_name" placeholder = "Voornaam" required autofocus>
              <input type = "text" class = "form-control"
-                    name = "Tussenv" placeholder = "Tussenv." required>
-             <input type = "test" class = "form-control"
-                    name = "Achternaam" placeholder = "Achternaam" required><br>
+                    name = "shipment_address_name_addition" placeholder = "Tussenv." required>
+             <input type = "text" class = "form-control"
+                    name = "shipment_address_last_name" placeholder = "Achternaam" required><br>
              </div>
              <div class = "Postcode">
              Postcode<br>
                  <input type = "text" class = "form-control"
-                        name = "Postcode" placeholder = "Postcode" required>
+                        name = "shipment_address_post_code" placeholder = "Postcode" required>
              </div>
              <div class = "Huisnummer">
              Huisnummer<br>
                  <input type = "text" class = "form-control"
-                    name = "Huisnummer" placeholder = "Nr." required>
+                    name = "shipment_address_house_number" placeholder = "Nr." required>
              </div>
+             <div class = "email">
+                 E-maildres<br>
+                 <input type = "email" class = "form-control"
+                        name = "email" placeholder = "example@nerdygadgets.com" required>
+             </div>
+             <div class = "Wachtwoord">
+                 Wachtwoord<br>
+                 <input type = "password" class = "form-control"
+                        name = "wachtwoord" placeholder = "Wachtwoord" required>
+                 <input type = "password" class = "form-control"
+                        name = "wachtwoord" placeholder = "Wachtwoord bevestigen" required><br>
+             </div>
+             <button class = "btn btn-lg btn-primary btn-block" type = "submit" name = "login">Doorgaan</button>
          </form>
       </div>
    </body>
