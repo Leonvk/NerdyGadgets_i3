@@ -132,7 +132,7 @@ if(array_key_exists('delete', $_POST)) {
             //shipping costs calculation
             $TheActualTotalPrice = 0;
             if (true){ //<----condition whether or not to include shipping costs
-                $shippingcosts = 200;
+                $shippingcosts = 200; //<---------------- verzendkosten 
             } else {
                 $shippingcosts = 0;
             }    
@@ -147,6 +147,7 @@ if(array_key_exists('delete', $_POST)) {
                 <td>verzendkosten:</td><td><?php echo("&euro;".$shippingcosts);?><br></td><tr>
                 <td><b>totaal:</b></td><td><b><?php echo("&euro;".number_format($TheActualTotalPrice,2));?></b><br></td><tr>
             </table>
+            <br><br>
             <button type="button" class="buttonempty"> <a class="bestelbutton" href="bestellen.php">Bestellen</a></button>
         </div>
 
@@ -155,6 +156,11 @@ if(array_key_exists('delete', $_POST)) {
             <?php echo("<br>Totaal prijs: &euro;$totalPrice"); ?>
             
         </div>
+        <div class="wrapperWinkelmand2">
+            <form method="post">
+                <input type="submit" name="delete" value="Winkelwagen leegmaken" id = delete_shopping_cart style="background-color: #00000000 ">
+            </form>
+        </div>
         <div class="reclameMail">
             <!--<input type="checkbox" name="actieMail" class="actieMail"><label for="reclameMail">Ik zou graag acties via de e-mail willen ontvangen</label>
         -->
@@ -162,11 +168,9 @@ if(array_key_exists('delete', $_POST)) {
     </form>
 </div>
 
-<div class="wrapperWinkelmand2">
-    <form method="post">
-        <input class="winkelbutton" type="submit" name="delete" value="Winkelwagen leegmaken" style="background-color: none; color: black; padding: 0px;">
-    </form>
-</div><br><br>
+
+<br><br>
+<br><br>
 
 <?php
 include __DIR__ . "/footer.php";

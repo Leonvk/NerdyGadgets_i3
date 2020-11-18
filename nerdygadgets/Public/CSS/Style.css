@@ -706,3 +706,24 @@ ul#ul-class-price li {
     border: none;
     transition-duration: 0.5s;
 }
+
+#delete_shopping_cart{
+    background-color: #bb4545 solid;
+    width: auto;
+    color: #3f3f3f; 
+    padding: 10px;
+    left: 49%;
+    bottom: 10px;
+    float: left;
+    position: relative;
+    border: none;
+    transition-duration: 0.5s;
+}
+#delete_shopping_cart:hover {
+    background-color: #c44550 solid; 
+    color: #c44550; 
+    padding: 10px;
+    font-size: 20px;
+    left: 47%;
+    transition-duration: 0.5s;
+}
