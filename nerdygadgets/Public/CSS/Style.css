@@ -610,10 +610,25 @@ ul#ul-class-price li {
 .couponNumber{
     border: 2px solid #505060 !important;
 }
-.bestellenKolom1, .bestellenKolom2, .bestellenKolom3 {
-    width: 32%;
+.bestellenKolom1,.bestellenKolom2,.bestellenKolom3 {
+    height: 50px;
+}
+.bestellenKolom1 label,.bestellenKolom2 label,.bestellenKolom3 label{
     float: left;
-    height: 50%;
-    margin: 0 0% 0 1%;
+    padding-top: 7px;
 }
+.bestellenKolom1 input, .bestellenKolom2 input ,.bestellenKolom3 input{
+    float: left;
+    margin-right: 10px;
 }
+.bestellenKolom1 input.form-control {
+    width: 40%;
+}
+.bestellenKolom2 input.form-control {
+    width: 33%;
+}
+.bestellenKolom3 input.form-control {
+    width: 20%;
+}
+
+
