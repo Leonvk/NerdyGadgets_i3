@@ -613,3 +613,25 @@ ul#ul-class-price li {
     float: right;
     size: 10px 10px;
 }
+.bestellenKolom1,.bestellenKolom2,.bestellenKolom3 {
+    height: 50px;
+}
+.bestellenKolom1 label,.bestellenKolom2 label,.bestellenKolom3 label{
+    float: left;
+    padding-top: 7px;
+}
+.bestellenKolom1 input, .bestellenKolom2 input ,.bestellenKolom3 input{
+    float: left;
+    margin-right: 10px;
+}
+.bestellenKolom1 input.form-control {
+    width: 40%;
+}
+.bestellenKolom2 input.form-control {
+    width: 33%;
+}
+.bestellenKolom3 input.form-control {
+    width: 20%;
+}
+
+
