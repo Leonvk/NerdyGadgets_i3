@@ -13,10 +13,22 @@ if(array_key_exists('count', $_POST)) {
 }
 
 if(array_key_exists('number', $_POST)) {
-    $_SESSION['cart'][$_POST['id']] = $_POST['number'];
-    $moreID = NULL;
+    if($_POST['number'] > 0) {
+        $_SESSION['cart'][$_POST['id']] = $_POST['number'];
+        $moreID = NULL;
+    } else {
+
+    }
 }
- 
+
+function remove($item) {
+    unset($_SESSION['cart'][$item]);
+}
+
+if(array_key_exists('remove', $_POST)) {
+    remove($_POST['id']);
+}
+
 if(array_key_exists('delete', $_POST)) {
     $_SESSION['cart'] = array();
 }
@@ -88,8 +100,9 @@ if(array_key_exists('delete', $_POST)) {
                         <option value=\"$count\" selected hidden>$count</option>
                     </select>
                     </form><br></div>");} else {
-                        echo("<form method=\"post\"><input type=\"hidden\" name=\"id\" value=\"$productID\">Aantal: <input type=\"number\" name=\"number\" style=\"width: 100px;\"></form>");
+                        echo("<form method=\"post\"><input type=\"hidden\" name=\"id\" value=\"$productID\">Aantal: <input type=\"number\" name=\"number\" style=\"width: 100px;\" min=\"1\" autofocus></form>");
                     }
+                    echo("<div><form method=\"post\"><input type=\"hidden\" name=\"id\" value=\"$productID\"><input type=\"submit\" value=\"x\" name=\"remove\"></form></div>");
                 } else {
                     unset($_SESSION['cart'][$productID]);
                 }
@@ -123,7 +136,7 @@ if(array_key_exists('delete', $_POST)) {
 <div class="wrapperWinkelmand2">
     <br>
     <form method="post">
-        <input class="winkelbutton" type="submit" name="delete" value="Winkelwagen leegmaken">
+        <input class="winkelbutton" type="submit" name="delete" value="Winkelwagen leegmaken" style="background-color: white; color: black; padding: 0px;">
     </form>
 </div>
 
