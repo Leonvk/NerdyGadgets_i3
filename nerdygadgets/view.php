@@ -29,13 +29,17 @@ if ($ReturnableResult && mysqli_num_rows($ReturnableResult) == 1) {
     $Result = null;
 }
 
+$moreID = NULL;
 if(!empty($_POST['itemID'])) {
     if(!isset($addedItem)) {
         if(isset($_SESSION['cart'][$_GET['id']])) {
            $addedItem = TRUE;
         } else {
             // Execute when item gets added
-            $_SESSION['cart'][$_POST['itemID']] = 1;
+            // $_SESSION['cart'][$_POST['itemID']] = $_POST['count'];
+            if($_POST['count'] != "more") {
+                $_SESSION['cart'][$_POST['id']] = $_POST['count'];
+            }
         }
     }
     $addedItem = TRUE;
@@ -144,12 +148,12 @@ if ($R) {
                     <div class="CenterPriceLeftChild">
                         <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $Result['SellPrice']); ?></b></p>
                         <h6> Inclusief BTW </h6>
-                        <form action="view.php?id=<?php echo($_GET['id']);?>" method="post">
-                            <input type="hidden" name="itemID" value="<?php echo($_GET['id']);?>">
-                            <button type="submit" id = "winkelmandknop"><i class="fas fa-shopping-basket" style="color:white;"></i><?php if(!$addedItem) {echo("Toevoegen");} else {echo("Toegevoegd");}?></button>
-                            <?php /*echo("Aantal:
-                                <form method=\"post\" action=\"winkelwagen.php\"><input type=\"hidden\" name=\"id\" value=\"6\">
-                                <select name=\"count\" style=\"width: 100px;\" onchange=\"this.form.submit()\">
+                        <?php 
+                        $id = $_GET['id'];
+                        if(!$addedItem) {
+                            echo("Aantal:
+                                <form method=\"post\" action=\"view.php?id=$id\" method=\"post\"><input type=\"hidden\" name=\"id\" value=\"$id\">
+                                <select name=\"count\" style=\"width: 100px;\">
                                     <option value=\"1\">1</option>
                                     <option value=\"2\">2</option>
                                     <option value=\"3\">3</option>
@@ -160,11 +164,15 @@ if ($R) {
                                     <option value=\"8\">8</option>
                                     <option value=\"9\">9</option>
                                     <option value=\"10\">10</option>
-                                    <option value=\"more\">meer...</option>
-                                    <option value=\"$count\" selected hidden>$count</option>
                                 </select>
-                                </form><br></div>");*/?>
-                        </form>
+                                <input type=\"hidden\" name=\"itemID\" value=\"$id\">
+                                <button type=\"submit\" id = \"winkelmandknop\"><i class=\"fas fa-shopping-basket\" style=\"color:white;\"></i>Toevoegen</button>
+                                </form><br></div>");} else {
+                                    echo("<button type=\"submit\" id = \"winkelmandknop\"><i class=\"fas fa-shopping-basket\" style=\"color:white;\"></i>Toegevoegd</button>");
+                                }
+                                if(isset($productID)){
+                                    echo("<form method=\"post\"><input type=\"hidden\" name=\"id\" value=\"$productID\">Aantal: <input type=\"number\" name=\"number\" style=\"width: 100px;\" min=\"1\" autofocus></form></div>");
+                                } ?>
                     </div>
                 </div>
             </div>
