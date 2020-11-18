@@ -13,10 +13,22 @@ if(array_key_exists('count', $_POST)) {
 }
 
 if(array_key_exists('number', $_POST)) {
-    $_SESSION['cart'][$_POST['id']] = $_POST['number'];
-    $moreID = NULL;
+    if($_POST['number'] > 0) {
+        $_SESSION['cart'][$_POST['id']] = $_POST['number'];
+        $moreID = NULL;
+    } else {
+
+    }
 }
- 
+
+function remove($item) {
+    unset($_SESSION['cart'][$item]);
+}
+
+if(array_key_exists('remove', $_POST)) {
+    remove($_POST['id']);
+}
+
 if(array_key_exists('delete', $_POST)) {
     $_SESSION['cart'] = array();
 }
@@ -91,8 +103,9 @@ if(array_key_exists('delete', $_POST)) {
                         <option value=\"$count\" selected hidden>$count</option>
                     </select>
                     </form><br></div>");} else {
-                        echo("<form method=\"post\"><input type=\"hidden\" name=\"id\" value=\"$productID\">Aantal: <input type=\"number\" name=\"number\" style=\"width: 100px;\"></form></div>");
+                        echo("<form method=\"post\"><input type=\"hidden\" name=\"id\" value=\"$productID\">Aantal: <input type=\"number\" name=\"number\" style=\"width: 100px;\" min=\"1\" autofocus></form></div>");
                     }
+                    echo("<div><form method=\"post\"><input type=\"hidden\" name=\"id\" value=\"$productID\"><input type=\"submit\" value=\"x\" name=\"remove\"></form></div>");
                 } else {
                     unset($_SESSION['cart'][$productID]);
                 }
@@ -103,14 +116,8 @@ if(array_key_exists('delete', $_POST)) {
             $totalPrice = number_format($totalPrice,2);
             ?>
         </div>
-        <div class="couponOverzicht">
-            <p>Couponcode (% korting op het moment)</p>
-            <form method="post">
-                <input type="number" value="0" max="99" min="0" name="coupons" class="couponNumber"><br><br>
-                <input type="checkbox" name="actieMail" class="actieMail"><label for="reclameMail">Ik zou graag acties via de e-mail willen ontvangen</label><br>
-                <input class="winkelbutton" type="submit" name="submit" value="Verder naar bestellen">
-                
-            </form>
+        <div class="Bestellen">
+            <button type="button" class="bestelButton"> <a href="bestellen.php">Bestellen</a></button>
         </div>
         <div class="totaalBedrag">
             <?php echo("<br>Totaal prijs: &euro;$totalPrice"); ?>
@@ -126,7 +133,7 @@ if(array_key_exists('delete', $_POST)) {
 <div class="wrapperWinkelmand2">
     <br>
     <form method="post">
-        <input class="winkelbutton" type="submit" name="delete" value="Winkelwagen leegmaken">
+        <input class="winkelbutton" type="submit" name="delete" value="Winkelwagen leegmaken" style="background-color: white; color: black; padding: 0px;">
     </form>
 </div>
 
