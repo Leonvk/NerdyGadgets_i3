@@ -34,12 +34,9 @@ if(!empty($_POST['itemID'])) {
     if(!isset($addedItem)) {
         if(isset($_SESSION['cart'][$_GET['id']])) {
            $addedItem = TRUE;
-        } else {
+        } elseif(is_numeric($_POST['count']) && $_POST['count'] > 0) {
             // Execute when item gets added
-            // $_SESSION['cart'][$_POST['itemID']] = $_POST['count'];
-            if($_POST['count'] != "more") {
-                $_SESSION['cart'][$_POST['id']] = $_POST['count'];
-            }
+            $_SESSION['cart'][$_POST['id']] = $_POST['count'];
         }
     }
     $addedItem = TRUE;
@@ -164,6 +161,7 @@ if ($R) {
                                     <option value=\"8\">8</option>
                                     <option value=\"9\">9</option>
                                     <option value=\"10\">10</option>
+                                    <option disabled>Grotere aantallen kunnen worden geselecteerd op de winkelmand pagina</option>
                                 </select>
                                 <input type=\"hidden\" name=\"itemID\" value=\"$id\">
                                 <button type=\"submit\" id = \"winkelmandknop\"><i class=\"fas fa-shopping-basket\" style=\"color:white;\"></i>Toevoegen</button>
