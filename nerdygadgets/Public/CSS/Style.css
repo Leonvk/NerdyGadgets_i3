@@ -535,7 +535,7 @@ ul#ul-class-price li {
     width: 20%;
     margin-left: 50%;
 }
-.couponOverzicht{
+.Bestellen{
     width: 38%;
     border-radius: 25px;
     float: left;
@@ -545,8 +545,9 @@ ul#ul-class-price li {
     background: #e2e2e2;
     position: fixed;
 }
-.couponNumber{
-    width: 60%;
+.bestelButton{
+    width: 50%;
+    position: center;
 }
 .mandBottom{
     float: none;
@@ -605,7 +606,4 @@ ul#ul-class-price li {
     padding: 8px;
     border-bottom:2px #fdfdfd solid;
     margin-bottom: 0px;
-}
-.couponNumber{
-    border: 2px solid #505060 !important;
 }

@@ -42,8 +42,9 @@ include __DIR__ . "/header.php";
                  <input type = "password" class = "form-control"
                         name = "wachtwoord" placeholder = "Wachtwoord" required>
                  <input type = "password" class = "form-control"
-                        name = "wachtwoord" placeholder = "Wachtwoord bevestigen" required><br>
+                        name = "wachtwoord" placeholder = "Wachtwoord bevestigen" required>
              </div>
+             <input type="checkbox" name="actieMail" class="actieMail"><label for="reclameMail">Ik zou graag acties via de e-mail willen ontvangen</label><br>
              <button class = "btn btn-lg btn-primary btn-block" type = "submit" name = "login">Doorgaan</button>
          </form>
       </div>
