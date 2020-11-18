@@ -5,17 +5,12 @@
 //tel
 //
 //account aanmaken? ww
+include __DIR__ . "/header.php";
 ?>
-<html lang = "en">
-<head>
-    <title>NerdyGadgets</title>
-    <link href = "css/bootstrap.min.css" rel = "stylesheet">
-</head>
-<body>
-    <h2>Kassa</h2>
       <div class = "container form-signin">
       </div>
       <div class = "container">
+          <h2>Kassa</h2>
          <form class = "form-signin" role = "form"
             action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method = "post">
              <div class = "Naam">
