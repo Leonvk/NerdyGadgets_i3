@@ -712,7 +712,7 @@ ul#ul-class-price li {
     width: auto;
     color: #3f3f3f; 
     padding: 10px;
-    left: 49%;
+    left: 44%;
     bottom: 10px;
     float: left;
     position: relative;
@@ -724,6 +724,6 @@ ul#ul-class-price li {
     color: #c44550; 
     padding: 10px;
     font-size: 20px;
-    left: 47%;
+    left: 42%;
     transition-duration: 0.5s;
 }
