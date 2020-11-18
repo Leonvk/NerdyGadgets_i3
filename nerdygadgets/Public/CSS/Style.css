@@ -609,3 +609,7 @@ ul#ul-class-price li {
 .couponNumber{
     border: 2px solid #505060 !important;
 }
+#DeleteButton {
+    float: right;
+    size: 10px 10px;
+}

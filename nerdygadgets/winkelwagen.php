@@ -84,7 +84,8 @@ if(array_key_exists('delete', $_POST)) {
                              style="background-image: url('<?php print "Public/StockGroupIMG/" . $Result['BackupImagePath'] ?>'); background-size: 200%; background-repeat: no-repeat; background-position: center;"></div>
                     <?php }
                     //echo ID, productnaam,en prijs
-                    echo("nr:$productID  $productName <br> &euro;$price ");
+                    echo("nr:$productID  $productName    &euro;$price ");
+                    echo("<div><form method=\"post\" id=\"DeleteButton\"><input type=\"hidden\" name=\"id\" value=\"$productID\"><input type=\"submit\" name=\"remove\" value=\"\"><i class=\"fa fa-trash\" style=\"position: relative;left: 10px;bottom:35px;\"></i></form></div>");
                     //echo aantal
                     if($moreID != $productID) {echo("Aantal:
                     <form method=\"post\" action=\"winkelwagen.php\"><input type=\"hidden\" name=\"id\" value=\"$productID\">
@@ -105,7 +106,7 @@ if(array_key_exists('delete', $_POST)) {
                     </form><br></div>");} else {
                         echo("<form method=\"post\"><input type=\"hidden\" name=\"id\" value=\"$productID\">Aantal: <input type=\"number\" name=\"number\" style=\"width: 100px;\" min=\"1\" autofocus></form></div>");
                     }
-                    echo("<div><form method=\"post\"><input type=\"hidden\" name=\"id\" value=\"$productID\"><input type=\"submit\" value=\"x\" name=\"remove\"></form></div>");
+                    
                 } else {
                     unset($_SESSION['cart'][$productID]);
                 }
