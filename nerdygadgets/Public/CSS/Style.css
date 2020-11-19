@@ -728,3 +728,8 @@ ul#ul-class-price li {
     left: 47%;
     transition-duration: 0.5s;
 }
+#home_page_search {
+    color: #c44550;
+    background-color: #224550 solid;
+    border:5px #c44550 solid;
+}
