@@ -728,3 +728,9 @@ ul#ul-class-price li {
     left: 47%;
     transition-duration: 0.5s;
 }
+.confermatieBestelPrijs{
+    text-align:right;
+    font-size:25px;
+    width: fit-content;
+    float: right;
+}

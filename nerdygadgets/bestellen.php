@@ -72,7 +72,7 @@ if(!isset($_SESSION['cart'])) {
       <div class = "container">
           <h2>Kassa</h2>
          <form class = "form-signin" role = "form"
-            action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method = "post">
+            action = "confimatieBestelling.php" method = "post">
              <div class = "Naam">
              Naam*<br>
              <input type = "text" class = "form-control"
@@ -85,7 +85,7 @@ if(!isset($_SESSION['cart'])) {
              <div class = "Postcode">
              Postcode*<br>
                  <input type = "text" class = "form-control"
-                        name = "shipment_address_post_code" placeholder = "Postcode" required>
+                        pattern="[1-9][0-9]{3}\s?[a-zA-Z]{2}" name = "shipment_address_post_code" placeholder = "Postcode" required>
              </div>
              <div class = "Huisnummer">
              Huisnummer*<br>
