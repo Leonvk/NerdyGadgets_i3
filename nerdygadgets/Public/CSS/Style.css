@@ -709,7 +709,7 @@ ul#ul-class-price li {
 }
 
 #delete_shopping_cart{
-    background-color: #bb4545 solid;
+    background-color: #bb4545;
     width: auto;
     color: #3f3f3f; 
     padding: 10px;
@@ -721,7 +721,7 @@ ul#ul-class-price li {
     transition-duration: 0.5s;
 }
 #delete_shopping_cart:hover {
-    background-color: #c44550 solid; 
+    background-color: #c44550;
     color: #c44550; 
     padding: 10px;
     font-size: 20px;
@@ -736,7 +736,24 @@ ul#ul-class-price li {
 }
 #home_page_search {
     color: #c44550;
-    background-color: #224550 solid;
+    background-color: #224550;
     border:5px #c44550 solid;
+}
+.PersoonlijkeInfoOverzicht {
+    border-radius: 25px 25px 0px 0px;
+    float: left;
+    padding: 1% 2% 0%;
+    width: 40%;
+    border: 0px black solid;
+    background: #ffffff;
+    height: 100%;
+    min-height: 100px;
+    margin-bottom: 5px;
+}
 
+.PersoonlijkeInfoOverzicht h1, .mandItemsOverzicht h1{
+    font-size: 20px;
+}
+.Pinfo{
+    padding: 8px;
 }
