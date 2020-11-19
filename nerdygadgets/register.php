@@ -30,7 +30,7 @@ if(empty($_POST['username'])) {
             $error .= "-De gebruikersnaam mag de volgende karakters bevatten: a-z, 0-9, '_', '-', '.'.<br>";
         } else {
             // Checks if the username is unique
-            if(TRUE/*!usernameExists($username)*/) {
+            if(FALSE/*!usernameExists($username)*/) {
                 $error .= "-Deze gebruikersnaam bestaat al<br>";
             } else {
                 $validUsername = TRUE;
