@@ -14,26 +14,26 @@ include __DIR__ . "/header.php";
          <form class = "form-signin" role = "form"
             action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method = "post">
              <div class = "Naam">
-             Naam<br>
+             Naam*<br>
              <input type = "text" class = "form-control"
                name = "shipment_address_first_name" placeholder = "Voornaam" required autofocus>
              <input type = "text" class = "form-control"
-                    name = "shipment_address_name_addition" placeholder = "Tussenv." required>
+                    name = "shipment_address_name_addition" placeholder = "Tussenv.">
              <input type = "text" class = "form-control"
                     name = "shipment_address_last_name" placeholder = "Achternaam" required><br>
              </div>
              <div class = "Postcode">
-             Postcode<br>
+             Postcode*<br>
                  <input type = "text" class = "form-control"
                         name = "shipment_address_post_code" placeholder = "Postcode" required>
              </div>
              <div class = "Huisnummer">
-             Huisnummer<br>
+             Huisnummer*<br>
                  <input type = "text" class = "form-control"
                     name = "shipment_address_house_number" placeholder = "Nr." required>
              </div>
              <div class = "email">
-                 E-maildres<br>
+                 E-maildres*<br>
                  <input type = "email" class = "form-control"
                         name = "email" placeholder = "example@nerdygadgets.com" required>
              </div>
