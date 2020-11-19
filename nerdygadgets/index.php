@@ -39,7 +39,7 @@ include __DIR__ . "/header.php";
         <h2 class = "home_page_text"> Bekijk ook deze producten:</h2>
         <?php
         //aantal producten op hoofdpagina:
-        for ($i=0;$i<  6  ;$i++){
+        for ($i=0;$i<  200  ;$i++){
             echo ("<div id = \"homepage_product_tile\">");
             
             // select whith products to show case

@@ -1,5 +1,5 @@
 html {
-    background-color:#fdfdfd !important;
+    background-color:#f2f2f2 !important;
 }
 body {
     overflow-x:hidden;
@@ -750,6 +750,7 @@ ul#ul-class-price li {
     background: #ffffff;
     color: #3161c2;
     border:2px #3161c2 solid;
+
 
 }
 #homepage_search_tile {
