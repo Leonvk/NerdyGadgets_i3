@@ -134,7 +134,7 @@ if(array_key_exists('delete', $_POST)) {
             //shipping costs calculation
             $TheActualTotalPrice = 0;
             if ($totalPrice <= 50){ //<----condition whether or not to include shipping costs
-                $shippingcosts = 50; //<---------------- verzendkosten
+                $shippingcosts = 6.50; //<---------------- verzendkosten
             } else {
                 $shippingcosts = 0;
             }    
