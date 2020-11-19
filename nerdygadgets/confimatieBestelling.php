@@ -70,6 +70,7 @@ if(!isset($_SESSION['cart'])) {
                 <div class = "container">
                     <!--overzicht van de producten-->
                     <div class="mandItemsOverzicht">
+                        <h1>Producten overzicht:</h1>
                         <?php
                         $totalPrice = 0;
                         if (count($_SESSION['cart'])==0) {print("Er staan geen artikelen in het Winkelwagentje");}
@@ -108,7 +109,7 @@ if(!isset($_SESSION['cart'])) {
 
                                 //echo ID, productnaam,en prijs
                                 echo("<div style=\"font-size: 20px;\"><b>$productName</b></div>");
-                                echo("&euro;$price");
+                                echo("p/st: &euro;$price");
                                 //echo aantal
                                 echo("<br>Aantal:$productID
                                     <div class='confermatieBestelPrijs'><b>&euro;" . $price * $count . "</b></div>
@@ -117,19 +118,26 @@ if(!isset($_SESSION['cart'])) {
                         }
                         //shipping costs calculation
                         $TheActualTotalPrice = 0;
-                        if (true){ //<----condition whether or not to include shipping costs
-                            $shippingcosts = 200; //<---------------- verzendkosten
+                        if ($totalPrice <= 50){ //<----condition whether or not to include shipping costs
+                            $shippingcosts = 6.50; //<---------------- verzendkosten
                         } else {
                             $shippingcosts = 0;
                         }
                         $TheActualTotalPrice += $shippingcosts + $totalPrice;
                         //echo de kosten onderaan
-                        echo ("<div style='padding: 8px;'>Verzend kosten: <div class='confermatieBestelPrijs'><b>&euro;$shippingcosts</b></div> <hr>");
+                        echo ("<div style='padding:8px;border-top: 3px black solid;margin-top: -1px;'>Verzend kosten: <div class='confermatieBestelPrijs'><b>&euro;$shippingcosts</b></div> <hr>");
                         echo ("Totaal prijs: <div class='confermatieBestelPrijs'><b>&euro;$TheActualTotalPrice</b></div></div>");
                         ?>
                     </div>
-                    <div class="wrapperWinkelmand2">
-                        hoi
+                    <!--info opslaan in variablen-->
+                    <?php
+                    $naam = $_POST["shipment_address_first_name"];
+                    ?>
+                    <div class="PersoonlijkeInfoOverzicht">
+                        <h1>Persoonlijke Informatie:</h1>
+                        <div class="Pinfo">
+                            <label>Naam: <?php echo $naam?></label>
+                        </div>
 
                     </div>
                 </div>
