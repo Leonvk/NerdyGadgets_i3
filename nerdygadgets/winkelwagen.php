@@ -100,7 +100,7 @@ if(array_key_exists('delete', $_POST)) {
                     //echo aantal
                     if($moreID != $productID) {echo("<br>Aantal:
                     <form method=\"post\" action=\"winkelwagen.php\"><input type=\"hidden\" name=\"id\" value=\"$productID\">
-                    <select name=\"count\" style=\"width: 80px; vertical-align: -10px; height: 35px;\" onchange=\"this.form.submit()\">
+                    <select name=\"count\" style=\"width: 100px;\" vertical-align: -10px; height: 35px;\" onchange=\"this.form.submit()\">
                         <option value=\"1\">1</option>
                         <option value=\"2\">2</option>
                         <option value=\"3\">3</option>
@@ -114,10 +114,12 @@ if(array_key_exists('delete', $_POST)) {
                         <option value=\"more\">meer...</option>
                         <option value=\"$count\" selected hidden>$count</option>
                     </select>
-                    </form>");} else {
-                        echo("<form method=\"post\"><input type=\"hidden\" name=\"id\" value=\"$productID\">Aantal: <input type=\"number\" name=\"number\" style=\"width: 100px;\" min=\"1\" autofocus></form></div>");
+                    </form>
+                    <div style=\"text-align:right; font-size:25px;\"><b>&euro;".$price * $count."</b></div>
+                    </div>");} else {
+                        echo("<br>Aantal:<form method=\"post\"><input type=\"hidden\" name=\"id\" value=\"$productID\"><input type=\"number\" name=\"number\" style=\"width: 100px;\" min=\"1\" autofocus></form>
+                              <div style=\"text-align:right; font-size:25px;\"><b>&euro;".$price * $count."</b></div></div>");
                     }
-                    echo("<div style=\"text-align:right; font-size:25px;\"><b>&euro;".$price * $count."</b></div></div>");
                     
 
 
