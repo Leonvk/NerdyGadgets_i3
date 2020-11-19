@@ -69,8 +69,8 @@ if(empty($_POST['middleName'])) {
     if(strlen($middleName) > 35) {
         $error .= "-Het tussenvoegsel mag niet langer zijn dan 35 karakters.<br>";
     } else {
-        // Checks if the middle name contains only letters
-        if(preg_match("/^[a-zA-Z]{0,}$/", $middleName)) {
+        // Checks if the middle name contains only letters or spaces
+        if(preg_match("/^[a-zA-Z ]{0,}$/", $middleName)) {
             $validMiddleName = TRUE;
         } else {
             $error .= "-Het tussenvoegsel mag alleen letters bevatten.<br>";
