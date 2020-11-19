@@ -1,30 +1,27 @@
 html {
-    background-color:#fdfdfd !important;
-
+    background-color: rgba(215, 215, 225, 1) !important;
 }
 
 body {
     overflow-x:hidden;
     color: #303040!important;
-    background-color: rgba(240, 240, 240, 1) !important;
+    background-color: rgba(225, 225, 225, 1) !important;
 }
 @font-face {
     font-family: MmrText;
     src: url(/Public/fonts/mmrtext.ttf);
 }
 select {
-    border-radius: 25px;
     margin: 50px;
     width: 100%;
     padding: 5px 35px 5px 5px;
     font-size: 16px;
-    border: 2px solid #fefefe;
+    border: 1px solid #CCC;
     height:50px;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     background: url(../Img/mouse-hover-icon-22.jpg) 96% / 30px no-repeat #EEE;
-    background-color:#ffffff
 }
 
 a {
@@ -38,8 +35,8 @@ a:hover {
 a span {
     display: none;
     position: absolute;
-    color: #2794dd;
-    background: #5cb5f1;
+    color: #676EFF;
+    background: #676EFF;
     padding: 5px;
 }
 a:hover span {
@@ -54,8 +51,6 @@ a:hover span {
     font-weight: bold;
 }
 input {
-    border-radius: 25px;
-    border: 2px solid #fefefe;
     font-family: pt-sans, sans-serif;
     height: 50px;
     font-size: 20px;
@@ -82,24 +77,23 @@ ul#ul-class-navigation li {
 #Header {
     position: fixed;
     top:0;
-    background-color:#3161c2;
+    background-color: rgb(35, 35, 125); 
     width: 100%;
     height: 100px;
     z-index: 1;
-    border-bottom: 1px solid #3059ad;
+    border-bottom: 1px solid rgb(36, 41, 143);
 }
 #Content {
-    margin-top: 125px;
+    margin-top: 200px;
 }
 #FilterFrame {
-    border-radius: 25px;
     position: fixed;
-    width: 17%;
-    background-color: #e2e2e2;
+    width: 20%;
+    background-color: rgba(195, 190, 197, 0.8);
     float: left;
-    top:130px;
-    border: 0px solid #cfcfcf;
-    margin-left: 30px;
+    top:100px;
+    border: 5px solid rgb(230,230,230);
+    margin-left: 5px;
     margin-top: 10px;
     padding: 20px;
 }
@@ -110,48 +104,45 @@ ul#ul-class-navigation li {
     position: sticky;
 }
 #ProductFrame {
-    
     width: 100%;
     height: 250px;
     margin-top: 15px;
     position: relative;
     padding: 1px;
-    /*background-color: #e2e2e2;*/
-
-}
-#ProductFrameBackground {
-    width:100%;
-    margin-left: 100px;
-    height:256px;;
-    margin-top: -3px;
-    position: absolute;
-    z-index: -1;
-    padding: 1px;
-    background-color: #e2e2e2;
-    border-radius: 35px;
-
+    border-bottom: 1px solid #fff;
 }
 .ImgFrame {
-    border-radius: 40px;
     width: 230px;
     height: 230px;
-    background-color: #ffffff;
-    border: 5px #e2e2e2 solid;
+    background-color: rgb(36, 41, 143);
     float: left;
     margin-left: 10px;
     margin-top: 10px;
+<<<<<<< HEAD
     margin-right: 10px;
+=======
+    margin-right: 10px
+>>>>>>> parent of a078b61... Update Style.css
     /*box-shadow: inset 0px 0px 10px #00000050;*/
 }
 .ImgFrameCart {
         border-radius: 10px;
+<<<<<<< HEAD
         width: 70px;
         height: 70px;
+=======
+        width: 110px;
+        height: 110px;
+>>>>>>> parent of a078b61... Update Style.css
         background-color: #ffffff;
         border: 0px #e2e2e2 solid;
         float: left;
         margin-left: 10px;
+<<<<<<< HEAD
         margin-top: 10px;
+=======
+        margin-top: 5px;
+>>>>>>> parent of a078b61... Update Style.css
         margin-right: 10px;
         /*box-shadow: inset 0px 0px 10px #00000050;*/
 }
@@ -197,11 +188,9 @@ ul#ul-class-navigation li {
     position: relative
 }
 #ImageFrame {
-    border-radius: 35px;
     width: 300px;
     height: 300px;
-    background-color:#ffffff;
-    border: 3px #cfcfcf solid;
+    background-color: rgb(36, 41, 143);
     float: left;
     margin-right: 10px;
 }
@@ -235,23 +224,23 @@ ul#ul-class-navigation li {
     transform: translateY(-50%);
 }
 #StockItemDescription {
-    background-color: #e2e2e2;
-    border-radius: 25px;
+    background-color: rgba(235, 240, 247, 0.8);
     width: 49%;
     float: left;
     padding: 10px;
     margin-top:10px;
+    border: 1px solid;
     font-family: pt-sans, sans-serif;
     font-size: 20px;
 }
 #StockItemSpecifications {
-    background-color: #e2e2e2;
-    border-radius: 25px;
+    background-color: rgba(235, 240, 247, 0.8);
     width: 49%;
     float: left;
     padding: 10px;
     margin-left: 1%;
     margin-top:10px;
+    border: 1px solid;
     font-family: pt-sans, sans-serif;
     font-size: 20px;
 }
@@ -262,7 +251,7 @@ ul#ul-class-navigation li {
     margin-right: 5px;
 }
 .Background {
-    /*background-color: #f1f1f1;*/
+    background-color: rgba(215, 215, 225, 1);
     width: 100%;
     height: 100%;
     position: absolute;
@@ -300,8 +289,6 @@ ul#ul-class-price li {
 }
 .HrefDecoration {
     color: #ffffff;
-    margin-left: 7px;
-    font-size: 18px;
 }
 .HrefDecoration:hover, .HrefDecoration:active {
     text-decoration: none;
@@ -317,7 +304,7 @@ ul#ul-class-price li {
     margin-left: 5%;
 }
 .HomePagePrice {
-    color: #3161c2;
+    color: #676EFF;
     font-family: vortice-concept, sans-serif;
     font-size: 50px;
     text-transform: uppercase;
@@ -349,7 +336,7 @@ ul#ul-class-price li {
 }
 .StockGroups {
     position: relative;
-    border-radius: 25px;
+    border: 1px solid slategrey;
     background-repeat: no-repeat;
     background-size: cover;
     float: left;
@@ -417,7 +404,7 @@ ul#ul-class-price li {
 }
 .StockItemPriceText {
     font-family: vortice-concept, sans-serif;
-    color: #3161c2;
+    color: #676EFF;
     font-size: 22px;
     text-transform: uppercase;
     font-weight: bold;
@@ -428,7 +415,7 @@ ul#ul-class-price li {
 }
 .StockItemID {
     font-family: vortice-concept, sans-serif;
-    color: #3161c2;
+    color: #676EFF;
     font-size: 10px;
     text-transform: uppercase;
     font-weight: bold;
@@ -484,14 +471,14 @@ ul#ul-class-price li {
     width: 1400px;
 }
 .FilterTopMargin {
-    margin-top: 30px;
+    margin-top: 20px;
 }
 #ProductFrame h6 {
     color: #858585;
 }
 #CategoriesBar {
     position: absolute;
-    left: 240px;
+    left: 280px;
 }
 #PageSelector {
     text-align: center;
@@ -515,47 +502,50 @@ ul#ul-class-price li {
 .wrapperWinkelmand {
     padding: 0% 5% 5% 5%;
 }
-.wrapperWinkelmand2 {
-    padding: 0% 5% 0% 5%;
-    
-}
-.mandItemsOverzicht {
-    border-radius: 25px 25px 0px 0px;
+.mandItemsOverzicht{
     float: left;
-    padding: 1% 2% 0%;
+    padding: 1% 2%;
     width: 60%;
+<<<<<<< HEAD
     border: black 0px solid;
     background: #e2e2e2;
     height: 100%;
+=======
+    border: black 2px solid;
+    height: 250px;
+    border: black 0px solid;
+    background: #e2e2e2;
+    height: 100%;
+    min-height: 100px;
+>>>>>>> parent of a078b61... Update Style.css
     margin-bottom: 5px;
-    /*overflow-y: auto;*/
-    /*max-height: 500px;*/
+    overflow-y: scroll;
 }
 .mandItem{
     width: 20%;
     margin-left: 50%;
 }
 .couponOverzicht{
-    width: 38%;
-    border-radius: 25px;
+    width: 40%;
     float: left;
     padding: 1% 2%;
-    margin-left: 55%;
+    height: 250px;
     margin-bottom: 5px;
-    background: #e2e2e2;
-    position: fixed;
 }
 .couponNumber{
-    width: 60%;
+    width: 13%;
 }
 .mandBottom{
     float: none;
 }
-.actieMail {
-    width: auto;
-    height: auto;
-    margin-right: 5px;
+.reclameMail{
+    width: 5%;
+    height: 40px;
 }
+<<<<<<< HEAD
+=======
+.to
+>>>>>>> parent of a078b61... Update Style.css
 .totaalBedrag{
     border-radius: 26px;
     background: #505060;
@@ -570,6 +560,35 @@ ul#ul-class-price li {
     background: #3161c2;
     color: #ffffff;
 }
+<<<<<<< HEAD
+=======
+.bestelbutton {
+    float: left;
+    width: 100%;
+    background: #3161c2;
+    border: 2px #3161c200 solid;
+    font-size: 30px;
+    color: #ffffff;
+    border-radius: 40px;
+    padding: 5px 20px;
+    transition-duration: 0.3s;
+    transition: initial;
+}
+.buttonempty {
+    border: none;
+    color: #00000000;
+    background:#00000000;
+}
+.bestelbutton:hover {
+    background: #ffffff;
+    color: #3161c2;
+    border:2px #3161c2 solid;
+    width: 102%;
+    border-radius: 15px;
+    transition-duration: 0.3s;
+
+  }
+>>>>>>> parent of a078b61... Update Style.css
 .mandItemsOverzicht form {
     display: inline-block;
     
@@ -609,10 +628,14 @@ ul#ul-class-price li {
 .couponNumber{
     border: 2px solid #505060 !important;
 }
+<<<<<<< HEAD
 #DeleteButton {
     float: right;
     size: 10px 10px;
 }
+=======
+
+>>>>>>> parent of a078b61... Update Style.css
 .bestellenKolom1,.bestellenKolom2,.bestellenKolom3 {
     height: 50px;
 }
@@ -634,4 +657,66 @@ ul#ul-class-price li {
     width: 20%;
 }
 
+<<<<<<< HEAD
 
+=======
+#footer {
+    clear: both;
+    border: 1px groove #3161c2;
+    background: #3161c2;
+    color: White;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    line-height: normal;
+    position: relative;
+    bottom: 0px;
+    margin-bottom: -1px;
+    width: 100%;
+}
+
+#DeleteButton {
+    size: 20px 20px;
+    font-size: 22px;
+    color: #505060;
+    position: relative;
+    left: 10px;
+    bottom:35px;
+    background: none;
+    border: none;
+    transition-duration: 0.25s;
+}
+#DeleteButton:hover {
+    transform: rotate(-6deg);
+    size: 20px 20px;
+    font-size: 32px;
+    color: #c44550;
+    position: relative;
+    left: 10px;
+    bottom:35px;
+    background: none;
+    border: none;
+    transition-duration: 0.5s;
+}
+
+#delete_shopping_cart{
+    background-color: #bb4545 solid;
+    width: auto;
+    color: #3f3f3f; 
+    padding: 10px;
+    left: 44%;
+    bottom: 10px;
+    float: left;
+    position: relative;
+    border: none;
+    transition-duration: 0.5s;
+}
+#delete_shopping_cart:hover {
+    background-color: #c44550 solid; 
+    color: #c44550; 
+    padding: 10px;
+    font-size: 20px;
+    left: 42%;
+    transition-duration: 0.5s;
+}
+>>>>>>> parent of a078b61... Update Style.css
