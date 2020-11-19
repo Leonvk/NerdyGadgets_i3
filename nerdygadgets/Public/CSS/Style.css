@@ -523,7 +523,7 @@ ul#ul-class-price li {
     float: left;
     padding: 1% 2% 0%;
     width: 60%;
-    border: black 2px solid;
+    border: 0px black solid;
     background: #e2e2e2;
     height: 100%;
     min-height: 100px;
@@ -733,4 +733,10 @@ ul#ul-class-price li {
     font-size:25px;
     width: fit-content;
     float: right;
+}
+#home_page_search {
+    color: #c44550;
+    background-color: #224550 solid;
+    border:5px #c44550 solid;
+
 }

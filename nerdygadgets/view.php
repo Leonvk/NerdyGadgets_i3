@@ -164,9 +164,9 @@ if ($R) {
                                     <option disabled>Grotere aantallen kunnen worden geselecteerd op de winkelmand pagina</option>
                                 </select>
                                 <input type=\"hidden\" name=\"itemID\" value=\"$id\">
-                                <button type=\"submit\" id = \"winkelmandknop\"><i class=\"fas fa-shopping-basket\" style=\"color:white;\"></i>Toevoegen</button>
+                                <button type=\"submit\" id = \"winkelmandknop\"><i class=\"fas fa-shopping-basket\" style=\"color:white;\"></i> Toevoegen</button>
                                 </form><br></div>");} else {
-                                    echo("<button type=\"submit\" id = \"winkelmandknop\"><i class=\"fas fa-shopping-basket\" style=\"color:white;\"></i>Toegevoegd</button>");
+                                    echo("<button type=\"submit\" id = \"winkelmandknop\"><i class=\"fas fa-check\" style=\"color:white;\"></i> Toegevoegd</button>");
                                 }
                                 if(isset($productID)){
                                     echo("<form method=\"post\"><input type=\"hidden\" name=\"id\" value=\"$productID\">Aantal: <input type=\"number\" name=\"number\" style=\"width: 100px;\" min=\"1\" autofocus></form></div>");
