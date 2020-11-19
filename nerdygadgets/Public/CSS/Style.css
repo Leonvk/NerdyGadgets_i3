@@ -119,19 +119,6 @@ ul#ul-class-navigation li {
     margin-left: 10px;
     margin-top: 10px;
     margin-right: 10px
-    /*box-shadow: inset 0px 0px 10px #00000050;*/
-}
-.ImgFrameCart {
-        border-radius: 10px;
-        width: 110px;
-        height: 110px;
-        background-color: #ffffff;
-        border: 0px #e2e2e2 solid;
-        float: left;
-        margin-left: 10px;
-        margin-top: 5px;
-        margin-right: 10px;
-        /*box-shadow: inset 0px 0px 10px #00000050;*/
 }
 .ImgFrame img {
     width: 230px;
@@ -495,10 +482,6 @@ ul#ul-class-price li {
     width: 60%;
     border: black 2px solid;
     height: 250px;
-    border: black 0px solid;
-    background: #e2e2e2;
-    height: 100%;
-    min-height: 100px;
     margin-bottom: 5px;
     overflow-y: scroll;
 }
@@ -513,16 +496,6 @@ ul#ul-class-price li {
     height: 250px;
     margin-bottom: 5px;
 }
-#window_background{
-    width: 38%;
-    border-radius: 25px;
-    float: left;
-    padding: 1% 2%;
-    margin-left: 55%;
-    margin-bottom: 5px;
-    background: #e2e2e2;
-    position: fixed;
-}
 .couponNumber{
     width: 13%;
 }
@@ -534,163 +507,3 @@ ul#ul-class-price li {
     height: 40px;
 }
 .to
-.totaalBedrag{
-    border-radius: 26px;
-    background: #505060;
-    padding: 1%;
-    width: 60%;
-    border: black 0px solid;
-    color: #ffffff;
-}
-.winkelbutton {
-    float: left;
-    width: auto;
-    background: #3161c2;
-    color: #ffffff;
-}
-.bestelbutton {
-    float: left;
-    width: 100%;
-    background: #3161c2;
-    border: 2px #3161c200 solid;
-    font-size: 30px;
-    color: #ffffff;
-    border-radius: 40px;
-    padding: 5px 20px;
-    transition-duration: 0.3s;
-    transition: initial;
-}
-.buttonempty {
-    border: none;
-    color: #00000000;
-    background:#00000000;
-}
-.bestelbutton:hover {
-    background: #ffffff;
-    color: #3161c2;
-    border:2px #3161c2 solid;
-    width: 102%;
-    border-radius: 15px;
-    transition-duration: 0.3s;
-
-  }
-.mandItemsOverzicht form {
-    display: inline-block;
-    
-}
-#winkelmandknop {
-    border: none;
-    padding:12px;
-    border-radius: 100px;
-    background-color:#31c261;
-    font-size:22px;
-    float: right;
-    color:#ffffff;
-}
-#IncrementButton{
-    /* style=\"height: 40px; font-size: 20px; width:20px; padding: 0px;\" */
-    height: 30px;
-    font-size: 15px;
-    width: 40px;
-    padding: 0px;
-    border: 0px;
-}
-#IncrementButtonCount{
-    height: 30px;
-    font-size: 15px;
-    width: 80px;
-    padding: 10px;
-    border: 0px;
-    -webkit-appearance: none;
-    -moz-appearance: textfield;
-    border-radius: 0px;
-}
-#CartItem{
-    padding: 8px;
-    border-bottom:2px #fdfdfd solid;
-    margin-bottom: 0px;
-}
-.couponNumber{
-    border: 2px solid #505060 !important;
-}
-
-.bestellenKolom1,.bestellenKolom2,.bestellenKolom3 {
-    height: 50px;
-}
-.bestellenKolom1 label,.bestellenKolom2 label,.bestellenKolom3 label{
-    float: left;
-    padding-top: 7px;
-}
-.bestellenKolom1 input, .bestellenKolom2 input ,.bestellenKolom3 input{
-    float: left;
-    margin-right: 10px;
-}
-.bestellenKolom1 input.form-control {
-    width: 40%;
-}
-.bestellenKolom2 input.form-control {
-    width: 33%;
-}
-.bestellenKolom3 input.form-control {
-    width: 20%;
-}
-
-#footer {
-    clear: both;
-    border: 1px groove #3161c2;
-    background: #3161c2;
-    color: White;
-    padding: 0;
-    text-align: center;
-    vertical-align: middle;
-    line-height: normal;
-    position: relative;
-    bottom: 0px;
-    margin-bottom: -1px;
-    width: 100%;
-}
-
-#DeleteButton {
-    size: 20px 20px;
-    font-size: 22px;
-    color: #505060;
-    position: relative;
-    left: 10px;
-    bottom:35px;
-    background: none;
-    border: none;
-    transition-duration: 0.25s;
-}
-#DeleteButton:hover {
-    transform: rotate(-6deg);
-    size: 20px 20px;
-    font-size: 32px;
-    color: #c44550;
-    position: relative;
-    left: 10px;
-    bottom:35px;
-    background: none;
-    border: none;
-    transition-duration: 0.5s;
-}
-
-#delete_shopping_cart{
-    background-color: #bb4545 solid;
-    width: auto;
-    color: #3f3f3f; 
-    padding: 10px;
-    left: 44%;
-    bottom: 10px;
-    float: left;
-    position: relative;
-    border: none;
-    transition-duration: 0.5s;
-}
-#delete_shopping_cart:hover {
-    background-color: #c44550 solid; 
-    color: #c44550; 
-    padding: 10px;
-    font-size: 20px;
-    left: 42%;
-    transition-duration: 0.5s;
-}
