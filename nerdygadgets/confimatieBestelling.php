@@ -132,13 +132,26 @@ if(!isset($_SESSION['cart'])) {
                     <!--info opslaan in variablen-->
                     <?php
                     $naam = $_POST["shipment_address_first_name"];
+                    $tussenvoegsel = $_POST["shipment_address_name_addition"];
+                    $achternaam = $_POST["shipment_address_last_name"];
+                    $postcode = $_POST["shipment_address_post_code"];
+                    $huisnummer = $_POST["shipment_address_house_number"];
+                    $email = $_POST["email"];
                     ?>
                     <div class="PersoonlijkeInfoOverzicht">
                         <h1>Persoonlijke Informatie:</h1>
                         <div class="Pinfo">
-                            <label>Naam: <?php echo $naam?></label>
+                            <label>Naam: <?php echo $naam. " ". $tussenvoegsel ." " . $achternaam?></label><br>
+                            <label>Postcode: <?php echo $postcode ?></label><br>
+                            <label>Huisnummer: <?php echo $huisnummer ?></label><br>
+                            <label>E-mail: <?php echo $email ?></label><br>
                         </div>
-
+                    </div>
+                    <div class="confimatieMeldingOverzicht">
+                        <h1>confirmatiemail</h1>
+                        <p>er is een confirmatiemail is verzonden naar <?php echo $email ?>.
+                        Check aub uw mail om uw bestelling te conformeeren.</p>
+                        <p id="kleineLettertjes">Als u geen mail heeft ontvangen check nog eens of u het juiste mail-adres heeft opgegeven en check uw SPAM-folder. Als u hierna nog steeds geen mailtje heeft ontvangen neem dan contact met ons op.</p>
                     </div>
                 </div>
             </div>

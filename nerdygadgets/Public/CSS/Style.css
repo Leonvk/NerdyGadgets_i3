@@ -750,10 +750,24 @@ ul#ul-class-price li {
     min-height: 100px;
     margin-bottom: 5px;
 }
-
-.PersoonlijkeInfoOverzicht h1, .mandItemsOverzicht h1{
+.PersoonlijkeInfoOverzicht h1, .mandItemsOverzicht h1, .confimatieMeldingOverzicht h1{
     font-size: 20px;
 }
 .Pinfo{
     padding: 8px;
+}
+.confimatieMeldingOverzicht{
+    float: left;
+    padding: 1% 2% 0%;
+    width: 40%;
+    border: 0px black solid;
+    background: #ffffff;
+    height: 100%;
+    min-height: 100px;
+    margin-bottom: 5px;
+}
+#kleineLettertjes{
+    font-size: xx-small;
+    font-weight: 300;
+    font-style: italic;
 }

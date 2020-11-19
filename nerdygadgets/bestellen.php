@@ -97,13 +97,7 @@ if(!isset($_SESSION['cart'])) {
                  <input type = "email" class = "form-control"
                         name = "email" placeholder = "example@nerdygadgets.com" required>
              </div>
-             <div class = "Wachtwoord">
-                 Wachtwoord<br>
-                 <input type = "password" class = "form-control"
-                        name = "wachtwoord" placeholder = "Wachtwoord" required>
-                 <input type = "password" class = "form-control"
-                        name = "wachtwoord" placeholder = "Wachtwoord bevestigen" required><br>
-             </div>
+             <br>
              <button class = "btn btn-lg btn-primary btn-block" type = "submit" name = "login">Doorgaan</button>
          </form>
       </div>
