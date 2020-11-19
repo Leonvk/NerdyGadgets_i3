@@ -718,7 +718,6 @@ ul#ul-class-price li {
     float: left;
     position: relative;
     border: none;
-    transition-duration: 0.5s;
 }
 #delete_shopping_cart:hover {
     background-color: #c44550 solid; 
@@ -726,10 +725,115 @@ ul#ul-class-price li {
     padding: 10px;
     font-size: 20px;
     left: 47%;
-    transition-duration: 0.5s;
 }
 #home_page_search {
-    color: #c44550;
+    float: right;
+    width: 40%;
+    font-size: 20px;
+    height: 50px;
+    color: #3f3f3f;
     background-color: #224550 solid;
-    border:5px #c44550 solid;
+
+}
+#home_page_search_submit {
+    float: right;
+    width: 10%;
+    font-size: 20px;
+    height: 50px;
+    color: #fdfdfd;
+    background-color: #3161c2;
+    border:none;
+    margin-left: 1%;
+    border:2px #3161c2 solid;
+}
+#home_page_search_submit:hover {
+    background: #ffffff;
+    color: #3161c2;
+    border:2px #3161c2 solid;
+
+}
+#homepage_search_tile {
+    margin: 1%;
+    float: left;
+    width: 98%;
+    height: 300px;
+    padding: 20px;
+    background-color: #84abf8;
+    border-radius: 20px;
+}
+#hompage_search_text {
+    margin-top: 10px;
+    margin-left: 20px;
+    font-size: 50px;
+    color: #fefefe;
+}
+#homepage_sub_tiles {
+    width: 100%;
+    height: auto + 300px;
+    float: left;
+    margin-bottom: 100px;
+}
+#homepage_product_tile {
+    float: left;
+    margin: 1%;
+    width: 31.33%;
+    height: 300px;
+    padding: 20px;
+    background-color: #e2e2e2;
+    border-radius: 20px;
+}
+.homepage_image{
+    border-radius: 30px;
+    width: 150px;
+    height: 150px;
+    background-color: #ffffff;
+    border: 0px #e2e2e2 solid;
+    float: left;
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+#homepage_catogory_tile{
+    float: left;
+    margin: 0.5%;
+    width: 15.66666%;
+    height: 70px;
+    padding: 20px;
+    color: #fdfdfd;
+    text-align: center;
+    font-size: 15px;
+    background-color: #3f3f3f;
+    border-radius: 10px;
+}
+#homepage_catogory_tiles{
+    width: 100%;
+    float: left;
+}
+.home_page_text {
+    font-size: 20px;
+    margin-left: 10px;
+}
+#product_tile_button{
+    position: inherit;
+    bottom: -200px;
+    float: right;
+}
+.product_tile_button {
+    width: 100%;
+    background: #3161c2;
+    font-size: 20px;
+    color: #ffffff;
+    border-radius: 40px;
+    padding: 10px 50px;
+    bottom: -15px;
+    left: 15px;
+    border:2px #3161c2 solid;
+    
+}
+.product_tile_button:hover {
+    background: #ffffff;
+    color: #3161c2;
+    border:2px #3161c2 solid;
+
 }
