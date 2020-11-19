@@ -27,7 +27,7 @@
 
             <ul class="list-unstyled">
                 <li>
-                    <a href="https://www.youtube.com/watch?v=oHg5SJYRHA0&ab_channel=cotter548">Link 1</a>
+                    <a href="garantieEnRetour.php">Garantie & retouneren</a>
                 </li>
                 <li>
                     <a href="index.php">Link 2</a>
@@ -51,16 +51,13 @@
 
             <ul class="list-unstyled">
                 <li>
-                    <p>Nerdygadgets@nerdygadgets.nl</p>
+                    <p>Nerdy.gadgets@nerdygadgets.nl</p>
                 </li>
                 <li>
                     <p>030 123 12 34</p>
                 </li>
                 <li>
-                    <a href="#!">Link 3</a>
-                </li>
-                <li>
-                    <a href="#!">Link 4</a>
+                    <p>Wij staan elke werkdag van 9 tot 18 klaar om u te helpen.</p>
                 </li>
             </ul>
 
