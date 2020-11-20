@@ -21,9 +21,9 @@ function usernameExists($username) {
     mysqli_stmt_execute($statement);
     $returnableResult = mysqli_stmt_get_result($statement);
     if(mysqli_num_rows($returnableResult) == 0) {
-       return TRUE;
-    } else {
         return FALSE;
+    } else {
+        return TRUE;
     }
 }
 ?>

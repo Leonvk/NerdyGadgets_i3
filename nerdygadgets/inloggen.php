@@ -2,6 +2,12 @@
 $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
 mysqli_set_charset($Connection, 'latin1');
 include __DIR__ . "/header.php";
+
+if(isset($_SESSION['username'])) {
+    unset($_SESSION['username']);
+    echo("<meta http-equiv='refresh' content='0'>");
+}
+
 ?>
 <html lang = "en">
 <head>
@@ -40,8 +46,8 @@ include __DIR__ . "/header.php";
       </div>
       <div class = "container">
          <form class="form-signin" role="form" action="verify.php" method="post">
-            <input type="text" class="form-control" name="username" placeholder="Gebruikersnaam" required autofocus></br>
-            <input type="password" class="form-control" name="password" placeholder="Wachtwoord" required>
+            <input type="text" class="form-control" name="username" placeholder="Gebruikersnaam" <?php if(isset($_SESSION['fieldValues'])) {echo("value=\"" . $_SESSION['fieldValues']['username'] . "\"");} else {echo("autofocus");} ?> required></br>
+            <input type="password" class="form-control" name="password" placeholder="Wachtwoord" <?PHP if(isset($_SESSION['fieldValues'])) {echo("autofocus");} unset($_SESSION['fieldValues']); ?> required>
             <button class="btn btn-lg btn-primary btn-block" type="submit" name="login">Login</button>
          </form>
          <?php if(isset($_SESSION['error'])) {echo("<p style=\"color: red;\">" . $_SESSION['error'] . "</p>"); unset($_SESSION['error']);} ?>

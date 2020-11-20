@@ -1,6 +1,9 @@
 <?php
 session_start();
 include "functions/verify.php";
+$connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
+mysqli_set_charset($connection, 'latin1');
+include "connect.php";
 
 $error = "";
 $validUsername = FALSE;
@@ -30,7 +33,7 @@ if(empty($_POST['username'])) {
             $error .= "-De gebruikersnaam mag de volgende karakters bevatten: a-z, 0-9, '_', '-', '.'.<br>";
         } else {
             // Checks if the username is unique
-            if(FALSE/*!usernameExists($username)*/) {
+            if(usernameExists($username)) {
                 $error .= "-Deze gebruikersnaam bestaat al<br>";
             } else {
                 $validUsername = TRUE;
@@ -120,7 +123,7 @@ if(empty($_POST['password'])) {
     if(strlen($password) < 8) {
         $error .= "-Het wachtwoord moet een minimale lengte van 8 karakters hebben.<br>";
     } else {
-        $validPassword;
+        $validPassword = TRUE;
     }
 }
 
@@ -134,7 +137,7 @@ if(empty($_POST['password1'])) {
     if(strlen($password1) < 8) {
         $error .= "-Het wachtwoord moet een minimale lengte van 8 karakters hebben.<br>";
     } else {
-        $validPassword1;
+        $validPassword1 = TRUE;
     }
 }
 
@@ -194,5 +197,45 @@ if($error != "") {
     $_SESSION['fieldValues'] = array('username' => $username, 'firstName' => $firstName, 'middleName' => $middleName, 'lastName' => $lastName, 'email' => $email, 'password' => $password, 'password1' => $password1, 'postcode' => $postcode, 'huisnummer' => $huisnummer, 'phone' => $phone);
     header("Location: AccountMaken.php");
     die();
+} elseif($validUsername && $validFirstName && $validMiddleName && $validLastName && $validEmail && $validPassword && $validPassword1 && $passwordMatch && $validPostcode && $validHuisnummer && $validPhone) {
+    // If every field has been deemed worthy put everything into the database
+    // First store the date in the user table
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    $query = "INSERT INTO `user`(`username`, `firstName`, `middleName`, `lastName`, `email`, `password`, `phone`) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $statement = mysqli_prepare($connection, $query);
+    mysqli_stmt_bind_param($statement, "ssssssi", $username, $firstName, $middleName, $lastName, $email, $hashedPassword, $phone);
+    mysqli_stmt_execute($statement);
+    // Get the new userID
+    $query = "SELECT `userID` FROM `user` WHERE `username` = ?";
+    $statement = mysqli_prepare($connection, $query);
+    mysqli_stmt_bind_param($statement, "s", $username);
+    mysqli_stmt_execute($statement);
+    $result = mysqli_stmt_get_result($statement);
+    $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    $userID = $result[0]['userID'];
+    // Store the data in the address table
+    $query = "INSERT INTO `address`(`userID`, `postalCode`, `number`) VALUES (?, ?, ?)";
+    $statement = mysqli_prepare($connection, $query);
+    mysqli_stmt_bind_param($statement, "iss", $userID, $postcode, $huisnummer);
+    mysqli_stmt_execute($statement);
+    // Get the new addressID
+    $query = "SELECT `addressID` FROM `address` WHERE `userID` = ?";
+    $statement = mysqli_prepare($connection, $query);
+    mysqli_stmt_bind_param($statement, "i", $userID);
+    mysqli_stmt_execute($statement);
+    $result = mysqli_stmt_get_result($statement);
+    $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    $addressID = $result[0]['addressID'];
+    // Update the addressID
+    $query = "UPDATE `user` SET `addressID` = ? WHERE `userID` = ?";
+    $statement = mysqli_prepare($connection, $query);
+    mysqli_stmt_bind_param($statement, "ii", $addressID, $userID);
+    mysqli_stmt_execute($statement);
+    $_SESSION['fieldValues'] = array('username' => $username);
+    header("Location: inloggen.php");
+    die();
+} else {
+    echo("Something went wrong");
+    echo("<br>Username:$validUsername<br>First name:$validFirstName<br>Middle name:$validMiddleName<br>Last name:$validLastName<br>Email:$validEmail<br>Password:$validPassword<br>Password1:$validPassword1<br>Password match:$passwordMatch<br>Postcode:$validPostcode<br>Number:$validHuisnummer<br>Phone:$validPhone");
 }
 ?>
