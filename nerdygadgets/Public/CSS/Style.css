@@ -682,6 +682,7 @@ ul#ul-class-price li {
     bottom: 0px;
     margin-bottom: -1px;
     width: 100%;
+    a:hover {color:red;}
 }
 
 #DeleteButton {

@@ -27,16 +27,16 @@
 
             <ul class="list-unstyled">
                 <li>
-                    <a href="garantieEnRetour.php">Garantie & retouneren</a>
+                    <a href="garantieEnRetour.php" style="color:white">Garantie & retouneren</a>
                 </li>
                 <li>
-                    <a href="index.php">Link 2</a>
+                    <a href="index.php" style="color:white">Link 2</a>
                 </li>
                 <li>
-                    <a href="index.php">Link 3</a>
+                    <a href="index.php" style="color:white">Link 3</a>
                 </li>
                 <li>
-                    <a href="index.php">Link 4</a>
+                    <a href="index.php" style="color:white">Link 4</a>
                 </li>
             </ul>
 
@@ -72,7 +72,7 @@
 
 <!-- Copyright -->
 <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="https://mdbootstrap.com/"> NerdyGadgets.com</a>
+    <a href="https://mdbootstrap.com/" style="color: white"> NerdyGadgets.com</a>
 </div>
 <!-- Copyright -->
 <!-- Footer -->
