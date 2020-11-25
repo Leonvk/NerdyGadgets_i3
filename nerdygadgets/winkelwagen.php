@@ -142,7 +142,7 @@ if(array_key_exists('delete', $_POST)) {
 
             ?>
         </div>
-        <!--side menu shopping cart-->
+        <!--side menu shopping cart price-->
         <div class="Bestellen" id="window_background">
             <table style="font-size:20px; width: 50%; border-spacing: 50px;">
                 <td>totaal artikelen:</td><td><?php echo("&euro;".number_format($totalPrice,2));?><br></td><tr>
@@ -154,21 +154,32 @@ if(array_key_exists('delete', $_POST)) {
             <button type="button" class="buttonempty"> <a class="bestelbutton" href="bestellen.php">Bestellen</a></button>
             <?php } ?>
         </div>
+        
+        <!---------------- super slechte fix, MOET nog ff beter gedaan worden, maar css is gemeen aan het doen --------------->
+        <br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <!---------------- super slechte fix, MOET nog ff beter gedaan worden, maar css is gemeen aan het doen --------------->
+
+        <!--side menu shopping cart coupon code-->
+        <div  id="window_background">
+            <h3> coupon code </h3>
+            <form action="winkelwagen.php">
+                <input id = home_page_search_submit type="submit" value = "toepassen" style="width:auto;">
+                <input id = home_page_search type="text" name="search_string"> 
+            </form>
+        </div>
 
         <!--bottom of shopping cart-->
         <div class="totaalBedrag">
             <?php echo("<br>Totaal prijs: &euro;$totalPrice"); ?>
             
         </div>
+        <!-- ----------< delete shoppingcart >----------
         <div class="wrapperWinkelmand2">
             <form method="post">
                 <input type="submit" name="delete" value="Winkelwagen leegmaken" id = delete_shopping_cart style="background-color: #00000000 ">
             </form>
         </div>
-        <div class="reclameMail">
-            <!--<input type="checkbox" name="actieMail" class="actieMail"><label for="reclameMail">Ik zou graag acties via de e-mail willen ontvangen</label>
         -->
-        </div>
     </form>
 </div>
 
