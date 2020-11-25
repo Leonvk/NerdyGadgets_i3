@@ -1,18 +1,12 @@
 <?php
-$Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
-mysqli_set_charset($Connection, 'latin1');
 include __DIR__ . "/header.php";
 
 if(isset($_SESSION['username'])) {
     unset($_SESSION['username']);
     echo("<meta http-equiv='refresh' content='0'>");
 }
-
 ?>
-<html lang = "en">
 <head>
-    <title>NerdyGadgets</title>
-    <link href = "css/bootstrap.min.css" rel = "stylesheet">
     <style>
         body {
             padding-top: 40px;
