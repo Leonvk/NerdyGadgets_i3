@@ -6,7 +6,6 @@ include __DIR__ . "/header.php";
 <html lang = "en">
 <head>
     <title>NerdyGadgets</title>
-    <link href = "css/bootstrap.min.css" rel = "stylesheet">
     <style>
         body {
             padding-top: 40px;

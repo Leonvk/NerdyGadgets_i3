@@ -3,20 +3,40 @@ session_start();
 if(!isset($_SESSION['username'])) {
     header("Location: index.php");
     die();
+} else {
+    $username = $_SESSION['username'];
+    $userID = $_SESSION['userID'];
 }
 
 if(array_key_exists('logOut', $_POST)) {
     unset($_SESSION['username']);
     unset($_SESSION['userID']);
     header("Location: index.php");
-}
-
-if(array_key_exists('deleteConfirm', $_POST)) {
-    // Delete the account
+    die();
 }
 
 $connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
 mysqli_set_charset($connection, 'latin1');
+
+if(array_key_exists('deleteConfirm', $_POST)) {
+    // Voorkom dat het admin test account verwijderd kan worden
+    if($_SESSION['username'] == 'admin') {
+        $error = "<p style=\"color: red;\">Dit account kan niet verwijderd worden</p><br>";
+    } else {
+        // 'remove' account
+        $query = "UPDATE `user` SET `username` = '[Deleted]', `password` = NULL WHERE `userID` = ?";
+        $statement = mysqli_prepare($connection, $query);
+        mysqli_stmt_bind_param($statement, "s", $userID);
+        mysqli_stmt_execute($statement);
+        unset($_SESSION['username']);
+        unset($_SESSION['userID']);
+        header("Location: index.php");
+        die();
+    }
+} elseif(array_key_exists('deleteCancel', $_POST)) {
+    header("Location: account.php");
+    die();
+}
 include __DIR__ . "/header.php";
 
 $userID = $_SESSION['userID'];
@@ -42,10 +62,13 @@ $result = mysqli_stmt_get_result($statement);
 $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
 $postalCode = $result[0]['postalCode'];
 $number = $result[0]['number'];
+
+if(isset($error)) {echo($error);}
 ?>
 <h2>Overzicht van het account <?php echo($username); ?></h2>
 <div id="accountOverview">
-<?php 
+<?php
+    // echo("");
     echo("Gebruikersnaam: $username<br>Voornaam: $firstName<br>Tussenvoegsel: $middleName<br>Achternaam: $lastName<br>e-mail:$email<br>Gebruiker sinds: $userSince<br>Telefoonnummer: $phone<br>Postcode: $postalCode<br>Huisnummer: $number");
 ?>
 </div>
@@ -61,10 +84,13 @@ if(!isset($_POST['delete'])) {
     ");
 } else {
     echo("
-    <form method=\"post\">
-        <br><br><br>
-        <input type=\"submit\" value=\"Weet je zeker dat je je account wilt verwijderen? Dit kan niet ongedaan worden gemaakt!\" name=\"deleteConfirm\">
-    </form>
+    <div style=\"\">
+    <h3>Weet je zeker dat je je account wilt verwijderen? Dit kan <b><u>niet</u></b> ongedaan worden gemaakt!</h3>
+        <form method=\"post\">
+            <input type=\"submit\" value=\"Ik bevestig hiermee dat ik al mijn accountgegevens kwijt raak en ik geen toegang meer heb tot mijn account.\" name=\"deleteConfirm\" style=\"background-color: red\">
+            <input type=\"submit\" value=\"Annuleren\" name=\"deleteCancel\" style=\"background-color: green\">
+        </form>
+    </div>
     "); 
 }
 ?>
