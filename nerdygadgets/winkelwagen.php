@@ -142,12 +142,13 @@ if(array_key_exists('delete', $_POST)) {
 
             ?>
         </div>
+        <!-- -----------side menu shopping cart (start)----------- -->
         <div id="side_menu_shoppingcart">
         <!--side menu shopping cart price-->
         <div id="window_background">
             <table style="font-size:20px; width: 50%; border-spacing: 50px;">
                 <td>totaal artikelen:</td><td><?php echo("&euro;".number_format($totalPrice,2));?><br></td><tr>
-                <td>verzendkosten:</td><td><?php echo("&euro;".$shippingcosts);?><br></td><tr>
+                <td>verzendkosten:</td><td><?php echo("&euro;".number_format($shippingcosts,2));?><br></td><tr>
                 <td><b>totaal:</b></td><td><b><?php echo("&euro;".number_format($TheActualTotalPrice,2));?></b><br></td><tr>
             </table>
             <br><br>
@@ -171,6 +172,8 @@ if(array_key_exists('delete', $_POST)) {
             ?>
         </div>
         </div>
+        <!-- -----------side menu shopping cart (end)----------- -->
+
         <!--bottom of shopping cart-->
         <div class="totaalBedrag">
             <?php echo("<br>Totaal prijs: &euro;$totalPrice"); ?>
