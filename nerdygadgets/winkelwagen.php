@@ -142,6 +142,7 @@ if(array_key_exists('delete', $_POST)) {
 
             ?>
         </div>
+        <!-- -----------side menu shopping cart (start)----------- -->
         <div id="side_menu_shoppingcart">
         <!--side menu shopping cart price-->
         <div id="window_background">
@@ -171,6 +172,8 @@ if(array_key_exists('delete', $_POST)) {
             ?>
         </div>
         </div>
+        <!-- -----------side menu shopping cart (end)----------- -->
+
         <!--bottom of shopping cart-->
         <div class="totaalBedrag">
             <?php echo("<br>Totaal prijs: &euro;$totalPrice"); ?>
