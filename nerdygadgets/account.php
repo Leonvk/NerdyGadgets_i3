@@ -11,6 +11,10 @@ if(array_key_exists('logOut', $_POST)) {
     header("Location: index.php");
 }
 
+if(array_key_exists('deleteConfirm', $_POST)) {
+    // Delete the account
+}
+
 $connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
 mysqli_set_charset($connection, 'latin1');
 include __DIR__ . "/header.php";
@@ -48,3 +52,19 @@ $number = $result[0]['number'];
 <form method="post">
     <input type="submit" value="Uitloggen" name="logOut">
 </form>
+<?php
+if(!isset($_POST['delete'])) {
+    echo("
+    <form method=\"post\">
+        <input type=\"submit\" value=\"Account verwijderen\" name=\"delete\">
+    </form>
+    ");
+} else {
+    echo("
+    <form method=\"post\">
+        <br><br><br>
+        <input type=\"submit\" value=\"Weet je zeker dat je je account wilt verwijderen? Dit kan niet ongedaan worden gemaakt!\" name=\"deleteConfirm\">
+    </form>
+    "); 
+}
+?>
