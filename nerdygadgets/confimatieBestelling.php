@@ -118,7 +118,7 @@ if(!isset($_SESSION['cart'])) {
                         }
                         //shipping costs calculation
                         $TheActualTotalPrice = 0;
-                        if ($totalPrice <= 50){ //<----condition whether or not to include shipping costs
+                        if ($totalPrice <= 50 AND $totalPrice != 0){ //<----condition whether or not to include shipping costs
                             $shippingcosts = 6.50; //<---------------- verzendkosten
                         } else {
                             $shippingcosts = 0;
@@ -147,12 +147,15 @@ if(!isset($_SESSION['cart'])) {
                             <label>E-mail: <?php echo $email ?></label><br>
                         </div>
                     </div>
+                    <!--Dit komt niet als er geen producten in de mand staan-->
+                    <?php if (count($_SESSION['cart'])!=0) { ?>
                     <div class="confimatieMeldingOverzicht">
                         <h1>confirmatiemail</h1>
                         <p>er is een confirmatiemail is verzonden naar <?php echo $email ?>.
                         Check aub uw mail om uw bestelling te conformeeren.</p>
                         <p id="kleineLettertjes">Als u geen mail heeft ontvangen check nog eens of u het juiste mail-adres heeft opgegeven en check uw SPAM-folder. Als u hierna nog steeds geen mailtje heeft ontvangen neem dan contact met ons op.</p>
                     </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
