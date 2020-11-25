@@ -18,25 +18,24 @@ include __DIR__ . "/header.php";
             margin-bottom: -1px;
             border-bottom-right-radius: 0;
             border-bottom-left-radius: 0;
-
+            border-color:#017572;
         }
 
         .form-signin input[type="password"] {
             margin-bottom: 10px;
             border-top-left-radius: 0;
             border-top-right-radius: 0;
-
+            border-color:#017572;
         }
 
         h2{
             text-align: center;
             color: #212529;
-            margin-bottom: 2%;
         }
     </style>
 </head>
 <body>
-    <h2>Maak hier je NerdyGadgets account aan!</h2>
+    <h2>Maak hier je nerdygadgets account aan!</h2>
       <div class = "container form-signin">
       </div>
       <div class = "container">
