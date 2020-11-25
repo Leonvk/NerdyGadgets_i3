@@ -142,8 +142,9 @@ if(array_key_exists('delete', $_POST)) {
 
             ?>
         </div>
+        <div id="side_menu_shoppingcart">
         <!--side menu shopping cart price-->
-        <div class="Bestellen" id="window_background">
+        <div id="window_background">
             <table style="font-size:20px; width: 50%; border-spacing: 50px;">
                 <td>totaal artikelen:</td><td><?php echo("&euro;".number_format($totalPrice,2));?><br></td><tr>
                 <td>verzendkosten:</td><td><?php echo("&euro;".$shippingcosts);?><br></td><tr>
@@ -155,19 +156,21 @@ if(array_key_exists('delete', $_POST)) {
             <?php } ?>
         </div>
         
-        <!---------------- super slechte fix, MOET nog ff beter gedaan worden, maar css is gemeen aan het doen --------------->
-        <br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <!---------------- super slechte fix, MOET nog ff beter gedaan worden, maar css is gemeen aan het doen --------------->
 
         <!--side menu shopping cart coupon code-->
-        <div  id="window_background">
-            <h3> coupon code </h3>
-            <form action="winkelwagen.php">
-                <input id = home_page_search_submit type="submit" value = "toepassen" style="width:auto;">
-                <input id = home_page_search type="text" name="search_string"> 
+        <div id="window_background">
+            <h3> coupon code </h3> <br>
+            <form action="winkelwagen.php" method = "post">
+                <input id = home_page_search type="text" name="coupon_code" style="float:left;">  
+                <input id = home_page_search_submit type="submit" value = "toepassen" style="width:auto;float:left;">
             </form>
+            <?php
+            if (isset($_POST['coupon_code'])) {
+                print("<br><br><br>De ingevulde couponcode is onjuist");
+            }
+            ?>
         </div>
-
+        </div>
         <!--bottom of shopping cart-->
         <div class="totaalBedrag">
             <?php echo("<br>Totaal prijs: &euro;$totalPrice"); ?>

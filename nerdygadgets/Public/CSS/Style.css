@@ -546,16 +546,23 @@ ul#ul-class-price li {
     position: fixed;
 }
 #window_background{
-    width: 38%;
+    width: 100%;
     border-radius: 25px;
     float: left;
     padding: 1% 2%;
-    margin-left: 55%;
     margin-bottom: 5px;
     background: #e2e2e2;
-    position: fixed;
-    margin-top: 100px;
+    position: relative;
+    margin-bottom: 10px;
+}
 
+#side_menu_shoppingcart{
+        width: 38%;
+        border-radius: 25px;
+        float: left;
+        margin-left: 55%;
+        /*background: #e2e2e2;*/
+        position: fixed;
 }
 .couponNumber{
     width: 60%;
@@ -838,6 +845,7 @@ ul#ul-class-price li {
     background: #ffffff;
     color: #3161c2;
     border:2px #3161c2 solid;
+
 }
 .PersoonlijkeInfoOverzicht {
     border-radius: 25px 25px 0px 0px;
