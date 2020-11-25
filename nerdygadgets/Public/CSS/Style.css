@@ -142,10 +142,8 @@ ul#ul-class-navigation li {
 }
 .ImgFrameCart {
         border-radius: 10px;
-        width: 110px;
-        height: 110px;
-        width: 70px;
-        height: 70px;
+        width: 100px;
+        height: 100px;
         background-color: #ffffff;
         border: 0px #e2e2e2 solid;
         float: left;
@@ -886,4 +884,3 @@ ul#ul-class-price li {
 #Header {
     margin: 0 !important;
 }
-
