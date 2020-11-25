@@ -86,7 +86,7 @@ if(!isset($_SESSION['cart'])) {
                 <?php
                     if(isset($_SESSION['username'])) {
                         $username = $_SESSION['username'];
-                        echo("<a href=\"inloggen.php\" class=\"HrefDecoration\"><i class=\"fas fa-user\" style=\"color:#ffffff;\"></i> $username</a>");
+                        echo("<a href=\"account.php\" class=\"HrefDecoration\"><i class=\"fas fa-user\" style=\"color:#ffffff;\"></i> $username</a>");
                     } else {
                         echo("<a href=\"inloggen.php\" class=\"HrefDecoration\"><i class=\"fa fa-sign-in\" style=\"color:#ffffff;\"></i>  Inloggen</a>");
                     }

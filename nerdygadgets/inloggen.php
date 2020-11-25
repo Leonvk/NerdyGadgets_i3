@@ -1,10 +1,18 @@
 <?php
 include __DIR__ . "/header.php";
 
+<<<<<<< Updated upstream
 if(isset($_SESSION['username'])) {
     unset($_SESSION['username']);
     echo("<meta http-equiv='refresh' content='0'>");
 }
+=======
+// if(isset($_SESSION['username'])) {
+//     unset($_SESSION['username']);
+//     echo("<meta http-equiv='refresh' content='0'>");
+// }
+
+>>>>>>> Stashed changes
 ?>
 <head>
     <style>
@@ -35,7 +43,7 @@ if(isset($_SESSION['username'])) {
     </style>
 </head>
 <body>
-    <h2>Log in met je e-mailadress</h2>
+    <h2>Log in met je gebruikersnaam</h2>
       <div class = "container form-signin">
       </div>
       <div class = "container">
