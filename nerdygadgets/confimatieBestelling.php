@@ -6,6 +6,8 @@ include "connect.php";
 if(!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = array();
 }
+$connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
+mysqli_set_charset($Connection, 'latin1');
 ?>
 <!DOCTYPE html>
 <html lang="en" style="background-color: rgb(35, 35, 47);">
@@ -56,8 +58,14 @@ if(!isset($_SESSION['cart'])) {
                 <a href="browse.php" class="HrefDecoration"><i class="fas fa-search" style="color:#ffffff;"></i>  Zoeken</a>
             </li>
             <li>
-                <a href="inloggen.php" class="HrefDecoration"><i class="fa fa-sign-in" style="color:#ffffff;"></i>  Inloggen</a>
-            </li>
+            <?php
+                    if(isset($_SESSION['username'])) {
+                        $username = $_SESSION['username'];
+                        echo("<a href=\"account.php\" class=\"HrefDecoration\"><i class=\"fas fa-user\" style=\"color:#ffffff;\"></i> $username</a>");
+                    } else {
+                        echo("<a href=\"inloggen.php\" class=\"HrefDecoration\"><i class=\"fa fa-sign-in\" style=\"color:#ffffff;\"></i>  Inloggen</a>");
+                    }
+                ?>            </li>
             <li>
                 <a href="winkelwagen.php" class="HrefDecoration"><i class="fas fa-shopping-basket" style="color:#ffffff;"></i>  Winkelwagen</a>
             </li>
@@ -131,12 +139,35 @@ if(!isset($_SESSION['cart'])) {
                     </div>
                     <!--info opslaan in variablen-->
                     <?php
-                    $naam = $_POST["shipment_address_first_name"];
-                    $tussenvoegsel = $_POST["shipment_address_name_addition"];
-                    $achternaam = $_POST["shipment_address_last_name"];
-                    $postcode = $_POST["shipment_address_post_code"];
-                    $huisnummer = $_POST["shipment_address_house_number"];
-                    $email = $_POST["email"];
+                    if(isset($_SESSION['username'])) {
+                        // Account gegevens ophalen
+                        $query = "SELECT `firstName`, `middleName`, `lastName`, `email`, `addressID` FROM `user` WHERE `username` = ?";
+                        $statement = mysqli_prepare($connection, $query);
+                        mysqli_stmt_bind_param($statement, "s", $_SESSION['username']);
+                        mysqli_stmt_execute($statement);
+                        $result = mysqli_stmt_get_result($statement);
+                        $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+                        $naam = $result[0]['firstName'];
+                        $tussenvoegsel = $result[0]['middleName'];
+                        $achternaam = $result[0]['lastName'];
+                        $email = $result[0]['email'];
+                        $addressID = $result[0]['addressID'];
+                        $query = "SELECT `postalCode`, `number` FROM `address` WHERE `addressID` = ?";
+                        $statement = mysqli_prepare($connection, $query);
+                        mysqli_stmt_bind_param($statement, "i", $addressID);
+                        mysqli_stmt_execute($statement);
+                        $result = mysqli_stmt_get_result($statement);
+                        $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+                        $postcode = $result[0]['postalCode'];
+                        $huisnummer = $result[0]['number'];
+                    } else {
+                        $naam = $_POST["shipment_address_first_name"];
+                        $tussenvoegsel = $_POST["shipment_address_name_addition"];
+                        $achternaam = $_POST["shipment_address_last_name"];
+                        $postcode = $_POST["shipment_address_post_code"];
+                        $huisnummer = $_POST["shipment_address_house_number"];
+                        $email = $_POST["email"];
+                    }
                     ?>
                     <div class="PersoonlijkeInfoOverzicht">
                         <h1>Persoonlijke Informatie:</h1>

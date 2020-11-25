@@ -2,6 +2,11 @@
 /*include __DIR__ . "/header.php";*/
 //header
 session_start();
+if(isset($_SESSION['username'])) {
+    header("Location: confimatieBestelling.php");
+    die();
+}
+
 include "connect.php";
 if(!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = array();
@@ -56,8 +61,14 @@ if(!isset($_SESSION['cart'])) {
                 <a href="browse.php" class="HrefDecoration"><i class="fas fa-search" style="color:#ffffff;"></i>  Zoeken</a>
             </li>
             <li>
-                <a href="inloggen.php" class="HrefDecoration"><i class="fa fa-sign-in" style="color:#ffffff;"></i>  Inloggen</a>
-            </li>
+            <?php
+                    if(isset($_SESSION['username'])) {
+                        $username = $_SESSION['username'];
+                        echo("<a href=\"account.php\" class=\"HrefDecoration\"><i class=\"fas fa-user\" style=\"color:#ffffff;\"></i> $username</a>");
+                    } else {
+                        echo("<a href=\"inloggen.php\" class=\"HrefDecoration\"><i class=\"fa fa-sign-in\" style=\"color:#ffffff;\"></i>  Inloggen</a>");
+                    }
+                ?>            </li>
             <li>
                 <a href="winkelwagen.php" class="HrefDecoration"><i class="fas fa-shopping-basket" style="color:#ffffff;"></i>  Winkelwagen</a>
             </li>
@@ -71,8 +82,7 @@ if(!isset($_SESSION['cart'])) {
       </div>
       <div class = "container">
           <h2>Kassa</h2>
-         <form class = "form-signin" role = "form"
-            action = "confimatieBestelling.php" method = "post">
+         <form class = "form-signin" role = "form" action = "confimatieBestelling.php" method = "post">
              <div class = "Naam">
              Naam*<br>
              <input type = "text" class = "form-control"
