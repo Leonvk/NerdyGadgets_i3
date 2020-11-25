@@ -550,10 +550,9 @@ ul#ul-class-price li {
     border-radius: 25px;
     float: left;
     padding: 1% 2%;
-    margin-bottom: 5px;
     background: #e2e2e2;
     position: relative;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 #side_menu_shoppingcart{
@@ -847,6 +846,8 @@ ul#ul-class-price li {
     border:2px #3161c2 solid;
 
 }
+<<<<<<< HEAD
+=======
 .PersoonlijkeInfoOverzicht {
     border-radius: 25px 25px 0px 0px;
     float: left;
@@ -882,3 +883,4 @@ ul#ul-class-price li {
 .confimatieMeldingOverzicht p {
     padding: 0px 8px;
 }
+>>>>>>> 74b60574fe8009fea3c7a8d109adc55c195ea077
