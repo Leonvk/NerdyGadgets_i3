@@ -150,7 +150,9 @@ if(array_key_exists('delete', $_POST)) {
                 <td><b>totaal:</b></td><td><b><?php echo("&euro;".number_format($TheActualTotalPrice,2));?></b><br></td><tr>
             </table>
             <br><br>
+            <?php if (count($_SESSION['cart'])==0) {print("U kunt nog niet bestellen omdat er geen artikelen in het Winkelwagentje staan");} else{ ?>
             <button type="button" class="buttonempty"> <a class="bestelbutton" href="bestellen.php">Bestellen</a></button>
+            <?php } ?>
         </div>
 
         <!--bottom of shopping cart-->

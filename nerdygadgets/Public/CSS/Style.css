@@ -870,3 +870,6 @@ ul#ul-class-price li {
     font-weight: 300;
     font-style: italic;
 }
+.confimatieMeldingOverzicht p {
+    padding: 0px 8px;
+}
