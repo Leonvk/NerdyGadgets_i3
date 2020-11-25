@@ -27,12 +27,6 @@ include __DIR__ . "/header.php";
             <?php
         }
         ?>
-        <!--
-        <div id = "homepage_catogory_tile">
-        placeholder
-        </div>
-
-        -->
     </div>
     <!--sub tiles-->
     <div id = "homepage_sub_tiles">
