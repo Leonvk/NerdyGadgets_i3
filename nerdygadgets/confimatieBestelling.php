@@ -111,7 +111,7 @@ if(!isset($_SESSION['cart'])) {
                                 echo("<div style=\"font-size: 20px;\"><b>$productName</b></div>");
                                 echo("p/st: &euro;$price");
                                 //echo aantal
-                                echo("<br>Aantal:$productID
+                                echo("<br>Aantal:$count
                                     <div class='confermatieBestelPrijs'><b>&euro;" . $price * $count . "</b></div>
                                     </div>");
                             }

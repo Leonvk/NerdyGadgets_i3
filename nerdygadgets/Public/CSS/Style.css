@@ -106,6 +106,7 @@ ul#ul-class-navigation li {
     margin-left: 21%;
     float: left;
     position: sticky;
+    min-height: 646px ;
 }
 #ProductFrame {
     width: 100%;
@@ -141,10 +142,8 @@ ul#ul-class-navigation li {
 }
 .ImgFrameCart {
         border-radius: 10px;
-        width: 110px;
-        height: 110px;
-        width: 70px;
-        height: 70px;
+        width: 100px;
+        height: 100px;
         background-color: #ffffff;
         border: 0px #e2e2e2 solid;
         float: left;
@@ -263,7 +262,7 @@ ul#ul-class-navigation li {
 .Background {
     /*background-color: #f1f1f1;*/
     width: 100%;
-    height: 100%;
+    /*height: 100%; */
     position: absolute;
 }
 #LogoA {
@@ -846,8 +845,6 @@ ul#ul-class-price li {
     border:2px #3161c2 solid;
 
 }
-<<<<<<< HEAD
-=======
 .PersoonlijkeInfoOverzicht {
     border-radius: 25px 25px 0px 0px;
     float: left;
@@ -883,4 +880,7 @@ ul#ul-class-price li {
 .confimatieMeldingOverzicht p {
     padding: 0px 8px;
 }
->>>>>>> 74b60574fe8009fea3c7a8d109adc55c195ea077
+
+#Header {
+    margin: 0 !important;
+}
