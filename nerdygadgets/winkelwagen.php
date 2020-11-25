@@ -144,7 +144,6 @@ if(array_key_exists('delete', $_POST)) {
         </div>
         <!-- -----------side menu shopping cart (start)----------- -->
         <div id="side_menu_shoppingcart">
-<<<<<<< Updated upstream
         <!--side menu shopping cart price-->
         <div id="window_background">
             <table style="font-size:20px; width: 50%; border-spacing: 50px;">
@@ -172,36 +171,6 @@ if(array_key_exists('delete', $_POST)) {
             }
             ?>
         </div>
-=======
-            <!--shopping cart price-->
-            <div id="window_background">
-                <table style="font-size:20px; width: 50%; border-spacing: 50px;">
-                    <td>totaal artikelen:</td><td><?php echo("&euro;".number_format($totalPrice,2));?><br></td><tr>
-                    <td>verzendkosten:</td><td><?php echo("&euro;".$shippingcosts);?><br></td><tr>
-                    <td><b>totaal:</b></td><td><b><?php echo("&euro;".number_format($TheActualTotalPrice,2));?></b><br></td><tr>
-                </table>
-                <br><br>
-                <?php if (count($_SESSION['cart'])==0) {print("U kunt nog niet bestellen omdat er geen artikelen in het Winkelwagentje staan");} else{ ?>
-                <button type="button" class="buttonempty"> <a class="bestelbutton" href="bestellen.php">Bestellen</a></button>
-                <?php } ?>
-            </div>
-            
-
-            <!--coupon code-->
-            <div id="window_background">
-                <h3> coupon code </h3> <br>
-                <form action="winkelwagen.php" method = "post">
-                    <input id = home_page_search type="text" name="coupon_code" style="float:left;">  
-                    <input id = home_page_search_submit type="submit" value = "toepassen" style="width:auto;float:left;">
-                </form>
-                <?php
-                if (isset($_POST['coupon_code'])) {
-                    print("<br><br><br>De ingevulde couponcode is onjuist");
-                }
-                ?>
-            </div>
-
->>>>>>> Stashed changes
         </div>
         <!-- -----------side menu shopping cart (end)----------- -->
 
