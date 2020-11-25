@@ -36,6 +36,15 @@ if(empty($_POST['password'])) {
     // check if the passwords match
     if(password_verify($password, $userPassword)) {
         $_SESSION['username'] = $username;
+        // Get the userID
+        $query = "SELECT `userID` FROM `user` WHERE `username` = ?";
+        $statement = mysqli_prepare($connection, $query);
+        mysqli_stmt_bind_param($statement, "s", $username);
+        mysqli_stmt_execute($statement);
+        $result = mysqli_stmt_get_result($statement);
+        $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        $userID = $result[0]['userID'];
+        $_SESSION['userID'] = $userID;
         header("Location: index.php");
         die();
     } else {
