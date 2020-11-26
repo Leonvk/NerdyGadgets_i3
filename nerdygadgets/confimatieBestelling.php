@@ -2,12 +2,216 @@
 /*include __DIR__ . "/header.php";*/
 //header
 session_start();
+$connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
+mysqli_set_charset($Connection, 'latin1');
+
+// Make sure only when someone has confirmed their order they can get on this page
+if(!isset($_POST['confirmOrder']) && !isset($_SESSION['username'])) {
+    header("Location: index.php");
+    die();
+} else {
+    // Check for user input from the bestellen.php page
+    if(isset($_POST['confirmOrder'])) {
+        // Verify user input
+        $error = "";
+        $validFirstName = FALSE;
+        $validMiddleName = FALSE;
+        $validLastName = FALSE;
+        $validEmail = FALSE;
+        $validPostcode = FALSE;
+        $validHuisnummer = FALSE;
+
+        // Checks if the shipment_address_first_name field has been filled
+        if(empty($_POST['shipment_address_first_name'])) {
+            $error .= "-Er is geen voornaam ingevuld.<br>";
+        } else {
+            // Save the user input
+            $firstName = $_POST['shipment_address_first_name'];
+            // Checks if the first name is shorter or equal to 35 char
+            if(strlen($firstName) > 35) {
+                $error .= "-De voornaam mag niet langer zijn dan 35 karakters.<br>";
+            } else {
+                // Checks if the first name contains only letters
+                if(preg_match("/^[a-zA-Z]{0,}$/", $firstName)) {
+                    $validFirstName = TRUE;
+                } else {
+                    $error .= "-De voornaam mag alleen letters bevatten.<br>";
+                }
+            }
+        }
+
+        // Checks if the shipment_address_name_addition field has been filled
+        if(empty($_POST['shipment_address_name_addition'])) {
+            $middleName = NULL;
+            $validMiddleName = TRUE;
+        } else {
+            // Save the user input
+            $middleName = $_POST['shipment_address_name_addition'];
+            // Checks if the middle name is shorter or equal to 35 char
+            if(strlen($middleName) > 35) {
+                $error .= "-Het tussenvoegsel mag niet langer zijn dan 35 karakters.<br>";
+            } else {
+                // Checks if the middle name contains only letters or spaces
+                if(preg_match("/^[a-zA-Z ]{0,}$/", $middleName)) {
+                    $validMiddleName = TRUE;
+                } else {
+                    $error .= "-Het tussenvoegsel mag alleen letters bevatten.<br>";
+                }
+            }
+        }
+
+        // Checks if the shipment_address_last_name field has been filled
+        if(empty($_POST['shipment_address_last_name'])) {
+            $error .= "-Er is geen achternaam ingevuld.<br>";
+        } else {
+            // Save the user input
+            $lastName = $_POST['shipment_address_last_name'];
+            // Checks if the last name is shorter or equal to 35 char
+            if(strlen($lastName) > 35) {
+                $error .= "-De achternaam mag niet langer zijn dan 35 karakters.<br>";
+            } else {
+                // Checks if the last name contains only letters
+                if(preg_match("/^[a-zA-Z]{0,}$/", $lastName)) {
+                    $validLastName = TRUE;
+                } else {
+                    $error .= "-De achternaam mag alleen letters bevatten.<br>";
+                }
+            }
+        }
+
+        // Checks if the shipment_address_post_code field has been filled
+        if(empty($_POST['shipment_address_post_code'])) {
+            $error .= "-Er is geen postcode ingevuld.<br>";
+        } else {
+            // Save the user input
+            $postcode = $_POST['shipment_address_post_code'];
+            // Checks if the postal code format is right
+            if(preg_match("/^[0-9]{4}[A-Z]{2}$/", $postcode)) {
+                $validPostcode = TRUE;
+            } else {
+                $error .= "-De postcode heeft een onjuist formaat. (1234AB)<br>";
+            }
+        }
+
+        // Check if the shipment_address_house_number field has been filled
+        if(empty($_POST['shipment_address_house_number'])) {
+            $error .= "-Er is geen huisnummer ingevuld.<br>";
+        } else {
+            // Save the user input
+            $huisnummer = $_POST['shipment_address_house_number'];
+            // Check if the number is correct
+            if(preg_match("/^[0-9a-zA-Z]{0,}$/", $huisnummer)) {
+                $validHuisnummer = TRUE;
+            } else {
+                $error .= "-Het huisnummer is onjuist ingevuld<br>";
+            }
+        }
+
+        // Checks if the email field has been filled
+        if(empty($_POST['email'])) {
+            $error .= "-Er is geen e-mailadres ingevuld.<br>";
+        } else {
+            // Save the user input
+            $email = $_POST['email'];
+            if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $error .= "-Het emailadres heeft niet het juiste formaat: example@nerdygadgest.com<br>";
+            } else {
+                $validEmail = TRUE;
+            }
+        }
+
+        // Write the data into the user table
+        if($error != "") {
+            $_SESSION['error'] = "Het volgende ging er mis:<br>" . $error;
+            $_SESSION['fieldValues'] = array('firstName' => $firstName, 'middleName' => $middleName, 'lastName' => $lastName, 'email' => $email, 'postcode' => $postcode, 'huisnummer' => $huisnummer);
+            header("Location: bestellen.php");
+            die();
+        } elseif($validFirstName && $validMiddleName && $validLastName && $validEmail && $validPostcode && $validHuisnummer) {
+            // If every field has been deemed worthy put everything into the database
+            // First store the date in the user table
+            $query = "INSERT INTO `user`(`username`, `firstName`, `middleName`, `lastName`, `email`, `password`, `phone`) VALUES ('[NoAccount]', ?, ?, ?, ?, '', 0)";
+            $statement = mysqli_prepare($connection, $query);
+            mysqli_stmt_bind_param($statement, "ssss", $firstName, $middleName, $lastName, $email);
+            mysqli_stmt_execute($statement);
+            // Get the new userID
+            $query = "SELECT LAST_INSERT_ID() AS 'userID'";
+            $statement = mysqli_prepare($connection, $query);
+            mysqli_stmt_execute($statement);
+            $result = mysqli_stmt_get_result($statement);
+            $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+            $userID = $result[0]['userID'];
+            // Store the data in the address table
+            $query = "INSERT INTO `address`(`userID`, `postalCode`, `number`) VALUES (?, ?, ?)";
+            $statement = mysqli_prepare($connection, $query);
+            mysqli_stmt_bind_param($statement, "iss", $userID, $postcode, $huisnummer);
+            mysqli_stmt_execute($statement);
+            // Get the new addressID
+            $query = "SELECT `addressID` FROM `address` WHERE `userID` = ?";
+            $statement = mysqli_prepare($connection, $query);
+            mysqli_stmt_bind_param($statement, "i", $userID);
+            mysqli_stmt_execute($statement);
+            $result = mysqli_stmt_get_result($statement);
+            $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+            $addressID = $result[0]['addressID'];
+            // Update the addressID
+            $query = "UPDATE `user` SET `addressID` = ? WHERE `userID` = ?";
+            $statement = mysqli_prepare($connection, $query);
+            mysqli_stmt_bind_param($statement, "ii", $addressID, $userID);
+            mysqli_stmt_execute($statement);
+        }
+    }
+    //<!--info opslaan in variablen-->
+    if(isset($_SESSION['username'])) {
+        // Account gegevens ophalen
+        $query = "SELECT `userID`, `firstName`, `middleName`, `lastName`, `email`, `addressID` FROM `user` WHERE `username` = ?";
+        $statement = mysqli_prepare($connection, $query);
+        mysqli_stmt_bind_param($statement, "s", $_SESSION['username']);
+        mysqli_stmt_execute($statement);
+        $result = mysqli_stmt_get_result($statement);
+        $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        $naam = $result[0]['firstName'];
+        $tussenvoegsel = $result[0]['middleName'];
+        $achternaam = $result[0]['lastName'];
+        $email = $result[0]['email'];
+        $addressID = $result[0]['addressID'];
+        $userID = $result[0]['userID'];
+        $query = "SELECT `postalCode`, `number` FROM `address` WHERE `addressID` = ?";
+        $statement = mysqli_prepare($connection, $query);
+        mysqli_stmt_bind_param($statement, "i", $addressID);
+        mysqli_stmt_execute($statement);
+        $result = mysqli_stmt_get_result($statement);
+        $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        $postcode = $result[0]['postalCode'];
+        $huisnummer = $result[0]['number'];
+    }               
+    // Process order:
+    // Write order into db
+    if(isset($_SESSION['cart'])) {
+        $query = "INSERT INTO `userorder`(`userID`) VALUES (?)";
+        $statement = mysqli_prepare($connection, $query);
+        mysqli_stmt_bind_param($statement, "i", $userID);
+        mysqli_stmt_execute($statement);
+        $query = "SELECT LAST_INSERT_ID() AS 'orderID'";
+        $statement = mysqli_prepare($connection, $query);
+        mysqli_stmt_execute($statement);
+        $result = mysqli_stmt_get_result($statement);
+        $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        $orderID = $result[0]['orderID'];
+        foreach($_SESSION['cart'] as $itemID => $amount) {
+            $query = "INSERT INTO `order`(`orderID`, `itemID`, `amount`) VALUES (?, ?, ?)";
+            $statement = mysqli_prepare($connection, $query);
+            mysqli_stmt_bind_param($statement, "iii", $orderID, $itemID, $amount);
+            mysqli_stmt_execute($statement);
+        }
+    // Update the amount of stock of the ordered items
+    }
+}
+
 include "connect.php";
 if(!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = array();
 }
-$connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
-mysqli_set_charset($Connection, 'latin1');
+
 ?>
 <!DOCTYPE html>
 <html lang="en" style="background-color: rgb(35, 35, 47);">
@@ -76,6 +280,7 @@ mysqli_set_charset($Connection, 'latin1');
             <div id="SubContent">
                 <!--einde header-->
                 <div class = "container">
+                    <h1>Uw bestelling is verwerkt!</h1>
                     <!--overzicht van de producten-->
                     <div class="mandItemsOverzicht">
                         <h1>Producten overzicht:</h1>
@@ -137,38 +342,6 @@ mysqli_set_charset($Connection, 'latin1');
                         echo ("Totaal prijs: <div class='confermatieBestelPrijs'><b>&euro;$TheActualTotalPrice</b></div></div>");
                         ?>
                     </div>
-                    <!--info opslaan in variablen-->
-                    <?php
-                    if(isset($_SESSION['username'])) {
-                        // Account gegevens ophalen
-                        $query = "SELECT `firstName`, `middleName`, `lastName`, `email`, `addressID` FROM `user` WHERE `username` = ?";
-                        $statement = mysqli_prepare($connection, $query);
-                        mysqli_stmt_bind_param($statement, "s", $_SESSION['username']);
-                        mysqli_stmt_execute($statement);
-                        $result = mysqli_stmt_get_result($statement);
-                        $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
-                        $naam = $result[0]['firstName'];
-                        $tussenvoegsel = $result[0]['middleName'];
-                        $achternaam = $result[0]['lastName'];
-                        $email = $result[0]['email'];
-                        $addressID = $result[0]['addressID'];
-                        $query = "SELECT `postalCode`, `number` FROM `address` WHERE `addressID` = ?";
-                        $statement = mysqli_prepare($connection, $query);
-                        mysqli_stmt_bind_param($statement, "i", $addressID);
-                        mysqli_stmt_execute($statement);
-                        $result = mysqli_stmt_get_result($statement);
-                        $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
-                        $postcode = $result[0]['postalCode'];
-                        $huisnummer = $result[0]['number'];
-                    } else {
-                        $naam = $_POST["shipment_address_first_name"];
-                        $tussenvoegsel = $_POST["shipment_address_name_addition"];
-                        $achternaam = $_POST["shipment_address_last_name"];
-                        $postcode = $_POST["shipment_address_post_code"];
-                        $huisnummer = $_POST["shipment_address_house_number"];
-                        $email = $_POST["email"];
-                    }
-                    ?>
                     <div class="PersoonlijkeInfoOverzicht">
                         <h1>Persoonlijke Informatie:</h1>
                         <div class="Pinfo">
@@ -193,3 +366,6 @@ mysqli_set_charset($Connection, 'latin1');
     </div>
 </body>
 </html>
+<?php
+    unset($_SESSION['cart']);   
+?>

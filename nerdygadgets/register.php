@@ -160,7 +160,7 @@ if(empty($_POST['postcode'])) {
     if(preg_match("/^[0-9]{4}[A-Z]{2}$/", $postcode)) {
         $validPostcode = TRUE;
     } else {
-        $error .= "-De postcode heeft een onjuist formaat: 1234AB<br>";
+        $error .= "-De postcode heeft een onjuist formaat. (1234AB)<br>";
     }
 }
 

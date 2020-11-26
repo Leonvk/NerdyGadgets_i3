@@ -67,9 +67,12 @@ if(isset($error)) {echo($error);}
 ?>
 <h2>Overzicht van het account <?php echo($username); ?></h2>
 <div id="accountOverview">
+<form method="post">
+    <input type="submit"  name="Change account details"
+</form>
 <?php
-    // echo("");
-    echo("Gebruikersnaam: $username<br>Voornaam: $firstName<br>Tussenvoegsel: $middleName<br>Achternaam: $lastName<br>e-mail:$email<br>Gebruiker sinds: $userSince<br>Telefoonnummer: $phone<br>Postcode: $postalCode<br>Huisnummer: $number");
+
+    echo("Gebruikersnaam: $username<br>Voornaam: $firstName<br>Tussenvoegsel: $middleName<br>Achternaam: $lastName<br>e-mail: $email<br>Gebruiker sinds: $userSince<br>Telefoonnummer: $phone<br>Postcode: $postalCode<br>Huisnummer: $number");
 ?>
 </div>
 <form method="post">

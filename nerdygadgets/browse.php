@@ -249,7 +249,7 @@ if(array_key_exists('itemID', $_POST)) {
                             <h6>Inclusief BTW </h6>
                             <form action="" method="post">
                                 <input type="hidden" name="itemID" value="<?php echo($row['StockItemID']);?>">
-                                <button type="submit" id="winkelmandknop"><?php if(array_key_exists($row['StockItemID'], $_SESSION['cart'])) {echo("<i class=\"fas fa-check\" style=\"color:white;\"></i> Toegevoegd");} else {echo("<i class=\"fas fa-shopping-basket\" style=\"color:white;\"></i> Toevoegen");} ?></button>
+                                <button type="submit" id="winkelmandknop"><?php if(array_key_exists($row['StockItemID'], $_SESSION['cart'])) {echo("<i class=\"fas fa-check\" style=\"color:white;\"></i>");} else {echo("<i class=\"fas fa-shopping-basket\" style=\"color:white;\"></i> Toevoegen");} ?></button>
                             </form>
                         </div>
                     </div>

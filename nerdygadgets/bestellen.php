@@ -86,30 +86,30 @@ if(!isset($_SESSION['cart'])) {
              <div class = "Naam">
              Naam*<br>
              <input type = "text" class = "form-control"
-               name = "shipment_address_first_name" placeholder = "Voornaam" required autofocus>
+               name = "shipment_address_first_name" placeholder = "Voornaam" <?php if(isset($_SESSION['error'])) {echo("value=\"" . $_SESSION['fieldValues']['firstName'] . "\"");} ?> required autofocus>
              <input type = "text" class = "form-control"
-                    name = "shipment_address_name_addition" placeholder = "Tussenv.">
+                    name = "shipment_address_name_addition" placeholder = "Tussenv." <?php if(isset($_SESSION['error'])) {echo("value=\"" . $_SESSION['fieldValues']['middleName'] . "\"");} ?>>
              <input type = "text" class = "form-control"
-                    name = "shipment_address_last_name" placeholder = "Achternaam" required><br>
+                    name = "shipment_address_last_name" placeholder = "Achternaam" <?php if(isset($_SESSION['error'])) {echo("value=\"" . $_SESSION['fieldValues']['lastName'] . "\"");} ?> required><br>
              </div>
              <div class = "Postcode">
              Postcode*<br>
-                 <input type = "text" class = "form-control"
-                        pattern="[1-9][0-9]{3}\s?[a-zA-Z]{2}" name = "shipment_address_post_code" placeholder = "Postcode" required>
+                 <input type = "text" class = "form-control" name = "shipment_address_post_code" placeholder = "Postcode" <?php if(isset($_SESSION['error'])) {echo("value=\"" . $_SESSION['fieldValues']['postcode'] . "\"");} ?> required>
              </div>
              <div class = "Huisnummer">
              Huisnummer*<br>
                  <input type = "text" class = "form-control"
-                    name = "shipment_address_house_number" placeholder = "Nr." required>
+                    name = "shipment_address_house_number" placeholder = "Nr." <?php if(isset($_SESSION['error'])) {echo("value=\"" . $_SESSION['fieldValues']['huisnummer'] . "\"");} ?> required>
              </div>
              <div class = "email">
                  E-maildres*<br>
                  <input type = "email" class = "form-control"
-                        name = "email" placeholder = "example@nerdygadgets.com" required>
+                        name = "email" placeholder = "example@nerdygadgets.com" <?php if(isset($_SESSION['error'])) {echo("value=\"" . $_SESSION['fieldValues']['email'] . "\""); unset($_SESSION['fieldValues']);} ?> required>
              </div>
              <br>
-             <button class = "btn btn-lg btn-primary btn-block" type = "submit" name = "login">Doorgaan</button>
+             <button class = "btn btn-lg btn-primary btn-block" type = "submit" name = "confirmOrder">Doorgaan</button>
          </form>
+         <?php if(isset($_SESSION['error'])) {echo("<p style=\"color: red\">" . $_SESSION['error'] . "</p>"); unset($_SESSION['error']);} ?>
       </div>
    </body>
 </html>
