@@ -883,4 +883,16 @@ ul#ul-class-price li {
 .confimatieMeldingOverzicht p {
     padding: 0px 8px;
 }
->>>>>>> 74b60574fe8009fea3c7a8d109adc55c195ea077
+
+.RetourEnGarantie {
+    padding-left: 10px;
+}
+
+.SendEmail {
+    width: 80px;
+    border: #000000 2px solid;
+}
+
+.EmailBox {
+
+}
