@@ -11,7 +11,7 @@ if(!isset($_SESSION['username'])) {
 if(array_key_exists('logOut', $_POST)) {
     unset($_SESSION['username']);
     unset($_SESSION['userID']);
-    header("Location: index.php");
+    header("Location: inloggen.php");
     die();
 }
 
@@ -66,10 +66,8 @@ $number = $result[0]['number'];
 if(isset($error)) {echo($error);}
 ?>
 <h2>Overzicht van het account <?php echo($username); ?></h2>
+<button><a href="orders.php">Mijn bestellingen</a></button>
 <div id="accountOverview">
-<form method="post">
-    <input type="submit"  name="Change account details"
-</form>
 <?php
 
     echo("Gebruikersnaam: $username<br>Voornaam: $firstName<br>Tussenvoegsel: $middleName<br>Achternaam: $lastName<br>e-mail: $email<br>Gebruiker sinds: $userSince<br>Telefoonnummer: $phone<br>Postcode: $postalCode<br>Huisnummer: $number");

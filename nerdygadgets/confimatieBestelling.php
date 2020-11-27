@@ -3,10 +3,10 @@
 //header
 session_start();
 $connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
-mysqli_set_charset($Connection, 'latin1');
+mysqli_set_charset($connection, 'latin1');
 
 // Make sure only when someone has confirmed their order they can get on this page
-if(!isset($_POST['confirmOrder']) && !isset($_SESSION['username'])) {
+if((!isset($_POST['confirmOrder']) && !isset($_SESSION['username'])) || !isset($_SESSION['cart'])) {
     header("Location: index.php");
     die();
 } else {
@@ -185,11 +185,40 @@ if(!isset($_POST['confirmOrder']) && !isset($_SESSION['username'])) {
         $huisnummer = $result[0]['number'];
     }               
     // Process order:
+    $total = 0;
+    foreach($_SESSION['cart'] as $productID => $count) {
+        $Query = " 
+            SELECT SI.StockItemID, 
+            (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice, 
+            StockItemName,
+            QuantityOnHand AS QuantityOnHand,
+            SearchDetails, 
+            (CASE WHEN (RecommendedRetailPrice*(1+(TaxRate/100))) > 50 THEN 0 ELSE 6.95 END) AS SendCosts, MarketingComments, CustomFields, SI.Video,
+            (SELECT ImagePath FROM stockitemimages WHERE StockItemID = SI.StockItemID LIMIT 1) as ImagePath,
+            (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = SI.StockItemID LIMIT 1) as BackupImagePath   
+            FROM stockitems SI 
+            JOIN stockitemholdings SIH USING(stockitemid)
+            JOIN stockitemstockgroups ON SI.StockItemID = stockitemstockgroups.StockItemID
+            JOIN stockgroups USING(StockGroupID)
+            WHERE SI.stockitemid = ?
+            GROUP BY StockItemID";
+         $Statement = mysqli_prepare($connection, $Query);
+        mysqli_stmt_bind_param($Statement, "i", $productID);
+        mysqli_stmt_execute($Statement);
+        $ReturnableResult = mysqli_stmt_get_result($Statement);
+        if ($ReturnableResult && mysqli_num_rows($ReturnableResult) == 1) {
+            $Result = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC)[0];
+        } else {
+            $Result = null;
+        }
+        $price = number_format($Result['SellPrice'], 2);
+        $total += $price * $count;
+    }
     // Write order into db
     if(isset($_SESSION['cart'])) {
-        $query = "INSERT INTO `userorder`(`userID`) VALUES (?)";
+        $query = "INSERT INTO `userorder`(`userID`, `total`) VALUES (?, ?)";
         $statement = mysqli_prepare($connection, $query);
-        mysqli_stmt_bind_param($statement, "i", $userID);
+        mysqli_stmt_bind_param($statement, "id", $userID, $total);
         mysqli_stmt_execute($statement);
         $query = "SELECT LAST_INSERT_ID() AS 'orderID'";
         $statement = mysqli_prepare($connection, $query);
@@ -198,12 +227,44 @@ if(!isset($_POST['confirmOrder']) && !isset($_SESSION['username'])) {
         $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
         $orderID = $result[0]['orderID'];
         foreach($_SESSION['cart'] as $itemID => $amount) {
-            $query = "INSERT INTO `order`(`orderID`, `itemID`, `amount`) VALUES (?, ?, ?)";
+            $Query = " 
+                SELECT SI.StockItemID, 
+                (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice, 
+                StockItemName,
+                QuantityOnHand AS QuantityOnHand,
+                SearchDetails, 
+                (CASE WHEN (RecommendedRetailPrice*(1+(TaxRate/100))) > 50 THEN 0 ELSE 6.95 END) AS SendCosts, MarketingComments, CustomFields, SI.Video,
+                (SELECT ImagePath FROM stockitemimages WHERE StockItemID = SI.StockItemID LIMIT 1) as ImagePath,
+                (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = SI.StockItemID LIMIT 1) as BackupImagePath   
+                FROM stockitems SI 
+                JOIN stockitemholdings SIH USING(stockitemid)
+                JOIN stockitemstockgroups ON SI.StockItemID = stockitemstockgroups.StockItemID
+                JOIN stockgroups USING(StockGroupID)
+                WHERE SI.stockitemid = ?
+                GROUP BY StockItemID";
+            $Statement = mysqli_prepare($connection, $Query);
+            mysqli_stmt_bind_param($Statement, "i", $itemID);
+            mysqli_stmt_execute($Statement);
+            $ReturnableResult = mysqli_stmt_get_result($Statement);
+            $Result = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC)[0];
+        $sellPrice = number_format($Result['SellPrice'], 2);
+            $query = "INSERT INTO `order`(`orderID`, `itemID`, `amount`, `sellPrice`) VALUES (?, ?, ?, ?)";
             $statement = mysqli_prepare($connection, $query);
-            mysqli_stmt_bind_param($statement, "iii", $orderID, $itemID, $amount);
+            mysqli_stmt_bind_param($statement, "iiid", $orderID, $itemID, $amount, $sellPrice);
             mysqli_stmt_execute($statement);
         }
-    // Update the amount of stock of the ordered items
+        // Update the amount of stock of the ordered items
+        foreach($_SESSION['cart'] as $itemID => $amount) {
+            $query = "UPDATE
+                        `stockitemholdings`
+                    SET 
+                    `QuantityOnHand` = CASE WHEN `QuantityOnHand` - ? >= 0 THEN `QuantityOnHand` - ? ELSE 0 END
+                    WHERE
+                        `StockItemID` = ?";
+            $statement = mysqli_prepare($connection, $query);
+            mysqli_stmt_bind_param($statement, "iii", $amount, $amount, $itemID);
+            mysqli_stmt_execute($statement);
+        }
     }
 }
 
