@@ -51,7 +51,7 @@
 
             <ul class="list-unstyled">
                 <li>
-                    <p>Nerdy.gadgets@nerdygadgets.nl</p>
+                    <a href="Email.php">Nerdy.gadgets@nerdygadgets.nl</a>
                 </li>
                 <li>
                     <p>030 123 12 34</p>
