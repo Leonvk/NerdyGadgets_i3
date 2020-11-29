@@ -758,8 +758,6 @@ ul#ul-class-price li {
     background: #ffffff;
     color: #3161c2;
     border:2px #3161c2 solid;
-
-
 }
 #homepage_search_tile {
     margin: 1%;
@@ -846,8 +844,7 @@ ul#ul-class-price li {
     border:2px #3161c2 solid;
 
 }
-<<<<<<< HEAD
-=======
+
 .PersoonlijkeInfoOverzicht {
     border-radius: 25px 25px 0px 0px;
     float: left;
@@ -895,4 +892,21 @@ ul#ul-class-price li {
 
 .EmailBox {
 
+}
+
+#coupon_submit_button{
+    float: right;
+    width: 10%;
+    font-size: 20px;
+    height: 50px;
+    color: #fdfdfd;
+    background-color: #505060;
+    border:none;
+    margin-left: 1%;
+    border:2px #505060 solid;
+}
+#coupon_submit_button:hover {
+    background: #ffffff;
+    color: #505060;
+    border:2px #505060 solid;
 }

@@ -163,7 +163,7 @@ if(array_key_exists('delete', $_POST)) {
             <h3> coupon code </h3> <br>
             <form action="winkelwagen.php" method = "post">
                 <input id = home_page_search type="text" name="coupon_code" style="float:left;">  
-                <input id = home_page_search_submit type="submit" value = "toepassen" style="width:auto;float:left;">
+                <input id = coupon_submit_button type="submit" value = "toepassen" style="width:auto;float:left;">
             </form>
             <?php
             if (isset($_POST['coupon_code'])) {
@@ -179,7 +179,7 @@ if(array_key_exists('delete', $_POST)) {
             <?php echo("<br>Totaal prijs: &euro;$totalPrice"); ?>
             
         </div>
-        <!-- ----------< delete shoppingcart >----------
+        <!-- ----------< delete shoppingcart button >----------
         <div class="wrapperWinkelmand2">
             <form method="post">
                 <input type="submit" name="delete" value="Winkelwagen leegmaken" id = delete_shopping_cart style="background-color: #00000000 ">

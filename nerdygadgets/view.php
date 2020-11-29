@@ -146,11 +146,12 @@ if ($R) {
                     <div class="CenterPriceLeftChild">
                         <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $Result['SellPrice']); ?></b></p>
                         <h6> Inclusief BTW </h6>
-                        <?php 
+                        <?php
                         $id = $_GET['id'];
                         if(!$addedItem) {
                             echo("Aantal:
-                                <form method=\"post\" action=\"view.php?id=$id\" method=\"post\"><input type=\"hidden\" name=\"id\" value=\"$id\">
+                                <form method=\"post\" action=\"view.php?id=$id\" method=\"post\">
+                                <input type=\"hidden\" name=\"id\" value=\"$id\">
                                 <select name=\"count\" style=\"width: 100px;\">
                                     <option value=\"1\">1</option>
                                     <option value=\"2\">2</option>
@@ -166,7 +167,7 @@ if ($R) {
                                 </select>
                                 <input type=\"hidden\" name=\"itemID\" value=\"$id\">
                                 <button type=\"submit\" id = \"winkelmandknop\"><i class=\"fas fa-shopping-basket\" style=\"color:white;\"></i> Toevoegen</button>
-                                </form><br></div>");} else {
+                                </form><br>");} else {
                                     echo("<button type=\"submit\" id = \"winkelmandknop\"><i class=\"fas fa-check\" style=\"color:white;\"></i> Toegevoegd</button>");
                                 }
                                 if(isset($productID)){
