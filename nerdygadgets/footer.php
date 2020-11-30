@@ -51,7 +51,8 @@
 
             <ul class="list-unstyled">
                 <li>
-                    <a href="Email.php">Nerdy.gadgets@nerdygadgets.nl</a>
+                    <a href="Email.php" style="color: white">Nerdy.gadgets@nerdygadgets.nl</a>
+                    <p></p>
                 </li>
                 <li>
                     <p>030 123 12 34</p>

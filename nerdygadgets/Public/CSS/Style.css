@@ -545,6 +545,7 @@ ul#ul-class-price li {
     background: #e2e2e2;
     position: fixed;
 }
+
 #window_background{
     width: 100%;
     border-radius: 25px;
@@ -890,8 +891,13 @@ ul#ul-class-price li {
     border: #000000 2px solid;
 }
 
-.EmailBox {
+#EmailForSubject {
+    padding-left: 5px;
+}
 
+#SendKnopEmail {
+    text-align: center;
+    width: 10%;
 }
 
 #coupon_submit_button{
