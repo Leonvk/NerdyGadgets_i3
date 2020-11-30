@@ -1,9 +1,7 @@
 <?php
 include __DIR__ . "/header.php";
 ?>
-<!DOCTYPE html>
-<html>
-    <body>
+<div id="GarantieEnRetour">
     <h1>Retouneren</h1>
     <h5>Retourtermijn</h5>
         <p> Voor artikelen die op een afstand worden verkocht, geldt een wettelijk herroepingsrecht van 14 dagen. Verder heeft u op bepaalde producten ook nog wettelijke garantie zitten.<br>
@@ -38,9 +36,7 @@ include __DIR__ . "/header.php";
     <h5>Een defect artikel</h5>
         <p>Om zo snel mogelijk weer een goedwerkend artikel in huis te hebben kun je het beste retourneren en een nieuwe bestellen. <br>
             Meld het artikel als retour aan in je account of check de retourvoorwaarden of jouw artikel retour gestuurd mag worden.</p>
-    </body>
-</html>
-
+</div>
 <?php
 include __DIR__ ."/footer.php";
 ?>

@@ -912,7 +912,7 @@ ul#ul-class-price li {
 }
 
 #EmailTekstConfirmatie {
-    border: 2px black solid;
+    border: 1px black solid;
 }
 
 #coupon_submit_button{
@@ -930,4 +930,8 @@ ul#ul-class-price li {
     background: #ffffff;
     color: #505060;
     border:2px #505060 solid;
+}
+
+#GarantieEnRetour {
+    padding-left: 10px;
 }
