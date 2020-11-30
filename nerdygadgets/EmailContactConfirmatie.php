@@ -12,13 +12,17 @@ Als u binnen 5 werkdagen nog niet van ons te horen heeft gekregen
 
 <div class="EmailHerhaling">
     <form action="Email.php" method="get">
+        <div id="EmailOnderwerpConfirmatie">
         <?php
         print ($_POST["EmailOnderwerp"]);
         ?>
+        </div>
         <br><br>
+        <div id="EmailTekstConfirmatie">
         <?php
         echo ($_POST["EmailText"]);
         ?>
+        </div>
     </form>
 </div>
 
