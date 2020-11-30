@@ -939,9 +939,11 @@ ul#ul-class-price li {
 #AccountVerwijderKnop {
     width: 10%;
     color: black;
+    margin-left: 10px;
 }
 
 #AccountUitlogKnop {
     width: 10%;
     color: black;
+    margin-left: 10px;
 }
