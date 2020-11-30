@@ -935,3 +935,13 @@ ul#ul-class-price li {
 #GarantieEnRetour {
     padding-left: 10px;
 }
+
+#AccountVerwijderKnop {
+    width: 10%;
+    color: black;
+}
+
+#AccountUitlogKnop {
+    width: 10%;
+    color: black;
+}

@@ -14,10 +14,10 @@ include __DIR__ . "/header.php";
         </div>
 
         <label for="EmailText"></label>
-        <textarea id="EmailText" name="EmailText" rows="15" cols="361" style="resize: none"></textarea>
+        <textarea id="EmailText" name="EmailText" rows="15" cols="360" style="resize: none"></textarea>
         <input type="submit" value="Send" id="SendKnopEmail">
     </form>
-<br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <!-- </div> -->
 
 <?php

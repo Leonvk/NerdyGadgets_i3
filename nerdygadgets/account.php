@@ -74,13 +74,14 @@ if(isset($error)) {echo($error);}
 ?>
 </div>
 <form method="post">
-    <input type="submit" value="Uitloggen" name="logOut">
+    <input type="submit" value="Uitloggen" name="logOut" id="AccountUitlogKnop">
 </form>
+
 <?php
 if(!isset($_POST['delete'])) {
     echo("
     <form method=\"post\">
-        <input type=\"submit\" value=\"Account verwijderen\" name=\"delete\">
+        <input type=\"submit\" value=\"Account verwijderen\" name=\"delete\" id=\"AccountVerwijderKnop\">
     </form>
     ");
 } else {
