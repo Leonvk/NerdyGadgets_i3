@@ -2,7 +2,7 @@
 include __DIR__ . "/header.php";
 ?>
 
-<!--<div class="EmailBox"> -->
+<div class="EmailBox">
     <form action="EmailContactConfirmatie.php" method="post"?>
 
         <div id="EmailForSubject">
@@ -20,8 +20,7 @@ include __DIR__ . "/header.php";
         <textarea id="EmailText" name="EmailText" aria-required="true" rows="15" cols="360" style="resize: none"></textarea>
         <input type="submit" value="Send" id="SendKnopEmail">
     </form>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<!-- </div> -->
+</div>
 
 <?php
 include __DIR__ . "/footer.php";
