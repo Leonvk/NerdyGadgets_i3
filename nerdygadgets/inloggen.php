@@ -32,6 +32,7 @@ include __DIR__ . "/header.php";
         h2{
             text-align: center;
             color: #212529;
+            margin-bottom: 2%;
         }
     </style>
 </head>
@@ -46,6 +47,7 @@ include __DIR__ . "/header.php";
             <button class="btn btn-lg btn-primary btn-block" type="submit" name="login">Login</button>
          </form>
          <?php if(isset($_SESSION['error'])) {echo("<p style=\"color: red;\">" . $_SESSION['error'] . "</p>"); unset($_SESSION['error']);} ?>
+          <br>
          Nog geen account?<a href="AccountMaken.php"> Klik hier om er een aan te maken!</a>
       </div>
    </body>
