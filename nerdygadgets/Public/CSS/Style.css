@@ -967,7 +967,6 @@ ul#ul-class-price li {
     margin-left: 10px;
 }
 
-<<<<<<< Updated upstream
 .accInfo {
     position: relative;
     left: 50%;
@@ -985,9 +984,21 @@ div#accountOverview {
 #Header {
     margin: 0px !important;
 }
-=======
+
 #TextBoxEmail {
     resize: horizontal;
 }
 
->>>>>>> Stashed changes
+.accInfo {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 50%;
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+div#accountOverview {
+    padding-top: 20px;
+}
