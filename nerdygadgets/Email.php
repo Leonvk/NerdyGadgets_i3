@@ -15,9 +15,11 @@ include __DIR__ . "/header.php";
             <label for="EmailOnderwerp">Onderwerp:</label>
             <input id="EmailOnderwerp" name="EmailOnderwerp" required><br><br>
         </div>
-
+        <div id="TextBoxEmail">
         <label for="EmailText"></label>
-        <textarea id="EmailText" name="EmailText" aria-required="true" rows="15" cols="360" style="resize: none"></textarea>
+        <textarea id="EmailText" name="EmailText" required="true" rows="15" cols="207" style="resize: none"></textarea>
+        </div>
+
         <input type="submit" value="Send" id="SendKnopEmail">
     </form>
 </div>

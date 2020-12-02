@@ -1,7 +1,7 @@
 <?php
 include __DIR__ . "/header.php";
 ?>
-
+<div id="EmailRetourBericht">
 <h3>Wij hebben uw bericht ontvangen</h3>
 
 <h5>Wij gaan zo snel mogelijk aan de slag om uw vragen te beantwoorden <br><br>
@@ -9,9 +9,15 @@ U kunt binnen 5 werkdagen een reactie van ons verwachten. <br>
 Als u binnen 5 werkdagen nog niet van ons te horen heeft gekregen
     neem dan contact met ons op via het telefoon nummer: 030 123 12 34 <br>
 <br> Hieronder kunt u zien wat u heeft verzonden.</h5>
-
+</div>
 <div class="EmailHerhaling">
     <form action="Email.php" method="get">
+        <div id="EmailVanConfirmatie">
+        <?php
+        echo ($_POST["EmailVan"]);
+        ?>
+        </div>
+        <br>
         <div id="EmailOnderwerpConfirmatie">
         <?php
         echo ($_POST["EmailOnderwerp"]);
