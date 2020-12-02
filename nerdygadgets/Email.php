@@ -7,7 +7,7 @@ include __DIR__ . "/header.php";
 
         <div id="EmailForSubject">
             <label for="EmailAdres">Voor:</label>
-            <input id="EmailAdres" name="EmailBox" type="email" value="Nerdy.gadgets@nerdygadgets.nl" disabled> <br><br>
+            <input id="EmailAdres" name="EmailBox" type="email" value="Nerdy.gadgets@nerdygadgets.nl" disabled style="color: dodgerblue;"> <br><br>
 
             <label for="EmailVan">Van?</label>
             <input id="EmailVan" name="EmailVan" type="email" required>
