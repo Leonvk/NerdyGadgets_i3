@@ -937,13 +937,27 @@ ul#ul-class-price li {
 }
 
 #AccountVerwijderKnop {
-    width: 10%;
+    width: fit-content;
     color: black;
     margin-left: 10px;
 }
 
 #AccountUitlogKnop {
-    width: 10%;
+    width: fit-content;
     color: black;
     margin-left: 10px;
+}
+
+.accInfo {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 50%;
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+div#accountOverview {
+    padding-top: 20px;
 }

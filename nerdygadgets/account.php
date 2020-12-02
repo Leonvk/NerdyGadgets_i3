@@ -65,15 +65,17 @@ $number = $result[0]['number'];
 
 if(isset($error)) {echo($error);}
 ?>
-<h2>Overzicht van het account <?php echo($username); ?></h2>
-<button><a href="orders.php">Mijn bestellingen</a></button>
-<div id="accountOverview">
-<?php
-
-    echo("Gebruikersnaam: $username<br>Voornaam: $firstName<br>Tussenvoegsel: $middleName<br>Achternaam: $lastName<br>e-mail: $email<br>Gebruiker sinds: $userSince<br>Telefoonnummer: $phone<br>Postcode: $postalCode<br>Huisnummer: $number");
-?>
-</div>
-<form method="post">
+    <div class="accInfo">
+    <h2>Overzicht van het account <?php echo($username); ?></h2>
+    <div class="accInfo2">
+        <button><a href="orders.php" id="AccountUitlogKnop">Mijn bestellingen</a></button>
+        <div id="accountOverview">
+            <?php
+            echo("Gebruikersnaam: $username<br>Voornaam: $firstName<br>Tussenvoegsel: $middleName<br>Achternaam: $lastName<br>e-mail: $email<br>Gebruiker sinds: $userSince<br>Telefoonnummer: $phone<br>Postcode: $postalCode<br>Huisnummer: $number");
+            ?>
+        </div>
+    </div>
+    <form method="post">
     <input type="submit" value="Uitloggen" name="logOut" id="AccountUitlogKnop">
 </form>
 
@@ -92,6 +94,7 @@ if(!isset($_POST['delete'])) {
             <input type=\"submit\" value=\"Ik bevestig hiermee dat ik al mijn accountgegevens kwijt raak en ik geen toegang meer heb tot mijn account.\" name=\"deleteConfirm\" style=\"background-color: red\">
             <input type=\"submit\" value=\"Annuleren\" name=\"deleteCancel\" style=\"background-color: green\">
         </form>
+    </div>
     </div>
     "); 
 }
