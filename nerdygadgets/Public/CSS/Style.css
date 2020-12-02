@@ -900,6 +900,7 @@ ul#ul-class-price li {
     border: 1px black solid;
     background-color: #505060;
     color: #fdfdfd;
+    margin-left: 10px;
 }
 
 #SendKnopEmail:hover {

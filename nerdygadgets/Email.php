@@ -21,6 +21,7 @@ include __DIR__ . "/header.php";
         </div>
 
         <input type="submit" value="Send" id="SendKnopEmail">
+        </div>
     </form>
 </div>
 
