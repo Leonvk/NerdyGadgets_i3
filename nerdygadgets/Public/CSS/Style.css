@@ -916,6 +916,7 @@ ul#ul-class-price li {
 #EmailVanConfirmatie {
     margin-left: 5px;
     border: black 2px solid;
+    border-radius: 10px;
     width: min-content;
     color: #0056b3;
 }
@@ -923,6 +924,7 @@ ul#ul-class-price li {
 #EmailOnderwerpConfirmatie {
     margin-left: 5px;
     border: black 2px solid;
+    border-radius: 10px;
     width: min-content;
     color: #0056b3;
 }
@@ -930,6 +932,7 @@ ul#ul-class-price li {
 #EmailTekstConfirmatie {
     margin-left: 5px;
     border: black 2px solid;
+    border-radius: 10px;
     width: border-box;
     color: #0056b3;
 }
