@@ -10,7 +10,7 @@ include __DIR__ . "/header.php";
             <input id="EmailAdres" name="EmailBox" type="email" value="Nerdy.gadgets@nerdygadgets.nl" disabled style="color: dodgerblue;"> <br><br>
 
             <label for="EmailVan">Van?</label>
-            <input id="EmailVan" name="EmailVan" type="email" required>
+            <input id="EmailVan" name="EmailVan" type="email" required placeholder="voornaam.achternaam@mail.com">
 
             <label for="EmailOnderwerp">Onderwerp:</label>
             <input id="EmailOnderwerp" name="EmailOnderwerp" required><br><br>
