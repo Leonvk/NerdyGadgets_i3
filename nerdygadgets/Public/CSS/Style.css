@@ -688,7 +688,7 @@ ul#ul-class-price li {
     vertical-align: middle;
     line-height: normal;
     position: absolute;
-    bottom: -450px;
+    bottom: -350px;
     margin-bottom: -1px;
     width: 100%;
 }
@@ -900,6 +900,7 @@ ul#ul-class-price li {
     border: 1px black solid;
     background-color: #505060;
     color: #fdfdfd;
+    margin-left: 10px;
 }
 
 #SendKnopEmail:hover {
@@ -907,12 +908,33 @@ ul#ul-class-price li {
     color: black;
 }
 
+#EmailRetourBericht {
+    margin-left: 10px;
+    color: #0056b3;
+}
+
+#EmailVanConfirmatie {
+    margin-left: 5px;
+    border: black 2px solid;
+    border-radius: 10px;
+    width: min-content;
+    color: #0056b3;
+}
+
 #EmailOnderwerpConfirmatie {
-    border: 1px black solid;
+    margin-left: 5px;
+    border: black 2px solid;
+    border-radius: 10px;
+    width: min-content;
+    color: #0056b3;
 }
 
 #EmailTekstConfirmatie {
-    border: 1px black solid;
+    margin-left: 5px;
+    border: black 2px solid;
+    border-radius: 10px;
+    width: border-box;
+    color: #0056b3;
 }
 
 #coupon_submit_button{
@@ -937,13 +959,13 @@ ul#ul-class-price li {
 }
 
 #AccountVerwijderKnop {
-    width: 10%;
+    width: fit-content;
     color: black;
     margin-left: 10px;
 }
 
 #AccountUitlogKnop {
-    width: 10%;
+    width: fit-content;
     color: black;
     margin-left: 10px;
 }
@@ -982,4 +1004,39 @@ ul#ul-class-price li {
     margin-left: 10px;
     margin-top: 10px;
     margin-right: 10px;
+}
+.accInfo {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 50%;
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+div#accountOverview {
+    padding-top: 20px;
+}
+
+#Header {
+    margin: 0px !important;
+}
+
+#TextBoxEmail {
+    resize: horizontal;
+}
+
+.accInfo {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 50%;
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+div#accountOverview {
+    padding-top: 20px;
 }
