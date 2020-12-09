@@ -292,8 +292,8 @@ if(array_key_exists('itemID', $_POST)) {
         <?php
     } else {
         ?>
-        <h2 id="NoSearchResults">
-            Yarr, er zijn geen resultaten gevonden.
+        <h2 id="despacito">
+            Er zijn geen resultaten gevonden.
         </h2>
         <?php
     }
