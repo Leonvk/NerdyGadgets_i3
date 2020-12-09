@@ -3,6 +3,10 @@ include __DIR__ . "/header.php";
 ?>
 
 
+
+
+
+
 <div method = "get" class="IndexStyle">
     <!--search tile-->
     <div id = "homepage_search_tile">
