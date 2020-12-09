@@ -49,7 +49,7 @@ if(empty($_POST['firstName'])) {
     // Save the user input
     $firstName = $_POST['firstName'];
     // Checks if the first name is shorter or equal to 35 char
-    if(strlen($firstName) > 35) {
+    if(strlen($firstName) > 36) {
         $error .= "-De voornaam mag niet langer zijn dan 35 karakters.<br>";
     } else {
         // Checks if the first name contains only letters
@@ -69,7 +69,7 @@ if(empty($_POST['middleName'])) {
     // Save the user input
     $middleName = $_POST['middleName'];
     // Checks if the middle name is shorter or equal to 35 char
-    if(strlen($middleName) > 35) {
+    if(strlen($middleName) > 36) {
         $error .= "-Het tussenvoegsel mag niet langer zijn dan 35 karakters.<br>";
     } else {
         // Checks if the middle name contains only letters or spaces
