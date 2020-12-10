@@ -30,7 +30,7 @@
                     <a href="garantieEnRetour.php" style="color:white">Garantie & retouneren</a>
                 </li>
                 <li>
-                    <a href="index.php" style="color:white">Link 2</a>
+                    <a href="https://www.politie.nl/themas/phishing.html#:~:text=Phishing%20is%20een%20vorm%20van,die%20zich%20voordoet%20als%20familielid." target="blank" style="color:white">Phishing voorkomen</a>
                 </li>
                 <li>
                     <a href="index.php" style="color:white">Link 3</a>
