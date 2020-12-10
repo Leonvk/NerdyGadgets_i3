@@ -139,8 +139,33 @@ if ($R) {
             } 
             else {
                 print("Ruime vooraad beschikbaar");
-            } 
-                ?></div>
+            }
+            //get coldroomtemperatures
+            if ($Result["StockItemID"] == 220 or $Result["StockItemID"] == 221) {
+                $sql = "SELECT Temperature 
+                        FROM coldroomtemperatures 
+                        ORDER BY ColdRoomTemperatureID DESC 
+                        LIMIT 1";
+                $conn = mysqli_connect("localhost", "root", "", "nerdygadgets");
+                $Statement = mysqli_prepare($conn, $sql);
+                mysqli_stmt_execute($Statement);
+                $TempResult = mysqli_stmt_get_result($Statement);
+                $TempResult = mysqli_fetch_all($TempResult, MYSQLI_ASSOC);
+                
+                //print_r($TempResult);
+                //print_r($TempResult["0"]);
+                //print("<br>");
+                //print($TempResult["0"]["Temperature"]);
+                
+
+                //ik weet ook niet waarom die ["0"] voor de temparatuur moet, maar het moet. de array zit heel raar ofzo
+                $temp = $TempResult["0"]["Temperature"];
+                print("<div id=\"tempature\">momenteel gekoeld op $temp graden!</div>");
+            }
+            
+            ?>
+                
+            </div>
             <div id="StockItemHeaderLeft">
                 <div class="CenterPriceLeft">
                     <div class="CenterPriceLeftChild">

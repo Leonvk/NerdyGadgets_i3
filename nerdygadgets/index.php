@@ -35,14 +35,28 @@ include __DIR__ . "/header.php";
     <!--sub tiles-->
     <div id = "homepage_sub_tiles">
         <h2 class = "home_page_text"> Bekijk ook deze producten:</h2>
+        
         <?php
         //aantal producten op hoofdpagina:
-        for ($i=0;$i<  6  ;$i++){
+        //null = random product
+        $product_highlights = array(
+            0 => 220,
+            1 => null,
+            2 => null,
+            3 => null,
+            4 => null,
+            5 => null,
+        );
+        
+        for ($i=0;$i<  count($product_highlights)  ;$i++){
             echo ("<div id = \"homepage_product_tile\">");
             
             // select which products to showcase
-            $productID = rand(1,227); //currently just selects a random product
-            
+            $productID = $product_highlights[$i];
+            if ($productID == null) {
+                $productID = rand(1,227); //currently just selects a random product
+            }
+
             //get data from product database
             $Query = " 
                 SELECT SI.StockItemID, 
