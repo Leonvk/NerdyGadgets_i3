@@ -5,6 +5,24 @@ session_start();
 $connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
 mysqli_set_charset($connection, 'latin1');
 
+//create view
+$view = "CREATE OR REPLACE VIEW stockitemsview AS
+SELECT SI.StockItemID, 
+            (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice, 
+            StockItemName,
+            QuantityOnHand AS QuantityOnHand,
+            SearchDetails, 
+            (CASE WHEN (RecommendedRetailPrice*(1+(TaxRate/100))) > 50 THEN 0 ELSE 6.95 END) AS SendCosts, MarketingComments, CustomFields, SI.Video,
+            (SELECT ImagePath FROM stockitemimages WHERE StockItemID = SI.StockItemID LIMIT 1) as ImagePath,
+            (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = SI.StockItemID LIMIT 1) as BackupImagePath   
+            FROM stockitems SI 
+            JOIN stockitemholdings SIH USING(stockitemid)
+            JOIN stockitemstockgroups ON SI.StockItemID = stockitemstockgroups.StockItemID
+            JOIN stockgroups USING(StockGroupID)
+            GROUP BY StockItemID;";
+$Statement = mysqli_prepare($connection, $view);
+mysqli_stmt_execute($Statement);
+
 // Make sure only when someone has confirmed their order they can get on this page
 if((!isset($_POST['confirmOrder']) && !isset($_SESSION['username'])) || !isset($_SESSION['cart'])) {
     header("Location: index.php");
@@ -187,22 +205,9 @@ if((!isset($_POST['confirmOrder']) && !isset($_SESSION['username'])) || !isset($
     // Process order:
     $total = 0;
     foreach($_SESSION['cart'] as $productID => $count) {
-        $Query = " 
-            SELECT SI.StockItemID, 
-            (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice, 
-            StockItemName,
-            QuantityOnHand AS QuantityOnHand,
-            SearchDetails, 
-            (CASE WHEN (RecommendedRetailPrice*(1+(TaxRate/100))) > 50 THEN 0 ELSE 6.95 END) AS SendCosts, MarketingComments, CustomFields, SI.Video,
-            (SELECT ImagePath FROM stockitemimages WHERE StockItemID = SI.StockItemID LIMIT 1) as ImagePath,
-            (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = SI.StockItemID LIMIT 1) as BackupImagePath   
-            FROM stockitems SI 
-            JOIN stockitemholdings SIH USING(stockitemid)
-            JOIN stockitemstockgroups ON SI.StockItemID = stockitemstockgroups.StockItemID
-            JOIN stockgroups USING(StockGroupID)
-            WHERE SI.stockitemid = ?
-            GROUP BY StockItemID";
-         $Statement = mysqli_prepare($connection, $Query);
+        $Query = "SELECT * FROM stockitemsview WHERE stockitemid = ?;";
+        $ShowStockLevel = 1000;
+        $Statement = mysqli_prepare($connection, $Query);
         mysqli_stmt_bind_param($Statement, "i", $productID);
         mysqli_stmt_execute($Statement);
         $ReturnableResult = mysqli_stmt_get_result($Statement);
@@ -349,23 +354,9 @@ if(!isset($_SESSION['cart'])) {
                         $totalPrice = 0;
                         if (count($_SESSION['cart'])==0) {print("Er staan geen artikelen in het Winkelwagentje");}
                         foreach($_SESSION['cart'] as $productID => $count) {
-                            $Query = " 
-                SELECT SI.StockItemID, 
-                (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice, 
-                StockItemName,
-                QuantityOnHand AS QuantityOnHand,
-                SearchDetails, 
-                (CASE WHEN (RecommendedRetailPrice*(1+(TaxRate/100))) > 50 THEN 0 ELSE 6.95 END) AS SendCosts, MarketingComments, CustomFields, SI.Video,
-                (SELECT ImagePath FROM stockitemimages WHERE StockItemID = SI.StockItemID LIMIT 1) as ImagePath,
-                (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = SI.StockItemID LIMIT 1) as BackupImagePath   
-                FROM stockitems SI 
-                JOIN stockitemholdings SIH USING(stockitemid)
-                JOIN stockitemstockgroups ON SI.StockItemID = stockitemstockgroups.StockItemID
-                JOIN stockgroups USING(StockGroupID)
-                WHERE SI.stockitemid = ?
-                GROUP BY StockItemID";
+                            $Query = "SELECT * FROM stockitemsview WHERE stockitemid = ?;";
                             $ShowStockLevel = 1000;
-                            $Statement = mysqli_prepare($Connection, $Query);
+                            $Statement = mysqli_prepare($connection, $Query);
                             mysqli_stmt_bind_param($Statement, "i", $productID);
                             mysqli_stmt_execute($Statement);
                             $ReturnableResult = mysqli_stmt_get_result($Statement);
