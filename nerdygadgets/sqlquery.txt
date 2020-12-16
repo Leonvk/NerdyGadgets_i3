@@ -1,0 +1,18 @@
+DROP PROCEDURE IF EXISTS temperature_archive;
+
+DELIMITER //
+
+CREATE PROCEDURE temperature_archive(IN temp_id INT)
+BEGIN
+	SELECT * FROM coldroomtemperatures WHERE ColdRoomTemperatureID = temp_id;
+    /*
+    INSERT INTO coldroomtemperatures_archive
+    VALUES (SELECT * FROM coldroomtemperatures WHERE ColdRoomTemperatureID = temp_id;);
+    
+    /**/
+    
+END//
+
+DELIMITER ;
+
+call temperature_archive(3654737);
