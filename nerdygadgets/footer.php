@@ -7,15 +7,15 @@
     <!-- Grid row -->
     <div class="row">
 
-        <!-- Grid column -->
+        <!-- Grid column
         <div class="col-md-6 mt-md-0 mt-3">
 
-            <!-- Content -->
+            <!-- Content
             <h5 class="text-uppercase">Footer Content</h5>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend justo ligula, sed maximus neque tristique vel..</p>
 
         </div>
-        <!-- Grid column -->
+        Grid column -->
 
         <hr class="clearfix w-100 d-md-none pb-3">
 
@@ -31,12 +31,6 @@
                 </li>
                 <li>
                     <a href="https://www.politie.nl/themas/phishing.html#:~:text=Phishing%20is%20een%20vorm%20van,die%20zich%20voordoet%20als%20familielid." target="blank" style="color:white">Phishing voorkomen</a>
-                </li>
-                <li>
-                    <a href="index.php" style="color:white">Link 3</a>
-                </li>
-                <li>
-                    <a href="index.php" style="color:white">Link 4</a>
                 </li>
             </ul>
 
