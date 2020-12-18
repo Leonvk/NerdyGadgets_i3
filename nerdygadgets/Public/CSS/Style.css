@@ -6,6 +6,7 @@ body {
     color: #303040!important;
     background-color: rgba(240, 240, 240, 1) !important;
 }
+
 @font-face {
     font-family: MmrText;
     src: url(/Public/fonts/mmrtext.ttf);
@@ -263,8 +264,7 @@ ul#ul-class-navigation li {
 .Background {
     /*background-color: #f1f1f1;*/
     width: 100%;
-    height: 100%;
-    position: absolute;
+    height: 1080px;
 }
 #LogoA {
     height: 100px;
