@@ -264,7 +264,8 @@ ul#ul-class-navigation li {
 .Background {
     /*background-color: #f1f1f1;*/
     width: 100%;
-    height: 1080px;
+    height: 100%;
+    position: absolute;
 }
 #LogoA {
     height: 100px;
@@ -687,8 +688,7 @@ ul#ul-class-price li {
     text-align: center;
     vertical-align: middle;
     line-height: normal;
-    position: absolute;
-    bottom: -350px;
+    position: relative;
     margin-bottom: -1px;
     width: 100%;
 }

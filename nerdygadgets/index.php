@@ -2,12 +2,8 @@
 include __DIR__ . "/header.php";
 ?>
 
-
-
-
-
-
 <div method = "get" class="IndexStyle">
+    
     <!--search tile-->
     <div id = "homepage_search_tile">
         <div id = "hompage_search_text">
@@ -35,10 +31,14 @@ include __DIR__ . "/header.php";
     <!--sub tiles-->
     <div id = "homepage_sub_tiles">
         <h2 class = "home_page_text"> Bekijk ook deze producten:</h2>
-        
         <?php
-        //aantal producten op hoofdpagina:
+
+
+
+        //----------------------product highlights---------------------//
+        //highlighted products on index/homepage:
         //null = random product
+        //nr = product number
         $product_highlights = array(
             0 => 220,
             1 => null,
@@ -47,7 +47,12 @@ include __DIR__ . "/header.php";
             4 => null,
             5 => null,
         );
-        
+        //----------------------product highlights---------------------//
+
+
+
+
+
         for ($i=0;$i<  count($product_highlights)  ;$i++){
             echo ("<div id = \"homepage_product_tile\">");
             
@@ -83,6 +88,7 @@ include __DIR__ . "/header.php";
             } else {
             $Result = null;
             }
+
             //product information
             $price = number_format($Result['SellPrice'], 2);
             $productName = $Result['StockItemName'];
@@ -102,6 +108,7 @@ include __DIR__ . "/header.php";
             echo("<div style=\"font-size : 23px;\"><b>$productName</b></div><br>");
             echo("<div style=\"float:right;font-size : 25px; color: #3161c2\"><b>&euro;$price</b></div>");
             echo("</div>");
+
             //display product page button
             echo("<div id = \"product_tile_button\" ><button type=\"button\" class=\"buttonempty\"> <a class=\"product_tile_button\" href=\"view.php?id=$productID.php\">Bekijk</a></button></div>");
             
@@ -111,35 +118,8 @@ include __DIR__ . "/header.php";
             
     
     </div>
-
-
-
-
-
-
-
-
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <!--<div class="col-11">
-        <div class="TextPrice">
-            <a href="view.php?id=93">
-                
-                
-                <div class="TextMain">
-                    "The Gu" red shirt XML tag t-shirt (Black) M
-                </div>
-                <ul id="ul-class-price">
-
-                    <li class="HomePagePrice">€30.95</li>
-                </ul>
-
-        </div>
-        </a>
-        <div class="HomePageStockItemPicture"></div>
-    </div>-->
 </div>
+
 <?php
 include __DIR__ . "/footer.php";
 ?>
-
