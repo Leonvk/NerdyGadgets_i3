@@ -35,7 +35,7 @@
         mysqli_stmt_bind_param($statement, "s", $date);
         mysqli_stmt_execute($statement);
 
-        $ReturnableResult = mysqli_stmt_get_result($statement); //I don't know what this does. but it doesn't work without it.
+        $ReturnableResult = mysqli_stmt_get_result($statement);
         
         $this_is_a_variable = 0;
 

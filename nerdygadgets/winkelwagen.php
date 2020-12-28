@@ -42,7 +42,8 @@ if(array_key_exists('delete', $_POST)) {
             <!--komt in een foreach loop-->
             <?php
             $totalPrice = 0;
-            if (count($_SESSION['cart'])==0) {print("Er staan geen artikelen in het Winkelwagentje");}
+            if (count($_SESSION['cart'])==0) {print("<h1><b>Uw Winkelwagentje is momenteel nog leeg</b></h1>
+                <br>U kunt producten toevoegen door op de 'toevoegen' knop te klikken wanner u een product bekijkt");}
             foreach($_SESSION['cart'] as $productID => $count) {
                 $Query = " 
                 SELECT SI.StockItemID, 
@@ -127,28 +128,70 @@ if(array_key_exists('delete', $_POST)) {
                     unset($_SESSION['cart'][$productID]);
                 }
             }
-            if(isset($_POST["coupons"])) {
-                $totalPrice = (100-$_POST["coupons"])/100*$totalPrice;
-            }
 
-            //shipping costs calculation
+            //----------------------// coupon code korting (start) \\----------------------\\
+            //default discount values
+            $amount_discount = 0;
+            $percentage_discount = 0;
+            $code = "";
+
+            //apply coupon code if applicable.
+            if (isset($_POST['coupon_code'])) {
+            
+                $connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
+
+                //get code from post
+                $code = $_POST['coupon_code'];
+
+                //check if coupon exists and is active in DB
+                $query = " 
+                    SELECT percentage, amount
+                    FROM coupon_codes 
+                    WHERE active = 1 and code = ? and price <= ?";
+                
+                $statement = mysqli_prepare($connection, $query);
+                mysqli_stmt_bind_param($statement, "sd",$code,$totalPrice);
+                mysqli_stmt_execute($statement);
+
+                //apply coupon code
+                $ReturnableResult = mysqli_stmt_get_result($statement);
+                //no idea why I used a foreach here. there must an easier way for this. but I'm tired and this works...
+                foreach ($ReturnableResult as $key => $value) {
+                    $amount_discount = $value['amount'];
+                    $percentage_discount = $value['percentage'];
+                }
+
+            }
+            //----------------------\\ coupon code korting (end) //----------------------\\
+
+            //----------------------// costs calculation (start) \\----------------------\\
             $TheActualTotalPrice = 0;
-            if ($totalPrice <= 50){ //<----condition whether or not to include shipping costs
-                $shippingcosts = 6.50; //<---------------- verzendkosten
+            if ($totalPrice <= 50){ //free shipping costs when the price is above ...
+                $shippingcosts = 6.50; //shipping costs
             } else {
                 $shippingcosts = 0;
-            }    
-            $TheActualTotalPrice += $shippingcosts + $totalPrice 
+            }
+            
+            //calculate the actual price. (the price which will be requested from the ideal stuff)
+            $TheActualTotalPrice += $shippingcosts + $totalPrice;
+            $TheActualTotalPrice = ($TheActualTotalPrice * (1 - ($percentage_discount / 100)))  - $amount_discount;
+
+            if ($TheActualTotalPrice < 0) {$TheActualTotalPrice = 0;} //just in case
+
+            //----------------------\\ costs calculation (end) //----------------------\\
 
             ?>
         </div>
-        <!-- -----------side menu shopping cart (start)----------- -->
+
+        <!-- -----------// side menu shopping cart (start) \\----------- -->
         <div id="side_menu_shoppingcart">
         <!--side menu shopping cart price-->
         <div id="window_background">
             <table style="font-size:20px; width: 50%; border-spacing: 50px;">
                 <td>totaal artikelen:</td><td><?php echo("&euro;".number_format($totalPrice,2));?><br></td><tr>
                 <td>verzendkosten:</td><td><?php echo("&euro;".number_format($shippingcosts,2));?><br></td><tr>
+                <?php if ($amount_discount > 0) {echo("<td>korting:</td><td>&euro;-".number_format($amount_discount,2)."<br></td><tr>");}?>
+                <?php if ($percentage_discount > 0) {echo("<td>korting:</td><td>".$percentage_discount."%<br></td><tr>");}?>
                 <td><b>totaal:</b></td><td><b><?php echo("&euro;".number_format($TheActualTotalPrice,2));?></b><br></td><tr>
             </table>
             <br><br>
@@ -161,31 +204,27 @@ if(array_key_exists('delete', $_POST)) {
         <!--side menu shopping cart coupon code-->
         <div id="window_background">
             <h3> coupon code </h3> <br>
+            
             <form action="winkelwagen.php" method = "post">
-                <input id = home_page_search type="text" name="coupon_code" style="float:left;">  
+                <input id = home_page_search type="text" value = "<?php print("$code");?>" name="coupon_code" style="float:left;">  
                 <input id = coupon_submit_button type="submit" value = "toepassen" style="width:auto;float:left;">
             </form>
             <?php
-            if (isset($_POST['coupon_code'])) {
-                print("<br><br><br>De ingevulde couponcode is onjuist");
+            if (isset($_POST['coupon_code']) and $amount_discount == 0 and $percentage_discount == 0) {
+                if ($_POST['coupon_code'] != "") {print("<br><br><br>De ingevulde couponcode is onjuist");}
+            } else if (isset($_POST['coupon_code'])) {
+                print("<br><br><br>De ingevulde couponcode is momenteel actief");
             }
             ?>
         </div>
         </div>
-        <!-- -----------side menu shopping cart (end)----------- -->
+        <!-- -----------\\ side menu shopping cart (end) //----------- -->
 
         <!--bottom of shopping cart-->
         <div class="totaalBedrag">
             <?php echo("<br>Totaal prijs: &euro;$totalPrice"); ?>
             
         </div>
-        <!-- ----------< delete shoppingcart button >----------
-        <div class="wrapperWinkelmand2">
-            <form method="post">
-                <input type="submit" name="delete" value="Winkelwagen leegmaken" id = delete_shopping_cart style="background-color: #00000000 ">
-            </form>
-        </div>
-        -->
     </form>
 </div>
 
